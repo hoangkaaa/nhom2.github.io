@@ -8,7 +8,7 @@
  * Licensed under the BSD 3-Clause
  * https://github.com/kartik-v/bootstrap-star-rating/blob/master/LICENSE.md
  */
- .rating-loading {
+.rating-loading {
     width: 25px;
     height: 25px;
     font-size: 0;
@@ -248,26 +248,4 @@
 
 .caption-success {
     background-color: #198754;
-}
-.ratings {
-    display: flex;
-    justify-content: flex-start; /* Căn trái các sao */
-    align-items: center; /* Căn các sao theo chiều dọc */
-    overflow: hidden; /* Ngăn việc tràn ra ngoài */
-    max-width: 100%; /* Đảm bảo không vượt quá kích thước chứa */
-    white-space: nowrap; /* Đảm bảo không bị xuống dòng */
-}
-
-.ratings .glyphicon {
-    font-size: 18px; /* Điều chỉnh kích thước sao */
-    margin-right: 2px; /* Thêm khoảng cách giữa các sao */
-}
-
-/* Điều chỉnh cho phần thông tin sản phẩm */
-.product-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 100%;
 }
