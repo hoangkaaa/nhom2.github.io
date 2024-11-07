@@ -74,7 +74,7 @@
     left: 0;
     top: 0;
     margin: auto;
-    color: yellow;
+    color: #fde16d;
     white-space: nowrap;
     overflow: hidden;
     -webkit-text-stroke: 1px #777;
@@ -248,4 +248,26 @@
 
 .caption-success {
     background-color: #198754;
+}
+.ratings {
+    display: flex;
+    justify-content: flex-start; /* Căn trái các sao */
+    align-items: center; /* Căn các sao theo chiều dọc */
+    overflow: hidden; /* Ngăn việc tràn ra ngoài */
+    max-width: 100%; /* Đảm bảo không vượt quá kích thước chứa */
+    white-space: nowrap; /* Đảm bảo không bị xuống dòng */
+}
+
+.ratings .glyphicon {
+    font-size: 18px; /* Điều chỉnh kích thước sao */
+    margin-right: 2px; /* Thêm khoảng cách giữa các sao */
+}
+
+/* Điều chỉnh cho phần thông tin sản phẩm */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
 }
