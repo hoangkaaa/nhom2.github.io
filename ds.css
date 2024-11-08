@@ -1,0 +1,37 @@
+.discount-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #d9534f; /* Màu đỏ */
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+
+/* CSS cho nhãn trạng thái sản phẩm */
+.status-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #5cb85c; /* Màu xanh lá */
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+
+/* Hiệu ứng hover cho các nút nhãn */
+.discount-label:hover, .status-label:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.thumbnail {
+    position: relative;
+}
