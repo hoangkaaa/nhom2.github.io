@@ -2,9 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sixsense</title>
+     <!-- Tải font Poppins từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,11 +27,62 @@
   
 <style>
     /* Sử dụng font Poppins cho body, hỗ trợ tiếng Việt tốt */
-    body {
-        font-family: 'Poppins', sans-serif; /* Font dễ đọc và hiện đại */
-        background-color: #f7f7f7; /* Nền nhẹ nhàng */
-        color: #6c4f3d; /* Màu chữ nâu */
-    }
+   /* Cấu hình font chữ cho body, hỗ trợ tiếng Việt */
+body   /* Áp dụng font Poppins cho toàn bộ trang web */ {
+            font-family: 'Poppins', sans-serif; /* Sử dụng font Poppins */
+            background-color: #f7f7f7; /* Màu nền nhẹ nhàng */
+            color: #6c4f3d; /* Màu chữ nâu */
+            line-height: 1.6; /* Khoảng cách dòng */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cài đặt các kiểu chữ cho các phần tử khác */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif; /* Áp dụng Poppins cho tiêu đề */
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif; /* Áp dụng Poppins cho đoạn văn */
+            font-size: 16px; /* Kích thước font cho đoạn văn */
+            color: #333333; /* Màu chữ cho đoạn văn */
+        }
+
+        a {
+            font-family: 'Poppins', sans-serif; /* Áp dụng Poppins cho liên kết */
+            text-decoration: none; /* Bỏ gạch chân cho liên kết */
+            color: #007BFF; /* Màu chữ cho liên kết */
+        }
+
+        a:hover {
+            color: #0056b3; /* Màu chữ khi hover lên liên kết */
+        }
+
+        /* Cài đặt kiểu cho nút */
+        button {
+            font-family: 'Poppins', sans-serif; /* Áp dụng Poppins cho nút */
+            background-color: #007BFF; /* Màu nền nút */
+            color: white; /* Màu chữ nút */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Màu nền nút khi hover */
+        }
+
+        /* Đảm bảo các input và textarea cũng sử dụng font Poppins */
+        input, textarea {
+            font-family: 'Poppins', sans-serif; /* Áp dụng Poppins cho input và textarea */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            width: 100%;
+        }
 
     /* Chỉnh sửa cho phần row */
     .row {
@@ -116,7 +170,7 @@
         width: 70%;
         max-width: 250px;
         font-size: 14px;
-        font-family: 'Quicksand', sans-serif; /* Font dễ thương cho input */
+        font-family: 'Poppins', sans-serif; /* Font dễ thương cho input */
         color: #6c4f3d; /* Màu chữ nâu */
     }
 
@@ -128,7 +182,7 @@
         color: #7f5d40; /* Màu chữ nâu sáng */
         cursor: pointer;
         font-weight: bold;
-        font-family: 'Quicksand', sans-serif;
+        font-family: 'Poppins', sans-serif;
         transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
 
@@ -183,7 +237,7 @@
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, transform 0.3s ease;
-    font-family: 'Lobster', cursive; /* Font dễ thương cho liên kết */
+    font-family: 'Poppins', cursive; /* Font dễ thương cho liên kết */
     color: #6c4f3d; /* Màu nâu sáng cho liên kết trong footer */
 }
 
@@ -196,7 +250,7 @@
     /* Điều chỉnh navbar */
     .navbar-default .navbar-nav > li > a {
         color: #7f5d40; /* Màu chữ nâu sáng cho navbar */
-        font-family: 'Lobster', cursive; /* Sử dụng font Lobster cho navbar */
+        font-family: 'Poppins', cursive; 
         font-size: 16px;
         padding: 10px 15px;
         background-color: white; /* Nền trắng */
@@ -217,7 +271,7 @@
     .btn-primary, .btn-success, .btn-default {
         background-color: #f1e0a1; /* Màu vàng pastel cho nút */
         border-color: #e67e22; /* Màu border của nút */
-        font-family: 'Quicksand', sans-serif;
+        font-family: 'Poppins', sans-serif;
         transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         color: #7f5d40; /* Màu chữ nâu sáng */
     }
@@ -260,6 +314,26 @@
         line-height: 20px; /* Căn giữa chữ */
         border-radius: 10px; /* Bo tròn góc của thanh tiến độ */
     }
+    
+/* Chỉnh sửa cho glyphicon star */
+.glyphicon-star {
+    color: #ffcc00; /* Màu vàng cho icon */
+    background-color: white; /* Nền trắng */
+    border: 2px solid #6c4f3d; /* Viền nâu */
+    border-radius: 50%; /* Bo tròn viền */
+    padding: 8px; /* Khoảng cách giữa icon và viền */
+    font-size: 18px; /* Kích thước icon */
+    transition: transform 0.3s, box-shadow 0.3s ease, color 0.3s ease; /* Hiệu ứng hover */
+}
+
+/* Hiệu ứng khi hover vào glyphicon */
+.glyphicon-star:hover {
+    transform: scale(1.1); /* Phóng to nhẹ */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tạo bóng đổ */
+    color: #e1d59a; /* Màu vàng sáng khi hover */
+    background-color: #f1e0a1; /* Nền vàng pastel khi hover */
+}
+
 </style>
 
 
@@ -481,7 +555,7 @@
             <div class="col-md-6">
                 <!-- Main image, on which xzoom will be applied -->
                 </a>
-       <h2>Tên Sản Phẩm</h2>
+       <h2>BÁNH NHÀ MÌNH </h2>
                 <img src="https://i.pinimg.com/564x/45/9b/a1/459ba103415a7fc147ad1a3aac8e8e22.jpg" alt="Big Picture" class="img-responsive">
               
             </div>
@@ -536,7 +610,7 @@
             <h3>Đánh giá</h3>
         <form>
             <div class="form-group">
-                <label for="review">Nhận xét của bạn:</label>
+                <label for="review"> CẢM NHẬN TỪ KHÁCH HÀNG ĐÁNG IU:</label>
                 <textarea class="form-control" id="review"></textarea>
             </div>
             <button type="submit" class="btn btn-success">Gửi Đánh Giá</button>
@@ -553,7 +627,8 @@
             <span class="glyphicon glyphicon-star"></span>
             <span class="glyphicon glyphicon-star"></span>
             <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
+            <span class="glyphicon glyphicon-star"></span>
+           <br><br>
             Ngân Hà
             <br><br>
             <span class="pull-right">1 day ago</span>
