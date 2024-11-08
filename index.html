@@ -30,6 +30,34 @@
         color: #6c4f3d; /* Màu chữ nâu */
     }
 
+    /* Chỉnh sửa cho phần row */
+    .row {
+        background-color: white; /* Nền trắng cho row */
+        border: 2px solid #f1e0a1; /* Viền vàng pastel */
+        border-radius: 10px; /* Bo tròn viền */
+        color: #7f5d40; /* Màu chữ nâu sáng */
+        padding: 15px; /* Thêm khoảng cách cho row */
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    .row:hover {
+        background-color: #f1e0a1; /* Nền vàng pastel khi hover */
+        transform: scale(1.05); /* Phóng to nhẹ khi hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng bóng đổ */
+    }
+
+    .row .col {
+        color: #7f5d40; /* Màu chữ nâu sáng cho các cột */
+        font-weight: bold; /* Chữ in đậm */
+        padding: 10px;
+    }
+
+    .row .col:hover {
+        color: #6c4f3d; /* Màu chữ nâu khi hover */
+        background-color: #e1d59a; /* Nền sáng hơn khi hover */
+    }
+
+    /* Các phần khác */
     .container {
         background-color: rgba(147, 129, 129, 0.5); /* Nền mờ cho nội dung */
         width: 100%;
@@ -55,7 +83,26 @@
         object-fit: cover;
         border-radius: 10px;
     }
-  
+
+    .list-group {
+        background-color: white; /* Nền trắng cho list-group */
+        border: 2px solid #6c4f3d; /* Viền nâu cho list-group */
+        border-radius: 5px; /* Bo tròn góc cho list-group */
+    }
+
+    .list-group-item {
+        color: #6c4f3d; /* Chữ màu nâu */
+        font-weight: bold; /* Chữ in đậm */
+        border: 1px solid #6c4f3d; /* Viền màu nâu cho từng item */
+        background-color: white; /* Nền trắng cho từng item */
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .list-group-item:hover {
+        background-color: #f1e0a1; /* Màu nền vàng pastel khi hover */
+        color: #7f5d40; /* Màu chữ nâu sáng khi hover */
+    }
+
     .subscribe {
         display: flex;
         align-items: center;
@@ -99,33 +146,52 @@
         color: #6c4f3d; /* Màu chữ nâu */
     }
 
-    .copy-footer-29 {
-        margin: 0;
-        font-size: 14px;
-        color: #bdc3c7;
-        text-align: center;
-    }
+ /* Copy footer text */
+.copy-footer-29 {
+    margin: 0;
+    font-size: 14px;
+    color: #6c4f3d; /* Màu chữ nâu sáng cho phần copy-footer */
+    text-align: center;
+}
 
-    .footer {
-        background-color: #343a40; /* Màu nền footer */
-        color: white;
-        padding: 50px 0;
-        width: 100%;
-        font-family: 'Poppins', sans-serif;
-    }
+/* Footer mặc định */
+.footer {
+    background-color: #F1E0A1; /* Nền vàng pastel cho footer */
+    color: #6c4f3d; /* Màu chữ nâu sáng cho footer */
+    padding: 50px 0;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0; /* Ẩn footer khi mới load */
+    transform: translateY(30px); /* Đặt footer lệch xuống dưới */
+    animation: fadeIn 1s ease-out forwards; /* Áp dụng animation */
+}
 
-    .footer a {
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s ease, transform 0.3s ease;
-        font-family: 'Lobster', cursive; /* Font dễ thương cho liên kết */
-        color: #f1e0a1; /* Màu vàng pastel */
+/* Animation cho hiệu ứng hiện dần */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Footer bắt đầu từ vị trí thấp */
     }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Footer di chuyển lên vị trí bình thường */
+    }
+}
 
-    .footer a:hover {
-        color: #ffcc00; /* Màu vàng khi hover */
-        transform: translateX(5px); /* Di chuyển nhẹ sang phải */
-    }
+/* Liên kết trong footer */
+.footer a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-family: 'Lobster', cursive; /* Font dễ thương cho liên kết */
+    color: #6c4f3d; /* Màu nâu sáng cho liên kết trong footer */
+}
+
+/* Hiệu ứng hover cho liên kết trong footer */
+.footer a:hover {
+    color: #FFCC00; /* Màu vàng khi hover */
+    transform: translateX(5px); /* Di chuyển nhẹ sang phải khi hover */
+}
 
     /* Điều chỉnh navbar */
     .navbar-default .navbar-nav > li > a {
@@ -135,7 +201,7 @@
         padding: 10px 15px;
         background-color: white; /* Nền trắng */
         border: 2px solid #f1e0a1; /* Viền vàng pastel */
-        border-radius: 5px; /* Bo tròn viền */
+        border-radius: 6px; /* Bo tròn viền */
         transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     }
 
@@ -194,13 +260,7 @@
         line-height: 20px; /* Căn giữa chữ */
         border-radius: 10px; /* Bo tròn góc của thanh tiến độ */
     }
-
 </style>
-
-
-
-</style>
-
 
 
 
@@ -538,3 +598,5 @@
         </script>            
 </body>
 </html>
+
+
