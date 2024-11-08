@@ -8,62 +8,104 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        body {
-            padding: 20px;
-            background-color: rgba(147, 129, 129, 0.5); /* Nền mờ cho nội dung */
-        }
-        .cart-header {
-            background-color: #f8f8f8;
-            padding: 15px;
-            border: 1px solid #7b542b;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .cart-item {
-            border: 1px solid #6e5825;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-            background-color: #ffffff;
-            transition: box-shadow 0.3s;
-        }
-        .cart-item:hover {
-            box-shadow: 0 4px 20px rgba(212, 133, 204, 0.1);
-        }
-        .cart-item img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-        .total-price {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #3c4e9d;
-        }
-        .btn-remove {
-            color: rgb(9, 8, 11);
-        }
-        .btn-success {
-            background-color: #78cedf;
-            border-color: #e5b2e8;
-        }
-        .btn-success:hover {
-            background-color: #5893aa;
-            border-color: #cfa3ce;
-        }
-     footer {
-            background-color: #343a40; /* Màu nền footer */
-            color: white;
-            padding: 20px 0;
-        }
-        footer a {
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        footer a:hover {
-            color: #ffcc00; /* Màu vàng khi hover */
-        } khi hover */
-        }
+        /* Định dạng chung cho tất cả chữ trên trang */
+body {
+    padding: 20px;
+    background-color: rgba(147, 129, 129, 0.5); /* Nền mờ cho nội dung */
+    color: #6E4B3A; /* Màu chữ nâu sáng cho toàn bộ trang */
+}
+
+/* Định dạng các nút chung */
+.btn, .btn-default, .btn-success, .subscribe button {
+    background-color: #FFFFCC; /* Màu nền vàng */
+    color: #6E4B3A; /* Chữ màu nâu sáng */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px; /* Khoảng cách giữa các chữ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng mờ cho nút */
+}
+
+/* Khi hover lên các nút */
+.btn:hover, .btn-default:hover, .btn-success:hover, .subscribe button:hover {
+    background-color: #F1E1B3; /* Màu nền vàng sáng hơn khi hover */
+    color: #3E2A1F; /* Chữ màu nâu đậm hơn khi hover */
+    transform: translateY(-3px); /* Nâng nút lên khi hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng mạnh khi hover */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Bóng chữ */
+    font-weight: bolder; /* Làm chữ đậm hơn khi hover */
+    letter-spacing: 1px; /* Tăng khoảng cách giữa các chữ khi hover */
+}
+
+/* Khi focus vào các nút (như khi người dùng nhấn vào nút) */
+.btn:focus, .btn-default:focus, .btn-success:focus, .subscribe button:focus {
+    outline: none; /* Tắt viền focus mặc định */
+    box-shadow: 0 0 10px 4px rgba(255, 205, 85, 0.8); /* Thêm viền sáng vàng khi focus */
+    font-weight: bolder; /* Làm chữ đậm hơn khi focus */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Tăng bóng chữ khi focus */
+    letter-spacing: 1px; /* Tăng khoảng cách chữ khi focus */
+}
+
+/* Định dạng cho các phần của giỏ hàng */
+.cart-header {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border: 1px solid #7b542b;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    border: 1px solid #6e5825;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s;
+}
+
+/* Hiệu ứng cho khi hover lên giỏ hàng */
+.cart-item:hover {
+    box-shadow: 0 4px 20px rgba(212, 133, 204, 0.1);
+}
+
+.cart-item img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.total-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #3c4e9d;
+}
+
+.btn-remove {
+    color: rgb(9, 8, 11);
+}
+
+footer {
+    background-color: #CC9966; /* Màu nền footer */
+    color: white;
+    padding: 20px 0;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ffcc00; /* Màu vàng khi hover */
+}
+
+
     </style>
 </head>
 <body>
