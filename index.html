@@ -21,12 +21,13 @@
     <link rel="stylesheet" type="text/css" href="xzoom.css" media="all" />
     <script type="text/javascript" src="xzoom.js"></script>
     <style>
-    <style>
-    /* Sử dụng font Poppins và Lobster */
+  
+<style>
+    /* Sử dụng font Poppins cho body, hỗ trợ tiếng Việt tốt */
     body {
         font-family: 'Poppins', sans-serif; /* Font dễ đọc và hiện đại */
         background-color: #f7f7f7; /* Nền nhẹ nhàng */
-        color: #333; /* Màu chữ tối cho dễ đọc */
+        color: #6c4f3d; /* Màu chữ nâu */
     }
 
     .container {
@@ -63,20 +64,21 @@
 
     .subscribe input[type="email"] {
         padding: 12px;
-        border: 2px solid #f1c40f; /* Viền vàng dễ thương */
+        border: 2px solid #f1e0a1; /* Viền vàng pastel */
         border-radius: 5px 0 0 5px;
         width: 70%;
         max-width: 250px;
         font-size: 14px;
         font-family: 'Quicksand', sans-serif; /* Font dễ thương cho input */
+        color: #6c4f3d; /* Màu chữ nâu */
     }
 
     .subscribe button {
         padding: 12px;
         border: none;
         border-radius: 0 5px 5px 0;
-        background-color: #f1c40f; /* Màu nền cho nút */
-        color: white;
+        background-color: #f1e0a1; /* Màu nền vàng pastel */
+        color: #7f5d40; /* Màu chữ nâu sáng */
         cursor: pointer;
         font-weight: bold;
         font-family: 'Quicksand', sans-serif;
@@ -84,7 +86,7 @@
     }
 
     .subscribe button:hover {
-        background-color: #e67e22; /* Màu sáng hơn khi hover */
+        background-color: #e1d59a; /* Màu sáng hơn khi hover */
         transform: scale(1.05); /* Phóng to nhẹ khi hover */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng bóng đổ */
     }
@@ -93,6 +95,8 @@
         background-color: #eaeaea;
         padding: 15px 0;
         font-family: 'Poppins', sans-serif;
+        text-align: center;
+        color: #6c4f3d; /* Màu chữ nâu */
     }
 
     .copy-footer-29 {
@@ -101,7 +105,7 @@
         color: #bdc3c7;
         text-align: center;
     }
-  
+
     .footer {
         background-color: #343a40; /* Màu nền footer */
         color: white;
@@ -115,6 +119,7 @@
         font-weight: bold;
         transition: color 0.3s ease, transform 0.3s ease;
         font-family: 'Lobster', cursive; /* Font dễ thương cho liên kết */
+        color: #f1e0a1; /* Màu vàng pastel */
     }
 
     .footer a:hover {
@@ -122,29 +127,37 @@
         transform: translateX(5px); /* Di chuyển nhẹ sang phải */
     }
 
-    /* Thêm hiệu ứng hover cho các nút trong navbar */
+    /* Điều chỉnh navbar */
     .navbar-default .navbar-nav > li > a {
-        color: #3a7da7; /* Màu chữ mặc định */
-        font-family: 'Lobster', cursive;
+        color: #7f5d40; /* Màu chữ nâu sáng cho navbar */
+        font-family: 'Lobster', cursive; /* Sử dụng font Lobster cho navbar */
         font-size: 16px;
-        transition: color 0.3s ease, transform 0.3s ease;
+        padding: 10px 15px;
+        background-color: white; /* Nền trắng */
+        border: 2px solid #f1e0a1; /* Viền vàng pastel */
+        border-radius: 5px; /* Bo tròn viền */
+        transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     }
 
+    /* Thêm hiệu ứng hover cho các mục trong navbar */
     .navbar-default .navbar-nav > li > a:hover {
         color: #ffcc00; /* Màu vàng khi hover */
-        transform: scale(1.1); /* Phóng to khi hover */
+        background-color: #f1e0a1; /* Nền vàng pastel khi hover */
+        border-color: #e67e22; /* Đổi viền sang màu vàng đậm khi hover */
+        transform: scale(1.1); /* Phóng to nhẹ khi hover */
     }
 
     /* Hiệu ứng hover cho các nút trong sản phẩm */
     .btn-primary, .btn-success, .btn-default {
-        background-color: #f1c40f; /* Màu vàng cho nút */
+        background-color: #f1e0a1; /* Màu vàng pastel cho nút */
         border-color: #e67e22; /* Màu border của nút */
         font-family: 'Quicksand', sans-serif;
         transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        color: #7f5d40; /* Màu chữ nâu sáng */
     }
 
     .btn-primary:hover, .btn-success:hover, .btn-default:hover {
-        background-color: #e67e22; /* Màu sáng hơn khi hover */
+        background-color: #e1d59a; /* Màu sáng hơn khi hover */
         transform: scale(1.05); /* Phóng to nhẹ khi hover */
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng bóng đổ */
     }
@@ -164,7 +177,32 @@
         transform: scale(1.1); /* Phóng to hình ảnh khi hover */
     }
 
+    /* Progress bar styling */
+    .progress {
+        height: 20px; /* Chiều cao của progress bar */
+        background-color: #f1e0a1; /* Nền vàng pastel */
+        border-radius: 10px; /* Bo tròn góc của progress bar */
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng bóng đổ */
+    }
+
+    .progress-bar {
+        background-color: #6c4f3d; /* Màu nâu cho thanh tiến độ */
+        width: 50%; /* Chiều rộng của thanh tiến độ, có thể thay đổi động */
+        text-align: center;
+        color: white; /* Màu chữ trắng */
+        font-weight: bold; /* Chữ in đậm */
+        line-height: 20px; /* Căn giữa chữ */
+        border-radius: 10px; /* Bo tròn góc của thanh tiến độ */
+    }
+
 </style>
+
+
+
+</style>
+
+
+
 
 </style>
 
@@ -243,90 +281,7 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             </a>
         </div>
-<!-- Discount and NEW / BEST SELLER -->
-<div class="col-sm-11 col-md-12">
-    <h3>Discount</h3>
-    <div class="row">
- <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-    <!-- Nhãn giảm giá (Nếu sản phẩm có giảm giá) -->
-    <button class="discount-label">20% OFF</button>
 
-
-    <!-- Nhãn trạng thái sản phẩm (Ví dụ: New hoặc Best Seller) -->
-    <button class="status-label">New</button>
-       
-        <img src="https://i.pinimg.com/736x/fd/26/de/fd26de3b6cd9df142e14730da5dfb32b.jpg" alt="">
-        <div class="add-to-cart">
-            <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
-        </div>
-        <div class="caption">
-            <h4 class="pull-right">15.000 VNĐ</h4>
-            <h4>
-                <a href="ecommerce-detail.html">1<sup>st</sup> Product</a>
-            </h4>
-            <p>Bánh mousse không chỉ là món tráng miệng hoàn hảo sau bữa ăn mà còn là món quà tuyệt vời</p>
-            <div class="ratings">
-                <p class="pull-right">
-                    <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                </p>
-                <br><br>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                </p>
-            </div>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="2525" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-                    <span class="sr-only">25% Complete (success)</span>
-                    <p>Đã bán 2 </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-    <button class="discount-label">10% OFF</button>
-    <button class="status-label">Best Seller</button>
-        <img src="https://i.pinimg.com/564x/fd/0f/39/fd0f39192fdca40d840559734299c429.jpg" alt="">
-        <div class="add-to-cart">
-            <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
-        </div>
-        <div class="caption">
-            <h4 class="pull-right">23.000 VNĐ</h4>
-            <h4>
-                <a href="ecommerce-detail.html">2<sup>nd</sup> Macaron</a>
-            </h4>
-            <p>Bánh macarons với lớp vỏ giòn và nhân kem mịn màng, có đủ màu sắc và hương vị.Thơm lừng vị bơ </p>
-            <div class="ratings">
-                <p class="pull-right">
-                 
-                    <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                </p>
-                <br><br>
-                <p>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                </p>
-            </div>
-             <div class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                    <span class="sr-only">80% Complete (danger)</span>
-                    <p>Sắp bán hết </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
         <!-- Display Categories and Products -->
         <div class="row">
             <div class="col-sm-4 col-md-3">
