@@ -2582,15 +2582,15 @@ input::-ms-clear {
     text-transform: uppercase;
     }
 .heading-sale >a {
-  color: #4a3672;
+  color: #b86c41;
   font-size: 38px;
   font-weight: 700;
   transition: color 0.5s;
 }
 
 .box-1 .sale-price {
-  color: red;
-  text-shadow: -1px 1px 2.5px #ff002f;
+  color: rgb(225, 199, 105);
+  text-shadow: -1px 1px 2.5px #b87912;
   font-size: 30px;
   font-weight: 400;
   display: block;
