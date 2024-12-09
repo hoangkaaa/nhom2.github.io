@@ -1170,7 +1170,7 @@ input::-ms-clear {
 
 .product-o__price {
   display: block;
-  color: #333333; /* Màu chữ cho giá bán */
+  color: #96631b; /* Màu chữ cho giá bán */
   font-size: 16px; /* Kích thước chữ */
   font-weight: 600;
   text-align: center; /* Căn giữa giá bán */
@@ -1180,7 +1180,7 @@ input::-ms-clear {
 .product-o__discount {
   font-weight: 600;
   margin-left: 30px;
-  color: #a0a0a0; /* Màu xám cho giá giảm */
+  color: #e66317; /* Màu xám cho giá giảm */
   font-size: 14px;
   text-decoration: line-through;
 }
