@@ -293,16 +293,6 @@
             });
         }
     };
-    document.getElementById("left-arrow").addEventListener("click", function() {
-    // Chuyển về slide trước
-    $('#testimonial-slider').trigger('prev.owl.carousel');
-});
-
-document.getElementById("right-arrow").addEventListener("click", function() {
-    // Chuyển tới slide tiếp theo
-    $('#testimonial-slider').trigger('next.owl.carousel');
-});
-
     
     // Remove Class from body element
     RESHOP.appConfiguration = function() {
