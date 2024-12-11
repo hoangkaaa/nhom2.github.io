@@ -2131,10 +2131,10 @@ input::-ms-clear {
 /* 7.1 Outer-Footer */
 .outer-footer {
   padding: 80px 0;
-  background-color: #ab5610; }
+  background-color: #000000; }
   .outer-footer__content-title {
     display: block;
-    color: #070301;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px; }
@@ -2176,7 +2176,7 @@ input::-ms-clear {
         color: #ffffff;
         font-size: 14px; }
         .outer-footer__list-wrap ul > li > a:hover {
-          color: #8e671e; }
+          color: #ff4500; }
       .outer-footer__list-wrap ul > li:last-child {
         margin-bottom: 0; }
 
@@ -2847,6 +2847,58 @@ input::-ms-clear {
   padding: 2px;
   border: 5px dashed #ba9a64;
   border-radius: 50%; }
+  .testimonial-section {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9; /* Màu nền phần đánh giá */
+    margin: 50px auto; /* Canh giữa */
+    max-width: 1200px; /* Giới hạn chiều rộng */
+}
+
+.arrow-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none; /* Đảm bảo chỉ nút có thể click */
+    transform: translateY(-50%);
+}
+
+.arrow-button {
+    background-color: rgba(130, 111, 44, 0.7); /* Màu nền đen mờ */
+    color: white; /* Màu mũi tên */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: all; /* Bật click cho nút */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.arrow-button:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Hiệu ứng khi hover */
+    color: #ba9a64;
+    transform: scale(1.2); /* Zoom nhẹ */
+}
+
+#left-arrow {
+    margin-left: 10px; /* Khoảng cách với cạnh trái */
+}
+
+#right-arrow {
+    margin-right: 10px; /* Khoảng cách với cạnh phải */
+}
+
 
 /*--------------------------------------------------------------
 10.0 Contact-Page

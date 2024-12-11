@@ -274,23 +274,36 @@
         }
     };
 
-    // Testimonial Slider
     RESHOP.testimonialSlider = function() {
-        // Check if Testimonial-Slider on the page
+        // Kiểm tra Testimonial-Slider trên trang
         if ($testimonialSlider.length) {
             $testimonialSlider.on('initialize.owl.carousel', function () {
                 $(this).closest('.slider-fouc').removeAttr('class');
             }).owlCarousel({
-                items:1,
-                autoplay: false,
-                loop: false,
-                dots: true,
+                items: 1,
+                autoplayTimeout: 8000,
+                loop: true,
+                autoplay: true,
+                dots: true, // Hiển thị chấm
                 rewind: false,
-                smartSpeed: 1500,
-                nav: false
+                smartSpeed: 800,
+                nav: false, // Tắt mũi tên
+                animateIn: 'zoomIn', // Hiệu ứng zoom vào
+                animateOut: 'zoomOut', // Hiệu ứng zoom ra
             });
         }
     };
+    document.getElementById("left-arrow").addEventListener("click", function() {
+    // Chuyển về slide trước
+    $('#testimonial-slider').trigger('prev.owl.carousel');
+});
+
+document.getElementById("right-arrow").addEventListener("click", function() {
+    // Chuyển tới slide tiếp theo
+    $('#testimonial-slider').trigger('next.owl.carousel');
+});
+
+    
     // Remove Class from body element
     RESHOP.appConfiguration = function() {
         $('body').removeAttr('class');
