@@ -2131,10 +2131,10 @@ input::-ms-clear {
 /* 7.1 Outer-Footer */
 .outer-footer {
   padding: 80px 0;
-  background-color: #000000; }
+  background-color: #ab5610; }
   .outer-footer__content-title {
     display: block;
-    color: #ffffff;
+    color: #070301;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px; }
@@ -2176,7 +2176,7 @@ input::-ms-clear {
         color: #ffffff;
         font-size: 14px; }
         .outer-footer__list-wrap ul > li > a:hover {
-          color: #ff4500; }
+          color: #8e671e; }
       .outer-footer__list-wrap ul > li:last-child {
         margin-bottom: 0; }
 
