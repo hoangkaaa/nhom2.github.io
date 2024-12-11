@@ -2473,10 +2473,18 @@ input::-ms-clear {
     top: 0;
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.4); }
-  .collection__img {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    transition: all 0.6s ease-in-out; }
+.collection__img {
+      border-radius: 20px; /* Bo góc cho hình ảnh */
+      transform: scale(1) rotate(0deg) translateY(0); /* Kích thước và vị trí ban đầu */
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease; /* Hiệu ứng chuyển tiếp */
+  }
+  
+  /* Hiệu ứng khi di chuột qua */
+.collection__img:hover {
+      transform: scale(1.1) rotate(5deg) translateY(-5px); /* Phóng to 10%, nghiêng 5 độ và di chuyển lên 5px */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn khi hover */
+      filter: brightness(1.1); /* Tăng độ sáng hình ảnh */
+  }
 
 .collection:hover:before {
   opacity: 1; }
@@ -2607,7 +2615,7 @@ input::-ms-clear {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(107, 91, 23, 0.8);
     opacity: 0; }
   .promotion__content {
     position: absolute;
@@ -2618,10 +2626,18 @@ input::-ms-clear {
     top: 50%;
     text-align: center; }
   .promotion__text-wrap {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px 15px;
-    transition: all 0.5s ease-in-out; }
+      display: inline-block; /* Hiển thị như một khối nội tuyến */
+      background-color: rgba(221, 220, 205, 0.9); /* Màu nền ban đầu */
+      padding: 30px 15px; /* Khoảng cách bên trong */
+      transition: all 0.5s ease-in-out; /* Hiệu ứng chuyển tiếp */
+  }
+  
+  /* Hiệu ứng khi di chuột qua */
+  .promotion__text-wrap:hover {
+      transform: scale(1.05); /* Phóng to 5% khi hover */
+      background-color: rgba(200, 197, 175, 0.9); /* Đổi màu nền sang vàng sáng khi hover */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thêm đổ bóng để tạo chiều sâu */
+  }
   .promotion__text-1 {
     font-size: 14px; }
   .promotion__text-2 {
@@ -2665,32 +2681,42 @@ input::-ms-clear {
   background-color: #cdaf7c;
   color: white;
 }
+
 .service__icon, .service__info-wrap {
-    -ms-flex: 0 1 auto; }
-  .service__icon {
-    margin-right: 20px; }
-    .service__icon > i {
-      color: #cdae79;
-      font-size: 30px; }
-  .service__info-text-1 {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 4px;
-    color: #333333;
-    font-weight: 600; }
-  .service__info-text-2 {
-    font-size: 13px;
-    display: block;
-    color: #7f7f7f; }
+    -ms-flex: 0 1 auto; /* Thiết lập flexbox cho các thành phần, cho phép chúng co giãn và chiếm không gian tự động */
+}
 
+.service__icon {
+    margin-right: 20px; /* Khoảng cách bên phải cho biểu tượng dịch vụ */
+}
 
+.service__icon > i {
+    color: #cdae79; /* Màu sắc của biểu tượng dịch vụ */
+    font-size: 30px; /* Kích thước chữ cho biểu tượng */
+}
+
+.service__info-text-1 {
+    display: block; /* Hiển thị thành phần này như một khối */
+    font-size: 14px; /* Kích thước chữ cho thông tin chính */
+    margin-bottom: 4px; /* Khoảng cách dưới cho thông tin chính */
+    color: #8e751a; /* Màu sắc của thông tin chính */
+    font-weight: 600; /* Độ đậm của chữ cho thông tin chính */
+}
+
+.service__info-text-2 {
+    font-size: 13px; /* Kích thước chữ cho thông tin phụ */
+    display: block; /* Hiển thị thành phần này như một khối */
+    color: #7f7f7f; /* Màu sắc của thông tin phụ */
+}
+
+/* Hiệu ứng khi hover (di chuột qua) */
 .service__icon:hover > i,
 .service__info-wrap:hover .service__info-text-1,
 .service__info-wrap:hover .service__info-text-2,
 .service:hover .service__icon > i,
 .service:hover .service__info-wrap .service__info-text-1,
 .service:hover .service__info-wrap .service__info-text-2 {
-  color: #ffffff;
+    color: #ffff(0, 0%, 100%); /* Đổi màu chữ thành trắng khi di chuột qua các thành phần */
 }
 
 .new-brand-slider {

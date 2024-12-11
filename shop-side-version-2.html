@@ -1378,29 +1378,33 @@
         <!--====== App Content ======-->
         <div class="app-content">
 
-            <!--====== Section 1 ======-->
+            <!--====== BỘ LỌC ======-->
             <div class="u-s-p-y-90">
                 <div class="container">
                     <div class="row">
+                        <!--Phần thanh bên để lọc sản phẩm-->
                         <div class="col-lg-3 col-md-12">
                             <div class="shop-w-master">
+                                <!--Tiêu đề của thanh bên-->
                                 <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
-
-                                    <span>FILTERS</span></h1>
-                                <div class="shop-w-master__sidebar">
+                                    <span>BỘ LỌC</span></h1>
+                                <!--Phần danh mục sản phẩm-->
+                                <div class="shop-w-master__sidebar">                          
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
+                                            <!--Phần tiêu đề danh mục sản phẩm-->
                                             <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">CATEGORY</h1>
+                                                <h1 class="shop-w__h">DANH MỤC SẢN PHẨM</h1>
 
                                                 <span class="fas fa-minus shop-w__toggle" data-target="#s-category" data-toggle="collapse"></span>
                                             </div>
+
+                                            <!--Danh sách các danh mục sản phẩm-->
                                             <div class="shop-w__wrap collapse show" id="s-category">
                                                 <ul class="shop-w__category-list gl-scroll">
+                                                    <!--Danh mục sản phẩm Bánh-->
                                                     <li class="has-list">
-
-                                                        <a href="#">Electronics</a>
-
+                                                        <a href="#">Bánh ngọt</a>
                                                         <span class="category-list__text u-s-m-l-6">(23)</span>
 
                                                         <span class="js-shop-category-span is-expanded fas fa-plus u-s-m-l-6"></span>
@@ -1968,89 +1972,122 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Phần Lọc theo đánh giá-->
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
                                             <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">RATING</h1>
+                                                <!--Tiêu đề của phần đánh giá-->
+                                                <h1 class="shop-w__h">ĐÁNH GIÁ</h1>
 
+                                                <!--Biểu tượng mũi tên để thu gọn hoặc mở rộng-->
                                                 <span class="fas fa-minus shop-w__toggle" data-target="#s-rating" data-toggle="collapse"></span>
                                             </div>
+                                            <!--Danh sách lựa chọn đánh giá được hiển thị-->
                                             <div class="shop-w__wrap collapse show" id="s-rating">
                                                 <ul class="shop-w__list gl-scroll">
+                                                    
+                                                    <!--Các mức đánh giá-->
+                                                    <!--Mục lựa chọn đánh giá có 5 sao để chọn-->
                                                     <li>
                                                         <div class="rating__check">
-
+                                                            <!--Ô checkbox chưa được chọn-->
                                                             <input type="checkbox">
+                                                            <!--Hiển thị biểu tưởng 5 sao-->
                                                             <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                                                         </div>
 
+                                                        <!--Hiển thị số lượng sản phẩm tương ứng-->
                                                         <span class="shop-w__total-text">(2)</span>
                                                     </li>
+                                                   
+                                                    <!--Mục lựa chọn đánh giá có 4 sao trở lên-->
                                                     <li>
                                                         <div class="rating__check">
 
+                                                            <!--Ô checkbox chưa được chọn-->
                                                             <input type="checkbox">
+                                                            <!--Hiển thị biểu tượng 4 sao-->
                                                             <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
 
+                                                                <!--Hiển thị thông điệp "trở lên"-->
                                                                 <span>& Up</span></div>
                                                         </div>
 
+                                                         <!--Hiển thị số lượng sản phẩm tương ứng-->
                                                         <span class="shop-w__total-text">(8)</span>
                                                     </li>
+
+                                                    <!--Mục lựa chọn đánh giá có 3 sao và 2 sao trở xuống-->
                                                     <li>
                                                         <div class="rating__check">
 
+                                                            <!--Ô checkbox chưa được chọn-->
                                                             <input type="checkbox">
+                                                            <!--Hiển thị biểu tượng 3 sao và 2 sao trở xuống-->
                                                             <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
 
                                                                 <span>& Up</span></div>
                                                         </div>
 
+                                                        <!--Hiển thị số lượng sản phẩm tương ứng-->
                                                         <span class="shop-w__total-text">(10)</span>
                                                     </li>
+
+                                                    <!--Mục lựa chọn đánh giá có 2 sao và 1 sao trở xuống-->
                                                     <li>
                                                         <div class="rating__check">
 
+                                                            <!--Ô checkbox chưa được chọn-->
                                                             <input type="checkbox">
+                                                            <!--Hiển thị biểu tượng 2 sao và 1 sao trở xuống-->
                                                             <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
 
                                                                 <span>& Up</span></div>
                                                         </div>
 
+                                                        <!--Hiển thị số lượng sản phẩm tương ứng-->
                                                         <span class="shop-w__total-text">(12)</span>
                                                     </li>
+                                                    <!--Mục lựa chọn đánh giá có 1 sao trở xuống-->
                                                     <li>
                                                         <div class="rating__check">
 
+                                                             <!--Ô checkbox chưa được chọn-->
                                                             <input type="checkbox">
+                                                             <!--Hiển thị biểu tượng 1 sao trở xuống-->
                                                             <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
 
                                                                 <span>& Up</span></div>
                                                         </div>
 
+                                                        <!--Hiển thị số lượng sản phẩm tương ứng-->
                                                         <span class="shop-w__total-text">(1)</span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Phần Lọc theo vận chuyển-->
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
                                             <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">SHIPPING</h1>
+                                                <!--Tiêu đề của phần vận chuyển-->
+                                                <h1 class="shop-w__h">VẬN CHUYỂN</h1>
 
+                                                <!--Biểu tượng mũi tên để thu gọn mở rộng-->
                                                 <span class="fas fa-minus shop-w__toggle" data-target="#s-shipping" data-toggle="collapse"></span>
                                             </div>
+                                            <!--Danh sách Lựa chọn phương thức vận chuyển được hiển thị-->
                                             <div class="shop-w__wrap collapse show" id="s-shipping">
                                                 <ul class="shop-w__list gl-scroll">
                                                     <li>
+                                                        <!--Mục Lựa chọn phương thức vận chuyển-->
 
-                                                        <!--====== Check Box ======-->
+                                                        <!--Ô checkbox để Lựa chọn "Free Shipping"-->
                                                         <div class="check-box">
-
                                                             <input type="checkbox" id="free-shipping">
+                                                            <!--Nhãn của checkbox-->
                                                             <div class="check-box__state check-box__state--primary">
-
                                                                 <label class="check-box__label" for="free-shipping">Free Shipping</label></div>
                                                         </div>
                                                         <!--====== End - Check Box ======-->
@@ -2059,26 +2096,35 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!--Phần Lọc theo giá-->
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
                                             <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">PRICE</h1>
+                                                <h1 class="shop-w__h">GIÁ</h1>
 
                                                 <span class="fas fa-minus shop-w__toggle" data-target="#s-price" data-toggle="collapse"></span>
                                             </div>
+                                            <!--Phần tử chứa nội dung đánh giá, mặc định là mở-->
                                             <div class="shop-w__wrap collapse show" id="s-price">
+                                                <!--Form nhập giá-->
                                                 <form class="shop-w__form-p">
+                                                    <!--Phần tử bao gồm các ô nhập giá tối thiểu, tối đa và nút submit-->
                                                     <div class="shop-w__form-p-wrap">
+                                                        <!--Ô nhập giá tối thiểu-->
                                                         <div>
 
                                                             <label for="price-min"></label>
 
                                                             <input class="input-text input-text--primary-style" type="text" id="price-min" placeholder="Min"></div>
+
+                                                        <!--Ô nhập giá tối đa-->    
                                                         <div>
 
                                                             <label for="price-max"></label>
 
                                                             <input class="input-text input-text--primary-style" type="text" id="price-max" placeholder="Max"></div>
+                                                        <!--Nút nhập để áp dụng bộ lọc giá-->
                                                         <div>
 
                                                             <button class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2" type="submit"></button></div>
@@ -2087,15 +2133,20 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!--Phần Lọc theo nhà sản xuất-->
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
                                             <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">MANUFACTURER</h1>
+                                                <h1 class="shop-w__h">NHÀ SẢN XUẤT</h1>
 
+                                                <!--Biểu tượng mũi tên để thu gọn hoặc mở rộng-->
                                                 <span class="fas fa-minus shop-w__toggle" data-target="#s-manufacturer" data-toggle="collapse"></span>
                                             </div>
+                                            <!--Danh sách các nhà sản xuất được hiển thị-->
                                             <div class="shop-w__wrap collapse show" id="s-manufacturer">
                                                 <ul class="shop-w__list-2">
+                                                    <!--Mục Lựa chọn nhà sản xuất-->
                                                     <li>
                                                         <div class="list__content">
 
@@ -2145,15 +2196,20 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!--Phần Lọc theo màu sắc-->
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
                                             <div class="shop-w__intro-wrap">
-                                                <h1 class="shop-w__h">COLOR</h1>
+                                                <h1 class="shop-w__h">MÀU SẮC</h1>
 
+                                                <!--Biểu tượng mũi tên để thu gọn hoặc mở rộng-->
                                                 <span class="fas fa-minus shop-w__toggle" data-target="#s-color" data-toggle="collapse"></span>
                                             </div>
+                                            <!--Danh sách các màu sắc được hiển thị-->
                                             <div class="shop-w__wrap collapse show" id="s-color">
                                                 <ul class="shop-w__list gl-scroll">
+                                                    <!-- Mục Lựa chọn màu-->
                                                     <li>
                                                         <div class="color__check">
 
@@ -2203,15 +2259,20 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!--Phần Lọc theo kích cỡ-->
                                     <div class="u-s-m-b-30">
                                         <div class="shop-w shop-w--style">
                                             <div class="shop-w__intro-wrap">
                                                 <h1 class="shop-w__h">SIZE</h1>
 
+                                                <!--Biểu tượng mũi tên để thu gọn hoặc mở rộng-->
                                                 <span class="fas fa-minus collapsed shop-w__toggle" data-target="#s-size" data-toggle="collapse"></span>
                                             </div>
+                                            <!--Danh sách các kích cỡ được hiển thị-->
                                             <div class="shop-w__wrap collapse" id="s-size">
                                                 <ul class="shop-w__list gl-scroll">
+                                                    <!--Mục Lựa chọn kích cỡ-->
                                                     <li>
 
                                                         <!--====== Check Box ======-->
@@ -2319,27 +2380,33 @@
 
                                             <a class="gl-tag btn--e-brand-shadow" href="#">books & audible</a></div>
                                     </div>
+
+                                    <!--======Bộ lọc sản phẩm=====-->
                                     <div class="shop-p__tool-style">
                                         <div class="tool-style__group u-s-m-b-8">
 
                                             <span class="js-shop-grid-target is-active">Grid</span>
 
                                             <span class="js-shop-list-target">List</span></div>
+
+                                        <!--Form bộ lọc-->    
                                         <form>
                                             <div class="tool-style__form-wrap">
+                                                <!--Hiển thị lựa chọn số sản phẩm-->
                                                 <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
-                                                        <option>Show: 8</option>
-                                                        <option selected>Show: 12</option>
-                                                        <option>Show: 16</option>
-                                                        <option>Show: 28</option>
+                                                        <option>Hiển thị: 8</option>
+                                                        <option selected>Hiển thị: 12</option>
+                                                        <option>Hiển thị: 16</option>
+                                                        <option>Hiển thị: 28</option>
                                                     </select></div>
+                                                <!--Hiển thị lựa chọn sắp xếp-->
                                                 <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
-                                                        <option selected>Sort By: Newest Items</option>
-                                                        <option>Sort By: Latest Items</option>
-                                                        <option>Sort By: Best Selling</option>
-                                                        <option>Sort By: Best Rating</option>
-                                                        <option>Sort By: Lowest Price</option>
-                                                        <option>Sort By: Highest Price</option>
+                                                        <option selected>Sắp xếp theo: Sản phẩm mới</option>
+                                                        <option>Sắp xếp theo: Sản phẩm mới</option>
+                                                        <option>Sắp xếp theo: Sản phẩm bán chạy</option>
+                                                        <option>Sắp xếp theo: Đánh giá cao</option>
+                                                        <option>Sắp xếp theo: Giá thấp nhất</option>
+                                                        <option>Sắp xếp: Giá cao nhất</option>
                                                     </select></div>
                                             </div>
                                         </form>
