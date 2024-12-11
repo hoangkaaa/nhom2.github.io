@@ -2626,10 +2626,18 @@ input::-ms-clear {
     top: 50%;
     text-align: center; }
   .promotion__text-wrap {
-    display: inline-block;
-    background-color: rgba(172, 166, 47, 0.9);
-    padding: 30px 15px;
-    transition: all 0.5s ease-in-out; }
+      display: inline-block; /* Hiển thị như một khối nội tuyến */
+      background-color: rgba(221, 220, 205, 0.9); /* Màu nền ban đầu */
+      padding: 30px 15px; /* Khoảng cách bên trong */
+      transition: all 0.5s ease-in-out; /* Hiệu ứng chuyển tiếp */
+  }
+  
+  /* Hiệu ứng khi di chuột qua */
+  .promotion__text-wrap:hover {
+      transform: scale(1.05); /* Phóng to 5% khi hover */
+      background-color: rgba(200, 197, 175, 0.9); /* Đổi màu nền sang vàng sáng khi hover */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Thêm đổ bóng để tạo chiều sâu */
+  }
   .promotion__text-1 {
     font-size: 14px; }
   .promotion__text-2 {
