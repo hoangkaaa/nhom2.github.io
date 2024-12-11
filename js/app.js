@@ -274,24 +274,45 @@
         }
     };
 
-    RESHOP.testimonialSlider = function() {
+    RESHOP.testimonialSlider = function () {
         // Kiểm tra Testimonial-Slider trên trang
         if ($testimonialSlider.length) {
-            $testimonialSlider.on('initialize.owl.carousel', function () {
-                $(this).closest('.slider-fouc').removeAttr('class');
-            }).owlCarousel({
-                items: 1,
-                autoplayTimeout: 8000,
-                loop: true,
-                autoplay: true,
-                dots: true, // Hiển thị chấm
-                rewind: false,
-                smartSpeed: 800,
-                nav: false, // Tắt mũi tên
-                animateIn: 'zoomIn', // Hiệu ứng zoom vào
-                animateOut: 'zoomOut', // Hiệu ứng zoom ra
-            });
+            $testimonialSlider
+                .on("initialize.owl.carousel", function () {
+                    $(this).closest(".slider-fouc").removeAttr("class");
+                })
+                .owlCarousel({
+                    items: 1,
+                    autoplayTimeout: 8000,
+                    loop: true,
+                    autoplay: true,
+                    dots: true, // Hiển thị chấm
+                    rewind: false,
+                    smartSpeed: 800,
+                    nav: false, // Tắt mũi tên của Owl Carousel
+                    animateIn: "zoomIn", // Hiệu ứng zoom vào
+                    animateOut: "zoomOut", // Hiệu ứng zoom ra
+                });
+    
+            // Thêm mũi tên điều khiển bên ngoài slider
+            const leftArrow = $("#left-arrow");
+            const rightArrow = $("#right-arrow");
+    
+            if (leftArrow.length && rightArrow.length) {
+                leftArrow.on("click", function () {
+                    $testimonialSlider.trigger("prev.owl.carousel");
+                });
+    
+                rightArrow.on("click", function () {
+                    $testimonialSlider.trigger("next.owl.carousel");
+                });
+            } 
+        else {
+            console.error("Testimonial slider không tồn tại trên trang.");
         }
+    };
+    
+        
     };
     
     // Remove Class from body element
