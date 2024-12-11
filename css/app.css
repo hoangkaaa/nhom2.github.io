@@ -2847,67 +2847,183 @@ input::-ms-clear {
   padding: 2px;
   border: 5px dashed #ba9a64;
   border-radius: 50%; }
+  .testimonial-section {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9; /* Màu nền phần đánh giá */
+    margin: 50px auto; /* Canh giữa */
+    max-width: 1200px; /* Giới hạn chiều rộng */
+}
+
+.arrow-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none; /* Đảm bảo chỉ nút có thể click */
+    transform: translateY(-50%);
+}
+
+.arrow-button {
+    background-color: rgba(130, 111, 44, 0.7); /* Màu nền đen mờ */
+    color: white; /* Màu mũi tên */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: all; /* Bật click cho nút */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.arrow-button:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Hiệu ứng khi hover */
+    color: #ba9a64;
+    transform: scale(1.2); /* Zoom nhẹ */
+}
+
+#left-arrow {
+    margin-left: 10px; /* Khoảng cách với cạnh trái */
+}
+
+#right-arrow {
+    margin-right: 10px; /* Khoảng cách với cạnh phải */
+}
+
 
 /*--------------------------------------------------------------
 10.0 Contact-Page
 --------------------------------------------------------------*/
 .g-map {
-  background-color: #eee; }
+  background-color: #eee;
+}
 
 #map {
   height: 450px;
-  width: 100%; }
+  width: 100%;
+}
 
 .contact-o {
   background-color: #ffffff;
   padding: 23px;
-  transition: -webkit-transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), -webkit-transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   border: 2px solid #f5f5f5;
-  box-shadow: 0 6px 15px 0 rgba(36, 37, 38, 0.08); }
-  .contact-o:hover {
-    -webkit-transform: translateY(-6px);
-            transform: translateY(-6px); }
-  .contact-o__wrap {
-    text-align: center; }
-  .contact-o__icon {
-    margin-bottom: 10px; }
-    .contact-o__icon > i {
-      color: #ff4500;
-      font-size: 48px; }
-  .contact-o__info-text-1 {
-    display: block;
-    font-size: 17px;
-    margin-bottom: 4px;
-    color: #333333;
-    font-weight: 600;
-    text-transform: uppercase; }
-  .contact-o__info-text-2 {
-    font-size: 12px;
-    margin-bottom: 2px;
-    display: block;
-    color: #7f7f7f; }
+  box-shadow: 0 6px 15px 0 rgba(36, 37, 38, 0.08);
+  cursor: pointer; /* Con trỏ hiển thị tương tác */
+}
+.contact-o:hover {
+  transform: translateY(-6px); /* Nâng khung khi hover */
+  border-color: #ff4500; /* Viền nổi bật */
+  box-shadow: 0 10px 20px rgba(255, 69, 0, 0.2); /* Bóng đổ nổi bật */
+}
 
+/* Nội dung bên trong khung */
+.contact-o__wrap {
+  text-align: center;
+}
+.contact-o__icon {
+  margin-bottom: 10px;
+}
+.contact-o__icon > i {
+  color: #ff4500;
+  font-size: 48px;
+  transition: color 0.3s ease; /* Màu biểu tượng mượt mà */
+}
+.contact-o:hover .contact-o__icon > i {
+  color: #e14e00; /* Đổi màu biểu tượng khi hover */
+}
+.contact-o__info-text-1 {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 4px;
+  color: #333333;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.contact-o:hover .contact-o__info-text-1 {
+  color: #ff4500; /* Đổi màu tiêu đề khi hover */
+}
+.contact-o__info-text-2 {
+  font-size: 12px;
+  margin-bottom: 2px;
+  display: block;
+  color: #7f7f7f;
+  transition: color 0.3s ease;
+}
+.contact-o:hover .contact-o__info-text-2 {
+  color: #555555; /* Đổi màu chữ mô tả khi hover */
+}
+
+/* Tiêu đề phần liên hệ */
 .contact-area__heading {
-  margin-bottom: 30px; }
-  .contact-area__heading h2 {
-    display: inline-block;
-    font-size: 26px;
-    font-weight: 700;
-    color: #333333;
-    background-color: #ffffff; }
+  margin-bottom: 30px;
+}
+.contact-area__heading h2 {
+  display: inline-block;
+  font-size: 26px;
+  font-weight: 700;
+  color: #333333;
+  background-color: #ffffff;
+}
 
+/* Form liên hệ */
 .contact-f {
-  width: 100%; }
-  .contact-f .input-text, .contact-f .text-area {
-    border-radius: 6px;
-    width: 100%; }
-  .contact-f .text-area {
-    height: 185px; }
-  .contact-f .btn {
-    padding: 19px 21px;
-    border-radius: 25px; }
+  width: 100%;
+}
+.contact-f .input-text,
+.contact-f .text-area {
+  border-radius: 6px;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+.contact-f .text-area {
+  height: 185px;
+}
+
+/* Nút submit */
+.contact-f .btn {
+  padding: 19px 21px;
+  border-radius: 25px;
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-f .btn:hover {
+  background-color: #a57037; /* Màu nền khi hover */
+  transform: translateY(-3px); /* Nhấc nút lên khi hover */
+}
+
+/* Hover cho ô nhập liệu */
+.contact-f .input-text:hover,
+.contact-f .text-area:hover {
+  border-color: #ff4500;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+  background-color: #fef9f6;
+}
+.contact-f .input-text:focus,
+.contact-f .text-area:focus {
+  border-color: #ff4500;
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.7);
+  background-color: #fff;
+  outline: none;
+}
+
 
 /*--------------------------------------------------------------
 11.0 Cart-Wishlist-Pages
