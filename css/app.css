@@ -2474,6 +2474,7 @@ input::-ms-clear {
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.4); }
   .collection__img {
+    border-radius: 20px;
     -webkit-transform: scale(1);
             transform: scale(1);
     transition: all 0.6s ease-in-out; }
