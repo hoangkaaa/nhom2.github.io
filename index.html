@@ -21,7 +21,187 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
 
+<style>
+    <style>
+  body {
+    padding-bottom: 20px;
+    margin-top: -26px;
+  }
+  #e_nguyencongnam_left {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+  }
+  #e_nguyencongnam_right {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+  }
+  #e_nguyencongnam_footer {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 104px;
+    background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left;
+  }
+  #e_nguyencongnam_bottom_left {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    bottom: 20px;
+    left: 20px;
+  }
+  @media (min-width: 992px) {
+    #e_nguyencongnam_left, #e_nguyencongnam_right, #e_nguyencongnam_footer, #e_nguyencongnam_bottom_left {
+      display: block;
+    }
+  }
 
+  #snowflakeContainer {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+  .snowflake {
+    padding-left: 15px;
+    font-size: 14px;
+    line-height: 24px;
+    position: fixed;
+    color: #ebebeb;
+    user-select: none;
+    z-index: 1000;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .snowflake:hover {
+    cursor: default;
+  }
+</style>
+
+<img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
+<img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
+<div id="e_nguyencongnam_footer"></div>
+<img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
+<div style="position:fixed;z-index:9999;bottom:3px;right:3px;font-size:12px;color:#8D8D8D;">
+  by <a href="https://nguyencongnam.id.vn/">ncn</a>
+</div>
+
+<div id="snowflakeContainer">
+  <p class="snowflake">❄</p>
+</div>
+
+<script>
+  //<![CDATA[
+  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
+  var transformProperty = getSupportedPropertyName(transforms);
+  var snowflakes = [];
+  var browserWidth;
+  var browserHeight;
+  var numberOfSnowflakes = 20;
+  var resetPosition = false;
+
+  function setup() {
+    window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+    window.addEventListener("resize", setResetFlag, false);
+  }
+  setup();
+
+  function getSupportedPropertyName(b) {
+    for (var a = 0; a < b.length; a++) {
+      if (typeof document.body.style[b[a]] != "undefined") {
+        return b[a];
+      }
+    }
+    return null;
+  }
+
+  function Snowflake(b, a, d, e, c) {
+    this.element = b;
+    this.radius = a;
+    this.speed = d;
+    this.xPos = e;
+    this.yPos = c;
+    this.counter = 0;
+    this.sign = Math.random() < 0.5 ? 1 : -1;
+    this.element.style.opacity = 0.5 + Math.random();
+    this.element.style.fontSize = 4 + Math.random() * 20 + "px";
+  }
+
+  Snowflake.prototype.update = function() {
+    this.counter += this.speed / 5000;
+    this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+    this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+    setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
+    if (this.yPos > browserHeight) {
+      this.yPos = -50;
+    }
+  };
+
+  function setTranslate3DTransform(a, c, b) {
+    var d = "translate3d(" + c + "px, " + b + "px, 0)";
+    a.style[transformProperty] = d;
+  }
+
+  function generateSnowflakes() {
+    var b = document.querySelector(".snowflake");
+    var h = b.parentNode;
+    browserWidth = document.documentElement.clientWidth;
+    browserHeight = document.documentElement.clientHeight;
+    for (var d = 0; d < numberOfSnowflakes; d++) {
+      var j = b.cloneNode(true);
+      h.appendChild(j);
+      var e = getPosition(50, browserWidth);
+      var a = getPosition(50, browserHeight);
+      var c = 5 + Math.random() * 40;
+      var g = 4 + Math.random() * 10;
+      var f = new Snowflake(j, g, c, e, a);
+      snowflakes.push(f);
+    }
+    h.removeChild(b);
+    moveSnowflakes();
+  }
+
+  function moveSnowflakes() {
+    for (var b = 0; b < snowflakes.length; b++) {
+      var a = snowflakes[b];
+      a.update();
+    }
+    if (resetPosition) {
+      browserWidth = document.documentElement.clientWidth;
+      browserHeight = document.documentElement.clientHeight;
+      for (var b = 0; b < snowflakes.length; b++) {
+        var a = snowflakes[b];
+        a.xPos = getPosition(50, browserWidth);
+        a.yPos = getPosition(50, browserHeight);
+      }
+      resetPosition = false;
+    }
+    requestAnimationFrame(moveSnowflakes);
+  }
+
+  function getPosition(b, a) {
+    return Math.round(-1 * b + Math.random() * (a + 2 * b));
+  }
+
+  function setResetFlag(a) {
+    resetPosition = true;
+  }
+  //]]>
+</script>
+
+</style>
+    
 </head>
 <body class="config">
     <div class="preloader is-active">
@@ -29,18 +209,6 @@
             <img class="preloader__img" src="images/banners/Brown Cream Modern Minimalist Homemade Cookies Facebook Cover (1920 x 900 px).jpg" alt="">
         </div>
     </div>
-    <!-- Hình ảnh ở bên trái và bên phải -->
-    <img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
-    <img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
-    <!--Footer-->
-    <div id="e_nguyencongnam_footer"></div>
-    <!-- Hình ảnh góc dưới bên trái -->
-    <img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
-    <!-- Khung chứa tuyết rơi -->
-    <div id="snowflakeContainer">
-        <p class="snowflake">❄</p>
-    </div>
-
 
     <!--====== Ứng Dụng Chính ======-->
     <div id="app">
