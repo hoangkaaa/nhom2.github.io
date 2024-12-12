@@ -2454,45 +2454,78 @@ input::-ms-clear {
   position: relative; }
 
 .section__span {
-  font-size: 13px;
+  font-size: 20px;
   display: block; }
 
-.collection {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  cursor: pointer; }
-  .collection:before {
-    transition: all 0.6s linear;
-    content: '';
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0.4); }
+  .small-banner-carousel {
+    display: flex; /* Sử dụng flexbox cho container */
+    justify-content: center; /* Canh giữa các phần tử bên trong */
+    overflow: hidden; /* Ẩn phần vượt ra ngoài */
+    position: relative; /* Để định vị các phần tử bên trong */
+}
+
+.small-banner-container {
+    display: flex; /* Sử dụng flexbox để xếp hàng ngang */
+    transition: transform 0.5s ease; /* Hiệu ứng chuyển tiếp mượt mà */
+}
+
+.small-banner-item {
+    flex: 0 0 auto; /* Để các banner không co lại và giữ kích thước tự nhiên */
+    width: 200px; /* Chiều rộng cố định cho mỗi banner */
+    margin: 0 5px; /* Khoảng cách giữa các banner */
+
+}
+
+.small-banner-item img {
+    width: 100%; /* Chiều rộng hình ảnh */
+    height: auto; /* Giữ tỷ lệ chiều cao */
+    border-radius: 30px;
+}
+
+  .collection {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.collection:before {
+  transition: opacity 0.4s ease, background-color 0.4s ease; /* Chuyển tiếp opacity và màu nền */
+  content: '';
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  opacity: 0; /* Bắt đầu với độ mờ */
+  background-color: rgba(0, 0, 0, 0.3); /* Màu nền tối hơn */
+}
+
+/* Hình ảnh trong bộ sưu tập */
 .collection__img {
-      border-radius: 20px; /* Bo góc cho hình ảnh */
-      transform: scale(1) rotate(0deg) translateY(0); /* Kích thước và vị trí ban đầu */
-      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease; /* Hiệu ứng chuyển tiếp */
-  }
-  
-  /* Hiệu ứng khi di chuột qua */
+  border-radius: 20px; /* Bo góc cho hình ảnh */
+  transform: scale(1) rotate(0deg) translateY(0); /* Kích thước và vị trí ban đầu */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease; /* Hiệu ứng chuyển tiếp */
+}
+
+/* Hiệu ứng khi di chuột qua */
 .collection__img:hover {
-      transform: scale(1.1) rotate(5deg) translateY(-5px); /* Phóng to 10%, nghiêng 5 độ và di chuyển lên 5px */
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn khi hover */
-      filter: brightness(1.1); /* Tăng độ sáng hình ảnh */
-  }
+  transform: scale(1.1) rotate(-3deg) translateY(-3px); /* Phóng to 10%, nghiêng -3 độ và di chuyển lên 3px */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Đổ bóng nhẹ hơn nhưng rộng hơn */
+  filter: blur(1px); /* Làm mờ hình ảnh một chút */
+}
 
+/* Hiệu ứng hiển thị lớp phủ khi hover */
 .collection:hover:before {
-  opacity: 1; }
+  opacity: 1; /* Hiển thị lớp phủ */
+  background-color: rgba(0, 0, 0, 0.5); /* Đổi màu nền tối hơn khi hover */
+}
 
+/* Hiệu ứng cho hình ảnh khi hover */
 .collection:hover .collection__img {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1); }
-
+  transform: scale(1.1) rotate(5deg); /* Phóng to hình ảnh và nghiêng khi hover */
+}
 .aspect--1286-890 {
   padding-bottom: 69.20684%; }
 
@@ -6611,6 +6644,12 @@ input::-ms-clear {
 
 .b-next {
   right: 0; }
+
+.fashion {
+    font-size: 36px; /* Kích thước chữ lớn hơn */
+    color: #ff4500; /* Màu chữ khác, ví dụ màu đỏ */
+    font-weight: bold; /* Độ đậm */
+}
 
 /* Brand-Slider (Previous & Next Buttons) */
 .section__content:hover .b-prev, .section__content:hover .b-next {

@@ -708,3 +708,16 @@
         RESHOP.shopPerspectiveChange();
         RESHOP.shopSideFilter();
 })(jQuery);
+
+let currentIndex = 0;
+const items = document.querySelectorAll('.small-banner-item');
+const totalItems = items.length;
+
+function showNextBanner() {
+    currentIndex = (currentIndex + 1) % totalItems; // Tính chỉ số banner tiếp theo
+    const offset = -currentIndex * (items[0].offsetWidth + 10); // Tính toán vị trí dịch chuyển
+    document.querySelector('.small-banner-container').style.transform = `translateX(${offset}px)`; // Dịch chuyển banner
+}
+
+// Chạy hàm mỗi 1 giây
+setInterval(showNextBanner, 1000);
