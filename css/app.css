@@ -2006,7 +2006,7 @@ input::-ms-clear {
 .small-banner-container {
   display: flex;
   width: max-content; /* Đảm bảo chiều rộng tự động co giãn theo nội dung */
-  animation: scroll-infinite 20s linear infinite; /* Hiệu ứng chạy liên tục */
+  animation: scroll-infinite 50s linear infinite; /* Hiệu ứng chạy liên tục */
 }
 
 .small-banner-item {
