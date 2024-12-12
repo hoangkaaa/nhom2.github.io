@@ -2045,42 +2045,6 @@ input::-ms-clear {
 .header--box-shadow {
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.07); }
 
-    /*  THÊM CSS để đặt mũi tên chuyển đổi ở hai bên của màn hình */
-    .owl-carousel .owl-nav {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      z-index: 999;
-    }
-    
-    .owl-carousel .owl-prev, .owl-carousel .owl-next {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-    }
-    
-    .owl-carousel .owl-prev {
-      left: 10px; /* Điều chỉnh khoảng cách từ mép trái */
-    }
-    
-    .owl-carousel .owl-next {
-      right: 10px; /* Điều chỉnh khoảng cách từ mép phải */
-    }
-    
-    .owl-carousel .owl-prev i,
-    .owl-carousel .owl-next i {
-      background-color: #d8d8d8; /* Màu xám nhạt */
-      padding: 10px; /* Tăng kích thước nền của mũi tên */
-      font-size: 24px; /* Điều chỉnh kích thước của mũi tên theo nhu cầu */
-      color: #000000; /* Màu chữ */
-    }
-    .owl-carousel .owl-prev i:hover,
-    .owl-carousel .owl-next i:hover {
-      background-color: #F4af3d; /* Màu vàng khi hover */
-      color: #fff; /* Màu chữ khi hover */
-    }
 .top-banner {
   background-color: #b8292f;
   color: #ffffff;
