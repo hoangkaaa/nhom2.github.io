@@ -21,44 +21,7 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
 
-    <style>
-        /*  THÊM CSS để đặt mũi tên chuyển đổi ở hai bên của màn hình */
-    .owl-carousel .owl-nav {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      z-index: 999;
-    }
-    
-    .owl-carousel .owl-prev, .owl-carousel .owl-next {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-    }
-    
-    .owl-carousel .owl-prev {
-      left: 10px; /* Điều chỉnh khoảng cách từ mép trái */
-    }
-    
-    .owl-carousel .owl-next {
-      right: 10px; /* Điều chỉnh khoảng cách từ mép phải */
-    }
-    
-    .owl-carousel .owl-prev i,
-    .owl-carousel .owl-next i {
-      background-color: #d8d8d8; /* Màu xám nhạt */
-      padding: 10px; /* Tăng kích thước nền của mũi tên */
-      font-size: 24px; /* Điều chỉnh kích thước của mũi tên theo nhu cầu */
-      color: #000000; /* Màu chữ */
-    }
-    .owl-carousel .owl-prev i:hover,
-    .owl-carousel .owl-next i:hover {
-      background-color: #F4af3d; /* Màu vàng khi hover */
-      color: #fff; /* Màu chữ khi hover */
-    }
-    </style>
+
 </head>
 <body class="config">
     <div class="preloader is-active">
@@ -66,9 +29,24 @@
             <img class="preloader__img" src="images/banners/Brown Cream Modern Minimalist Homemade Cookies Facebook Cover (1920 x 900 px).jpg" alt="">
         </div>
     </div>
+    <!-- Hình ảnh ở bên trái và bên phải -->
+    <img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
+    <img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
+    <!--Footer-->
+    <div id="e_nguyencongnam_footer"></div>
+    <!-- Hình ảnh góc dưới bên trái -->
+    <img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
+    <!-- Khung chứa tuyết rơi -->
+    <div id="snowflakeContainer">
+        <p class="snowflake">❄</p>
+    </div>
+
 
     <!--====== Ứng Dụng Chính ======-->
     <div id="app">
+        <div class="top-banner">
+            <p id="banner-text">MERRY CHRISTMAS - GIẢM GIÁ 50% CÁC LOẠI BÁNH SỬ DỤNG TRONG NGÀY</p>
+        </div>
 
         <!--====== Tiêu đề chính ======-->
         <header class="header--style-1">
@@ -2749,5 +2727,21 @@
 
     <!--====== App ======-->
     <script src="js/app.js"></script>
+    <!--====== Noscript ======-->
+    <noscript>
+        <div class="app-setting">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="app-setting__wrap">
+                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
 
-  \
+                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </noscript>
+</body>
+</html>
