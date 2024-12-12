@@ -2015,6 +2015,141 @@ input::-ms-clear {
 .header--box-shadow {
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.07); }
 
+    /*  THÊM CSS để đặt mũi tên chuyển đổi ở hai bên của màn hình */
+    .owl-carousel .owl-nav {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      z-index: 999;
+    }
+    
+    .owl-carousel .owl-prev, .owl-carousel .owl-next {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    
+    .owl-carousel .owl-prev {
+      left: 10px; /* Điều chỉnh khoảng cách từ mép trái */
+    }
+    
+    .owl-carousel .owl-next {
+      right: 10px; /* Điều chỉnh khoảng cách từ mép phải */
+    }
+    
+    .owl-carousel .owl-prev i,
+    .owl-carousel .owl-next i {
+      background-color: #d8d8d8; /* Màu xám nhạt */
+      padding: 10px; /* Tăng kích thước nền của mũi tên */
+      font-size: 24px; /* Điều chỉnh kích thước của mũi tên theo nhu cầu */
+      color: #000000; /* Màu chữ */
+    }
+    .owl-carousel .owl-prev i:hover,
+    .owl-carousel .owl-next i:hover {
+      background-color: #F4af3d; /* Màu vàng khi hover */
+      color: #fff; /* Màu chữ khi hover */
+    }
+.top-banner {
+  background-color: #b8292f;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+#banner-text {
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: normal;
+  animation: marquee 15s linear infinite;
+  display: inline-block;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+#e_nguyencongnam_left {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+}
+
+#e_nguyencongnam_right {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+}
+
+/* Footer */
+#e_nguyencongnam_footer {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 104px;
+  background: url('https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png') repeat-x bottom left;
+}
+
+/* Hình ảnh góc dưới bên trái */
+#e_nguyencongnam_bottom_left {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  bottom: 20px;
+  left: 20px;
+}
+
+/* Hiển thị các phần tử khi có độ rộng màn hình từ 992px trở lên */
+@media (min-width: 992px) {
+  #e_nguyencongnam_left,
+  #e_nguyencongnam_right,
+  #e_nguyencongnam_footer,
+  #e_nguyencongnam_bottom_left {
+      display: block;
+  }
+}
+
+/* Khung chứa tuyết rơi */
+#snowflakeContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+/* Đặc điểm của các bông tuyết */
+.snowflake {
+  padding-left: 15px; /* Khoảng cách bên trái */
+  font-size: 14px; /* Kích thước chữ */
+  line-height: 24px; /* Chiều cao dòng */
+  position: fixed; /* Đặt cố định trên trang */
+  color: #ebebeb; /* Màu chữ */
+  user-select: none; /* Không cho phép chọn chữ */
+  z-index: 1000; /* Đặt độ ưu tiên hiển thị */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Khi di chuột vào tuyết */
+.snowflake:hover {
+  cursor: default; /* Về dạng con trỏ mặc định */
+}
 /* 6.1 Primary Nav */
 .primary-nav-wrapper--border {
   border-bottom: 1px solid #f8f8f8; }

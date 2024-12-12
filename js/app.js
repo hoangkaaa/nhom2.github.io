@@ -120,9 +120,6 @@
     };
 
 
-
-
-
     RESHOP.reshopNavigation = function() {
         $('#navigation').shopNav();
         $('#navigation1').shopNav();
@@ -798,4 +795,111 @@ function submitComment() {
     } else {
         alert("Vui lòng nhập bình luận và chọn đánh giá sao!"); // Thông báo nếu không có nội dung
     }
+}
+// Khởi tạo các phương thức hỗ trợ animation
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
+var transformProperty = getSupportedPropertyName(transforms);
+var snowflakes = []; // Mảng lưu trữ các bông tuyết
+var browserWidth; // Chiều rộng của trình duyệt
+var browserHeight; // Chiều cao của trình duyệt
+var numberOfSnowflakes = 20; // Số lượng bông tuyết
+var resetPosition = false; // Cờ để đặt lại vị trí tuyết rơi
+
+// Hàm khởi tạo sự kiện
+function setup() {
+    window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+    window.addEventListener("resize", setResetFlag, false);
+}
+
+setup();
+
+// Hàm kiểm tra thuộc tính hỗ trợ của trình duyệt
+function getSupportedPropertyName(properties) {
+    for (var i = 0; i < properties.length; i++) {
+        if (typeof document.body.style[properties[i]] != "undefined") {
+            return properties[i];
+        }
+    }
+    return null;
+}
+
+// Hàm Snowflake (bông tuyết)
+function Snowflake(element, radius, speed, xPos, yPos) {
+    this.element = element;
+    this.radius = radius;
+    this.speed = speed;
+    this.xPos = xPos;
+    this.yPos = yPos;
+    this.counter = 0;
+    this.sign = Math.random() < 0.5 ? 1 : -1; // Chọn chiều di chuyển ngẫu nhiên
+    this.element.style.opacity = 0.5 + Math.random(); // Độ mờ ngẫu nhiên
+    this.element.style.fontSize = 4 + Math.random() * 20 + "px"; // Kích thước chữ ngẫu nhiên
+}
+
+// Cập nhật vị trí và di chuyển bông tuyết
+Snowflake.prototype.update = function () {
+    this.counter += this.speed / 5000;
+    this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+    this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+    setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
+    if (this.yPos > browserHeight) {
+        this.yPos = -50; // Nếu bông tuyết ra ngoài màn hình thì đưa về trên
+    }
+};
+
+// Hàm chuyển đổi vị trí bông tuyết
+function setTranslate3DTransform(element, x, y) {
+    var transform = "translate3d(" + x + "px, " + y + "px, 0)";
+    element.style[transformProperty] = transform;
+}
+
+// Hàm tạo bông tuyết
+function generateSnowflakes() {
+    var snowflakeElement = document.querySelector(".snowflake");
+    var parent = snowflakeElement.parentNode;
+    browserWidth = document.documentElement.clientWidth;
+    browserHeight = document.documentElement.clientHeight;
+    
+    for (var i = 0; i < numberOfSnowflakes; i++) {
+        var newSnowflake = snowflakeElement.cloneNode(true);
+        parent.appendChild(newSnowflake);
+        var xPos = getPosition(50, browserWidth);
+        var yPos = getPosition(50, browserHeight);
+        var radius = 5 + Math.random() * 40;
+        var speed = 4 + Math.random() * 10;
+        var snowflakeInstance = new Snowflake(newSnowflake, radius, speed, xPos, yPos);
+        snowflakes.push(snowflakeInstance);
+    }
+    parent.removeChild(snowflakeElement);
+    moveSnowflakes();
+}
+
+// Di chuyển các bông tuyết
+function moveSnowflakes() {
+    for (var i = 0; i < snowflakes.length; i++) {
+        var snowflake = snowflakes[i];
+        snowflake.update();
+    }
+    if (resetPosition) {
+        browserWidth = document.documentElement.clientWidth;
+        browserHeight = document.documentElement.clientHeight;
+        for (var i = 0; i < snowflakes.length; i++) {
+            var snowflake = snowflakes[i];
+            snowflake.xPos = getPosition(50, browserWidth);
+            snowflake.yPos = getPosition(50, browserHeight);
+        }
+        resetPosition = false;
+    }
+    requestAnimationFrame(moveSnowflakes);
+}
+
+// Hàm lấy vị trí ngẫu nhiên
+function getPosition(offset, max) {
+    return Math.round(-offset + Math.random() * (max + 2 * offset));
+}
+
+// Cờ để đặt lại vị trí tuyết khi thay đổi kích thước
+function setResetFlag() {
+    resetPosition = true;
 }
