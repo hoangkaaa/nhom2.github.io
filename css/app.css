@@ -2561,7 +2561,29 @@ input::-ms-clear {
     border: none;
     border-radius: 5px;
     font-size: 13px; }
-
+  .small-banner-carousel {
+      display: flex; /* Sử dụng flexbox cho container */
+      justify-content: center; /* Canh giữa các phần tử bên trong */
+      overflow: hidden; /* Ẩn phần vượt ra ngoài */
+      position: relative; /* Để định vị các phần tử bên trong */
+  }
+  
+  .small-banner-container {
+      display: flex; /* Sử dụng flexbox để xếp hàng ngang */
+      transition: transform 0.5s ease; /* Hiệu ứng chuyển tiếp mượt mà */
+  }
+  
+  .small-banner-item {
+      flex: 0 0 auto; /* Để các banner không co lại và giữ kích thước tự nhiên */
+      width: 100px; /* Giảm chiều rộng cho mỗi banner */
+      margin: 0 5px; /* Khoảng cách giữa các banner */
+  }
+  
+  .small-banner-item img {
+      width: 100%; /* Chiều rộng hình ảnh */
+      height: auto; /* Giữ tỷ lệ chiều cao */
+      border-radius: 30px;
+  }
 .banner-bg {
   padding: 7em 0;
   position: relative;
