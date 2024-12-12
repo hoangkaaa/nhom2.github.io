@@ -752,9 +752,9 @@
         RESHOP.shopSideFilter();
 })(jQuery);
 
-let currentIndex = 0;
-const items = document.querySelectorAll('.small-banner-item');
-const totalItems = items.length;
+let currentIndex = 0; // Chỉ số banner hiện tại
+const items = document.querySelectorAll('.small-banner-item'); // Lấy tất cả các banner
+const totalItems = items.length; // Tổng số banner
 
 function showNextBanner() {
     currentIndex = (currentIndex + 1) % totalItems; // Tính chỉ số banner tiếp theo
@@ -762,7 +762,7 @@ function showNextBanner() {
     document.querySelector('.small-banner-container').style.transform = `translateX(${offset}px)`; // Dịch chuyển banner
 }
 
-// Chạy hàm mỗi 1 giây
+// Chạy hàm này mỗi 1 giây (1000ms)
 setInterval(showNextBanner, 1000);
 
 let selectedRating = 0;
