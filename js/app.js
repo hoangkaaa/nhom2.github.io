@@ -721,3 +721,38 @@ function showNextBanner() {
 
 // Chạy hàm mỗi 1 giây
 setInterval(showNextBanner, 1000);
+
+let selectedRating = 0;
+
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', function() {
+        selectedRating = this.getAttribute('data-value'); // Lưu giá trị sao đã chọn
+        updateStars();
+    });
+});
+
+function updateStars() {
+    document.querySelectorAll('.star').forEach(star => {
+        star.classList.remove('selected'); // Xóa lớp 'selected' khỏi tất cả sao
+        if (star.getAttribute('data-value') <= selectedRating) {
+            star.classList.add('selected'); // Thêm lớp 'selected' cho sao được chọn
+        }
+    });
+}
+
+function submitComment() {
+    const commentInput = document.getElementById("comment");
+    const commentsList = document.getElementById("commentsList");
+
+    if (commentInput.value.trim() !== "" && selectedRating > 0) {
+        const newComment = document.createElement("div");
+        newComment.textContent = `Đánh giá: ${selectedRating} sao - Bình luận: ${commentInput.value}`;
+        newComment.classList.add("comment-item");
+        commentsList.appendChild(newComment);
+        commentInput.value = ""; // Xóa nội dung sau khi gửi
+        selectedRating = 0; // Đặt lại đánh giá
+        updateStars(); // Cập nhật lại các sao
+    } else {
+        alert("Vui lòng nhập bình luận và chọn đánh giá sao!"); // Thông báo nếu không có nội dung
+    }
+}
