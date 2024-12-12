@@ -365,42 +365,85 @@
     };
 
     // Input Counter
-    RESHOP.initInputCounter = function() {
-        // Check if Input Counters on the page
+    RESHOP.initInputCounter = function () {
+        // Khởi tạo bộ đếm
+        var $collectionInputCounter = $('.input-counter');
+    
         if ($collectionInputCounter.length) {
-            // Attach Click event to plus button
-            $collectionInputCounter.find('.input-counter__plus').on('click',function () {
+            // Nút tăng số lượng
+            $collectionInputCounter.find('.input-counter__plus').on('click', function () {
                 var $input = $(this).parent().find('input');
-                var count = parseInt($input.val()) + 1; // Number + Number
+                var count = parseInt($input.val()) + 1 || 1; // Số lượng tối thiểu là 1
                 $input.val(count).change();
             });
-            // Attach Click event to minus button
-            $collectionInputCounter.find('.input-counter__minus').on('click',function () {
+    
+            // Nút giảm số lượng
+            $collectionInputCounter.find('.input-counter__minus').on('click', function () {
                 var $input = $(this).parent().find('input');
-                var count = parseInt($input.val()) - 1; // Number - Number
-                $input.val(count).change();
+                var count = parseInt($input.val()) - 1 || 1; // Số lượng tối thiểu là 1
+                $input.val(Math.max(count, 1)).change();
             });
-            // Fires when the value of the element is changed
+    
+            // Khi số lượng thay đổi
             $collectionInputCounter.find('input').change(function () {
                 var $this = $(this);
-                var min = $this.data('min');
-                var max = $this.data('max');
-                var val = parseInt($this.val());// Current value
-                // Restrictions check
-                if (!val) {
-                   val = 1;
-                }
-                // The min() method returns the number with the lowest value
-                val = Math.min(val,max);
-                // The max() method returns the number with the highest value
-                val = Math.max(val,min);
-                // Sets the Value
+                var min = $this.data('min') || 1;
+                var max = $this.data('max') || 1000;
+                var val = parseInt($this.val()) || 1;
+    
+                // Giới hạn giá trị
+                val = Math.max(Math.min(val, max), min);
                 $this.val(val);
+    
+                // Cập nhật giá sản phẩm
+                var $row = $this.closest('tr');
+                if ($row.length) {
+                    var $priceElement = $row.find('.table-p__price');
+                    var unitPrice = parseInt($priceElement.data('price')) || 0;
+                    var newPrice = unitPrice * val;
+                    $priceElement.text(newPrice.toLocaleString('vi-VN') + ' VND');
+                }
+    
+                // Cập nhật tổng giá trị
+                updateCartSummary();
+            });
+    
+            // Xóa sản phẩm
+            $('.table-p__delete-link').on('click', function (e) {
+                e.preventDefault();
+                var $row = $(this).closest('tr');
+                if ($row.length) {
+                    $row.fadeOut(500, function () {
+                        $row.remove();
+                        updateCartSummary();
+                    });
+                }
             });
         }
+    
+        // Hàm cập nhật tổng giá
+        function updateCartSummary() {
+            var subtotal = 0;
+            var shippingFee = 20000; // Phí vận chuyển cố định
+    
+            // Cộng giá từng sản phẩm
+            $('.table-p__price').each(function () {
+                var price = parseInt($(this).text().replace(/\D/g, '')) || 0;
+                subtotal += price;
+            });
+    
+            // Cập nhật tạm tính
+            $('.f-cart__table td:contains("TẠM TÍNH")').next().text(subtotal.toLocaleString('vi-VN') + ' VND');
+    
+            // Cập nhật tổng cộng
+            var total = subtotal + shippingFee;
+            $('.f-cart__table td:contains("TỔNG CỘNG")').next().text(total.toLocaleString('vi-VN') + ' VND');
+        }
+    
+        // Cập nhật tổng giá trị khi trang tải
+        updateCartSummary();
     };
-
-
+    
     // Blog Post Gallery
     RESHOP.blogPostGallery = function() {
         if ($collectionPostGallery.length) {
