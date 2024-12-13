@@ -2042,28 +2042,34 @@ input::-ms-clear {
 .header--box-shadow {
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.07); }
 
+/* Style banner giảm giá giáng sinh */
 .top-banner {
-  background-color: #b8292f;
-  color: #ffffff;
-  padding: 10px;
-  text-align: center;
-  overflow: hidden;
+  background-color: #b8292f; /* Đặt màu nền cho banner */
+  color: #ffffff; /* Màu chữ trắng cho nội dung */
+  padding: 10px; /* Khoảng cách bên trong của banner */
+  text-align: center; /* Canh giữa nội dung bên trong theo chiều ngang */
+  overflow: hidden; /* Ẩn các phần tử vượt ra ngoài vùng banner */
 }
 
+/* Phần tử chứa văn bản chuyển động trong banner */
 #banner-text {
-  white-space: nowrap;
-  font-size: 1rem;
-  font-weight: normal;
-  animation: marquee 15s linear infinite;
-  display: inline-block;
+  white-space: nowrap; /* Không cho phép văn bản xuống dòng */
+  font-size: 1rem; /* Kích thước chữ mặc định là 1rem */
+  font-weight: normal; /* Đặt độ đậm của chữ là bình thường */
+  animation: marquee 15s linear infinite; /* Thêm hiệu ứng chuyển động marquee:
+      - 15 giây để hoàn thành một chu kỳ
+      - Di chuyển đều (linear)
+      - Lặp lại vô hạn */
+  display: inline-block; /* Giữ kích thước phần tử vừa với nội dung, cần để hoạt động với animation */
 }
 
+/* Tạo hiệu ứng chuyển động marquee */
 @keyframes marquee {
   from {
-    transform: translateX(100%);
+    transform: translateX(100%); /* Bắt đầu từ ngoài màn hình bên phải */
   }
-  to{
-    transform: translateX(-100%);
+  to {
+    transform: translateX(-100%); /* Kết thúc ngoài màn hình bên trái */
   }
 }
 
