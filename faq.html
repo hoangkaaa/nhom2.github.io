@@ -1411,7 +1411,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="faq">
-                                    <h3 class="faq__heading">CÂU HỎI THƯỜNG GẶP</h3>
+                                    <h1 class="section__heading">Các <span>câu hỏi</span> thường gặp</h1>
                                     <h3 class="faq__heading">Dưới đây là những câu hỏi thường gặp, bạn có thể tự tìm ra câu trả lời.</h3>
                                     <p class="faq__text">Để giải đáp các thắc mắc của khách hàng, Sixsense ở vị trí là một doanh nghiệp nhỏ, một doanh nghiệp đang phát triển luôn sẵn sàng lắng nghe ý kiến và các đóng góp từ khách hàng. Bên dưới là các câu hỏi mà Sixsense thường gặp nhất sau khi thông qua khảo sát thắc mắc của khách hàng.</p>
                                 </div>
@@ -1475,8 +1475,53 @@
                     </div>
                 </div>
             </div>
-            <!--====== HẾT PHẦN 3 ======-->
         </div>
+<!--====== FORM ĐÓNG GÓP CÂU HỎI ======-->
+<div class="u-s-p-b-60">
+    <div class="section__content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="faq__feedback">
+                        <h3 class="faq__heading text-center">Đóng góp câu hỏi của bạn</h3>
+                        <p class="faq__text text-center">Chúng tôi luôn sẵn sàng lắng nghe và giải đáp các thắc mắc từ bạn. Hãy để lại câu hỏi hoặc góp ý của bạn ở đây.
+                            <br>
+                            <em> Sixsense cam đoan thông tin của bạn sẽ được bảo mật</em>
+
+                        <form action="/submit-question" method="POST" class="faq__form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Họ và Tên:</label>
+                                        <input type="text" id="name" name="name" class="form-control stylish-input" placeholder="Nhập họ và tên của bạn" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" id="email" name="email" class="form-control stylish-input" placeholder="Nhập email của bạn" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="question">Câu hỏi hoặc góp ý:</label>
+                                <textarea id="question" name="question" class="form-control stylish-input" rows="5" placeholder="Nhập câu hỏi hoặc góp ý của bạn" required></textarea>
+                            </div>
+                            <div class="form-group text-center">
+                                <a href="faq.html" class="btn btn-primary btn-lg stylish-button">Gửi câu hỏi</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--====== HẾT FORM ĐÓNG GÓP CÂU HỎI ======-->
+
+<!--====== HẾT PHẦN 3 ======-->
         <!--====== HẾT NỘI DUNG TRANG ======-->
 
 
