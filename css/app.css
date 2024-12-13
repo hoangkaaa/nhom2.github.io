@@ -5662,7 +5662,7 @@ input::-ms-clear {
 
 .rating__check-star-wrap > i {
   margin-left: 2px;
-  color: #ff4500;
+  color: #d33943;
   transition: color .4s ease-in-out; }
   .rating__check-star-wrap > i:first-child {
     margin-left: 0; }
