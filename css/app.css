@@ -384,13 +384,6 @@ body {
 .s-gplus--color {
   color: #b48534; }
 
-/* Whats App */
-.s-wa--color {
-  color: #25d366; }
-
-.s-wa--color-hover:hover {
-  color: #25d366; }
-
 /*
   * Global classes you can use these classes on elements and components of your application.
   * Remember: Don't confuse your mind with utility classes & Global classes.
@@ -3232,7 +3225,6 @@ input::-ms-clear {
     .table-p__img-wrap:hover img {
       transform: scale(1.2); /* Zoom ảnh khi hover */
     }
-
   .table-p__info {
     margin-left: 18px; 
   }
@@ -3321,10 +3313,17 @@ input::-ms-clear {
     vertical-align: middle;
     background-color: #f5f5f5;
     width: 120px;
-    height: 120px; }
+    height: 120px;
+    position: relative;
+    overflow: hidden; /* Đảm bảo hình không tràn ra ngoài khung */ }
     .w-r__img-wrap img {
       display: block;
-      min-width: 120px; }
+      min-width: 120px;
+      height: auto;
+      transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt khi hover */ }
+     .w-r__img-wrap:hover img {
+      transform: scale(1.1); /* Zoom hình khi hover */
+  }
   .w-r__info {
     margin-left: 18px; }
   .w-r__name {
@@ -3363,7 +3362,6 @@ input::-ms-clear {
     border-radius: 5px;
     margin: 0 0 10px 10px;
     padding: 12px 30px; }
-
 .route-box {
   display: -ms-flexbox;
   display: flex;
@@ -3391,7 +3389,6 @@ input::-ms-clear {
   border: 1px solid #ccc;
   transition: all 0.3s ease; /* Hiệu ứng mượt */
 }
-
 /* Hiệu ứng hover */
 .route-box__link:hover {
   background-color: #e1ca7f; /* Đổi màu nền sang cam */
@@ -3400,19 +3397,15 @@ input::-ms-clear {
   transform: translateY(-3px); /* Hiệu ứng nổi lên */
   border-color:#97602f; /* Viền đồng bộ màu nền */
 }
-
 /* Hiệu ứng cho icon bên trong nút */
 .route-box__link i {
   margin-right: 8px;
   transition: transform 0.3s ease, color 0.3s ease; /* Hiệu ứng xoay và đổi màu */
 }
-
 .route-box__link:hover i {
   transform: rotate(-15deg); /* Xoay nhẹ icon */
   color: #ffffff; /* Đổi màu icon sang trắng */
 }
-
-
 .f-cart__pad-box {
   border: 1px solid #eee;
   padding: 32px 22px 35px; }
@@ -3434,7 +3427,6 @@ input::-ms-clear {
     font-size: 16px;
     font-weight: 700;
     color: #ff4500; }
-
     .f-cart__ship-link {
       font-size: 13px;
       text-align: center;
@@ -3446,7 +3438,6 @@ input::-ms-clear {
       color: #ffffff; /* Màu chữ ban đầu */
       transition: all 0.3s ease; /* Hiệu ứng mượt */
     }
-    
     /* Hiệu ứng hover cho nút TÍNH PHÍ VẬN CHUYỂN */
     .f-cart__ship-link:hover {
       background-color: #e1ca7f; /* Màu nền khi hover */
@@ -3454,47 +3445,54 @@ input::-ms-clear {
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nổi bật */
       transform: translateY(-3px); /* Hiệu ứng nổi lên */
     }
-    
-
+/* Định dạng cho các thành phần trong .f-cart */
 .f-cart .input-text, .f-cart .select-box, .f-cart .text-area, .f-cart .btn {
-  border-radius: 6px;
-  width: 100%; }
-
+  border-radius: 6px; /* Bo tròn các góc của các phần tử */
+  width: 100%; /* Chiếm toàn bộ chiều rộng của khung chứa */
+}
 .f-cart .text-area {
-  height: 350px; }
-
+  height: 350px; /* Đặt chiều cao cố định cho ô nhập văn bản */
+}
 .f-cart .btn {
-  padding: 16px;
-  font-weight: 600;
-  font-size: 13px; }
-
+  padding: 16px; /* Tạo khoảng cách bên trong nút bấm */
+  font-weight: 600; /* Chữ in đậm vừa */
+  font-size: 13px; /* Kích thước chữ nhỏ */
+}
+/* Media Query: Dành cho màn hình nhỏ hơn 991px */
 @media (max-width: 991px) {
   .w-r__wrap-2 {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    -ms-flex-align: end;
-        align-items: flex-end; } }
-
+    display: -ms-flexbox; /* Kích hoạt flexbox (cho IE) */
+    display: flex; /* Kích hoạt flexbox (cho trình duyệt hiện đại) */
+    -ms-flex-direction: column; /* Hướng xếp dọc (cho IE) */
+        flex-direction: column; /* Hướng xếp dọc */
+    -ms-flex-wrap: nowrap; /* Không cho các phần tử xuống dòng (cho IE) */
+        flex-wrap: nowrap; /* Không cho các phần tử xuống dòng */
+    -ms-flex-align: end; /* Căn phần tử về cuối khung chứa (cho IE) */
+        align-items: flex-end; /* Căn phần tử về cuối khung chứa */
+  }
+}
+/* Media Query: Dành cho màn hình nhỏ hơn 767px */
 @media (max-width: 767px) {
   .table-p td {
-    min-width: 200px; }
+    min-width: 200px; /* Đặt chiều rộng tối thiểu cho ô trong bảng */
+  }
   .w-r__container {
-    -ms-flex-direction: column;
-        flex-direction: column; }
+    -ms-flex-direction: column; /* Hướng xếp dọc cho IE */
+        flex-direction: column; /* Hướng xếp dọc */
+  }
   .w-r__wrap-1 {
-    -ms-flex-direction: column;
-        flex-direction: column; }
+    -ms-flex-direction: column; /* Hướng xếp dọc cho IE */
+        flex-direction: column; /* Hướng xếp dọc */
+  }
   .w-r__info {
-    text-align: center;
-    margin: 15px 0 15px; }
+    text-align: center; /* Canh giữa nội dung */
+    margin: 15px 0 15px; /* Tạo khoảng cách trên và dưới */
+  }
   .w-r__wrap-2 {
-    -ms-flex-align: center;
-        align-items: center; } }
-        
+    -ms-flex-align: center; /* Căn giữa nội dung (cho IE) */
+        align-items: center; /* Căn giữa nội dung */
+  }
+}
         /* Hiệu ứng hover cho sản phẩm */
 .product-o {
   position: relative;
