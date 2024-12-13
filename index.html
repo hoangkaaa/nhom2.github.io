@@ -21,7 +21,183 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
 
-
+    <style>
+        body {
+          padding-bottom: 20px; /* Thêm khoảng cách dưới cùng cho body */
+        }
+        #e_nguyencongnam_left {
+        display: block; /* Hiển thị hình ảnh bên trái */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+        top: 0; /* Đặt ở trên cùng */
+        left: 0; /* Đặt bên trái */
+        }
+        #e_nguyencongnam_right {
+        display: block; /* Hiển thị hình ảnh bên phải */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+        top: 0; /* Đặt ở trên cùng */
+        right: 0; /* Đặt bên phải */
+        }
+        #e_nguyencongnam_footer {
+        display: block; /* Hiển thị footer */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo footer nằm trên các phần tử khác */
+        bottom: -50px; /* Vị trí phía dưới */
+        left: 0; /* Đặt bên trái */
+        width: 100%; /* Chiều rộng 100% */
+        height: 104px; /* Chiều cao cho footer */
+        background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left; /* Hình nền cho footer */
+        }
+        #e_nguyencongnam_bottom_left {
+          display: block; /* Hiển thị hình ảnh ở dưới bên trái */
+          position: fixed; /* Đặt vị trí cố định */
+          z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+          bottom: 20px; /* Vị trí phía dưới */
+          left: 20px; /* Vị trí bên trái */
+        }
+        .ncv-credit {
+          display: none; /* Ẩn dòng chữ và liên kết */
+        }
+        #snowflakeContainer {
+          position: absolute;/* Đặt vị trí tuyệt đối cho container tuyết */
+          left: 0px;/* Đặt bên trái */
+          top: 0px;/* Đặt ở trên cùng */
+        }
+        .snowflake {
+          padding-left: 15px;/* Khoảng cách bên trái cho tuyết */
+          font-size: 14px;/* Kích thước chữ cho tuyết */
+          line-height: 24px;/* Chiều cao dòng cho tuyết */
+          position: fixed;/* Đặt vị trí cố định cho tuyết */
+          color: #ebebeb;/* Màu sắc của tuyết */
+          user-select: none;/* Không cho phép chọn tuyết */
+          z-index: 1000;/* Đảm bảo tuyết nằm trên các phần tử khác */
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -khtml-user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+        }
+        .snowflake:hover {
+          cursor: default;/* Đổi con trỏ khi hover lên tuyết */
+        }
+      </style>
+      
+      <img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
+      <img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
+      <div id="e_nguyencongnam_footer"></div>
+      <img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
+      <div class="ncv-credit" style="position:fixed;z-index:9999;bottom:3px;right:3px;font-size:12px;color:#8D8D8D;">
+        by <a href="https://nguyencongnam.id.vn/">ncn</a>
+      </div>
+      
+      <div id="snowflakeContainer">
+        <p class="snowflake">❄</p><!-- Một ký tự tuyết làm mẫu -->
+      </div>
+      
+      <script>
+        var requestAnimationFrame = window.requestAnimationFrame || window // Chọn phương thức thích hợp cho animationmozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];// Danh sách các thuộc tính transform
+        var transformProperty = getSupportedPropertyName(transforms);
+        var snowflakes = [];// Mảng chứa các đối tượng tuyết
+        var browserWidth;// Chiều rộng của trình duyệt
+        var browserHeight;// Chiều cao của trình duyệt
+        var numberOfSnowflakes = 100; // Tăng số lượng tuyết
+        var resetPosition = false;
+      
+        function setup() {
+          window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+          window.addEventListener("resize", setResetFlag, false);
+        }
+        setup();
+      
+        function getSupportedPropertyName(b) {
+          for (var a = 0; a < b.length; a++) {
+            if (typeof document.body.style[b[a]] != "undefined") {
+              return b[a];// Trả về thuộc tính tương thích đầu tiên
+            }
+          }
+          return null;// Nếu không tìm thấy, trả về null
+    
+        }
+      
+        function Snowflake(b, a, d, e, c) {
+          this.element = b; // Phần tử tuyết
+          this.radius = a;// Bán kính tuyết
+          this.speed = d;// Tốc độ rơi
+          this.xPos = e;// Vị trí ngang
+          this.yPos = c;// Vị trí dọc
+          this.counter = 0;// Bộ đếm để theo dõi chuyển động
+          this.sign = Math.random() < 0.5 ? 1 : -1;// Ngẫu nhiên chọn chiều chuyển động
+          this.element.style.opacity = 0.5 + Math.random(); // Đặt độ mờ ngẫu nhiên
+          this.element.style.fontSize = 4 + Math.random() * 20 + "px";//Đặt kích thước chữ ngẫu nhiên
+        }
+      
+        Snowflake.prototype.update = function() {
+          this.counter += this.speed / 5000;// Cập nhật bộ đếm
+          this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;// Cập nhật vị trí ngang
+          this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+          setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));// Áp dụng vị trí mới
+          if (this.yPos > browserHeight) {
+            this.yPos = -50;// Nếu tuyết rơi ra ngoài màn hình, đưa nó trở lại trên cùng
+          }
+        };
+      
+        function setTranslate3DTransform(a, c, b) {
+          var d = "translate3d(" + c + "px, " + b + "px, 0)";// Tạo chuỗi transform
+          a.style[transformProperty] = d;// Áp dụng transform cho phần tử
+        }
+      
+        function generateSnowflakes() {
+          var b = document.querySelector(".snowflake");// Lấy phần tử tuyết mẫu
+          var h = b.parentNode;
+          browserWidth = document.documentElement.clientWidth;// Lấy chiều rộng trình duyệt
+          browserHeight = document.documentElement.clientHeight; // Lấy chiều cao trình duyệt
+          for (var d = 0; d < numberOfSnowflakes; d++) {
+            var j = b.cloneNode(true);// Nhân bản phần tử tuyết
+            h.appendChild(j);// Thêm vào DOM
+            var e = getPosition(50, browserWidth);// Vị trí ngang ngẫu nhiên
+            var a = getPosition(50, browserHeight);// Vị trí dọc ngẫu nhiên
+            var c = 5 + Math.random() * 40;// Tốc độ ngẫu nhiên
+            var g = 4 + Math.random() * 10;// Kích thước ngẫu nhiên
+            var f = new Snowflake(j, g, c, e, a);// Tạo đối tượng tuyết mới
+            snowflakes.push(f);// Thêm vào mảng tuyết
+          }
+          h.removeChild(b);// Xóa phần tử mẫu
+          moveSnowflakes();// Bắt đầu di chuyển tuyết
+        }
+      
+        function moveSnowflakes() {
+          for (var b = 0; b < snowflakes.length; b++) {
+            var a = snowflakes[b];
+            a.update();// Cập nhật vị trí từng tuyết
+          }
+          if (resetPosition) {
+            browserWidth = document.documentElement.clientWidth; // Cập nhật chiều rộng
+            browserHeight = document.documentElement.clientHeight; // Cập nhật chiều cao
+            for (var b = 0; b < snowflakes.length; b++) {
+              var a = snowflakes[b];
+              a.xPos = getPosition(50, browserWidth);
+              a.yPos = getPosition(50, browserHeight);
+            }
+            resetPosition = false;// Đặt lại cờ
+          }
+          requestAnimationFrame(moveSnowflakes);
+        }
+      
+        function getPosition(b, a) {
+          return Math.round(-1 * b + Math.random() * (a + 2 * b));// Tạo vị trí ngẫu nhiên
+        }
+      
+        function setResetFlag(a) {
+          resetPosition = true;// Đánh dấu cần đặt lại vị trí
+        }
+      </script>
+      
+      
+      
+      
+      
 </head>
 <body class="config">
     <div class="preloader is-active">
@@ -29,18 +205,6 @@
             <img class="preloader__img" src="images/banners/Brown Cream Modern Minimalist Homemade Cookies Facebook Cover (1920 x 900 px).jpg" alt="">
         </div>
     </div>
-    <!-- Hình ảnh ở bên trái và bên phải -->
-    <img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
-    <img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
-    <!--Footer-->
-    <div id="e_nguyencongnam_footer"></div>
-    <!-- Hình ảnh góc dưới bên trái -->
-    <img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
-    <!-- Khung chứa tuyết rơi -->
-    <div id="snowflakeContainer">
-        <p class="snowflake">❄</p>
-    </div>
-
 
     <!--====== Ứng Dụng Chính ======-->
     <div id="app">
@@ -113,18 +277,18 @@
                                             <div class="mini-product__image-wrapper">  <!-- Điều chỉnh Hình ảnh cho Sản Phẩm Mini -->
                                               <a class="mini-product__link" href="#"> <!--Điều chỉnh Link sản phẩm-->
                                                 <!--Hình bộ sản phẩm hồ điệp đa sắc-->
-                                                <img class="u-img-fluid" src="http://manisjewelry.store/wp-content/uploads/2023/11/DC019.1.png" alt="">
+                                                <img class="u-img-fluid" src="images/product/Bánh mì/Bánh toast bơ.png" alt="">
                                               </a>
                                             </div>
                                             <div class="mini-product__info-wrapper"> <!-- Điều chỉnh Thông tin chi tiết Sản Phẩm Mini -->
                                               <span class="mini-product__category">
-                                                <a href="shop-side-version-2.html">Dây chuyền</a>
+                                                <a href="shop-side-version-2.html">Toast</a>
                                               </span>
                                               <span class="mini-product__name">
-                                                <a href="#">Bộ Sản Phẩm Bạc 925 Hồ Điệp Đa Sắc</a><!--Thêm link product detail-->
+                                                <a href="#">Bánh Toast Bơ</a><!--Thêm link product detail-->
                                               </span>
                                               <span class="mini-product__quantity">1 x</span>
-                                              <span class="mini-product__price">258.000VND</span>
+                                              <span class="mini-product__price">32.000VND</span>
                                             </div>
                                           </div>
                                           <a class="mini-product__delete-link far fa-trash-alt"></a> <!-- Điều chỉnh Liên kết Xóa Sản Phẩm -->
@@ -136,18 +300,18 @@
                                           <div class="mini-product">
                                             <div class="mini-product__image-wrapper">
                                               <a class="mini-product__link" href="#"><!--Link sản phẩm-->
-                                                <img class="u-img-fluid" src="http://manisjewelry.store/wp-content/uploads/2023/11/DC008-300x300.png" alt=""> <!--Hình dây chuyền bông tuyết đính đá-->
+                                                <img class="u-img-fluid" src="images/product/Bánh mì/Bánh Toast Mứt.png" alt=""> <!--Hình-->
                                               </a>
                                             </div>
                                             <div class="mini-product__info-wrapper">
                                               <span class="mini-product__category">
-                                                <a href="shop-side-version-2.html">Dây chuyền</a>
+                                                <a href="shop-side-version-2.html">Toast</a>
                                               </span>
                                               <span class="mini-product__name">
-                                                <a href="#">Dây Chuyền 925 Bông Tuyến Đính Đá</a><!--Thêm link product detail-->
+                                                <a href="#">Bánh toast mứt</a><!--Thêm link product detail-->
                                               </span>
                                               <span class="mini-product__quantity">1 x</span>
-                                              <span class="mini-product__price">135.00VND</span>
+                                              <span class="mini-product__price">35.00VND</span>
                                             </div>
                                           </div>
                                           <a class="mini-product__delete-link far fa-trash-alt"></a>
@@ -158,18 +322,18 @@
                                           <div class="mini-product">
                                             <div class="mini-product__image-wrapper">
                                               <a class="mini-product__link" href="#"> <!--Link sản phẩm-->
-                                                <img class="u-img-fluid" src="http://manisjewelry.store/wp-content/uploads/2023/11/DC007.1.png" alt=""><!--Hình dây chuyền 925 cánh thiên thần đổi màu-->
+                                                <img class="u-img-fluid" src="images/product/Bánh mì/Bánh toast socola.png" alt=""><!--Hình-->
                                               </a>
                                             </div>
                                             <div class="mini-product__info-wrapper">
                                               <span class="mini-product__category">
-                                                <a href="shop-side-version-2.html">Dây chuyền</a>
+                                                <a href="shop-side-version-2.html">Toast</a>
                                               </span>
                                               <span class="mini-product__name">
-                                                <a href="#">Dây Chuyền 925 Cánh Thiên Thần Đổi Màu</a><!--Thêm link product detail-->
+                                                <a href="#">Bánh Toast Socola</a><!--Thêm link product detail-->
                                               </span>
                                               <span class="mini-product__quantity">1 x</span>
-                                              <span class="mini-product__price">185.000VND</span>
+                                              <span class="mini-product__price">45.000VND</span>
                                             </div>
                                           </div>
                                           <a class="mini-product__delete-link far fa-trash-alt"></a>
@@ -181,7 +345,7 @@
                                       <div class="mini-product-stat">
                                         <div class="mini-total"> <!-- Điều chỉnh hiển thị thông tin về Tổng cộng -->
                                           <span class="subtotal-text">Tạm tính</span>
-                                          <span class="subtotal-value">578.000VND</span>
+                                          <span class="subtotal-value">112.000VND</span>
                                         </div>
                                         <div class="mini-action">  <!-- Hành động trong giỏ hàng mini -->
                                           <a class="mini-link btn--e-brand-b-2" href="checkout.html">TIẾN HÀNH THANH TOÁN</a> <!-- Liên kết tới trang thanh toán -->
@@ -470,27 +634,39 @@
                                         <button class="btn filter__btn filter__btn--style-1 js-checked" type="button" data-filter="*">TẤT CẢ</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".headphone">BÁNH NGỌT</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhtoast">BÁNH TOAST </button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".smartphone">BÁNH KEM</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhbrioche">BÁNH BRIOCHE</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".sportgadget">BÁNH TIRAMISU</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhsinhnhat">BÁNH SINH NHẬT</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">CÁC LOẠI BÁNH KHÁC</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhgiangsinh">BÁNH GIÁNG SINH</button></div>  
+                                    <div class="filter__category-wrapper">
+
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".hamburger">HAMBURGER</button></div>  
+                        
+                                    <div class="filter__category-wrapper">
+
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhmikep">BÁNH MÌ KẸP</button></div>
+                                    <div class="filter__category-wrapper">
+
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhsungbo">BÁNH SỪNG BÒ</button></div>
+                
+
                                 </div>
                                 <div class="filter__grid-wrapper u-s-m-t-30">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhtoast">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="box">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product1.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/product/Bánh mì/Bánh toast bơ.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
@@ -512,305 +688,303 @@
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH TOAST </a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh ngọt Pháp</a></span>
+                                                    <a href="product-detail.html">BÁNH TOAST BƠ</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">30.000 VNĐ
+                                                <span class="product-o__price">9.600 VNĐ
 
-                                                    <span class="product-o__discount">40.000 VNĐ</span></span>
+                                                    <span class="product-o__discount">32.000 VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhbrioche">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product2.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/slider/Bánh Brioche xoắn.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
+                                                           <li>
+
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH BRIOCHE</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh ngọt Mỹ</a></span>
+                                                    <a href="product-detail.html">BÁNH BRIOCHE XOẮN</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">40.000 VNĐ
+                                                <span class="product-o__price">26.250VNĐ
 
-                                                    <span class="product-o__discount">50.000 VNĐ</span></span>
+                                                    <span class="product-o__discount">35.000VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhsinhnhat">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product1.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh sinh nhật matcha.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
+                                                           <li>
+
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Bánh kem</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH SINH NHẬT</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh ngàn lớp</a></span>
+                                                    <a href="product-detail.html">Bánh sinh nhật matcha</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">35.000 VNĐ
+                                                <span class="product-o__price">137.500 VNĐ
 
-                                                    <span class="product-o__discount">46.000 VNĐ</span></span>
+                                                  </span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhsinhnhat">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product4.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh sinh nhật socola.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Bánh kem</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH SINH NHẬT</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh Mousse</a></span>
+                                                    <a href="product-detail.html">Bánh sinh nhật </a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">55.000 VNĐ
+                                                <span class="product-o__price">225.000 VNĐ
 
-                                                    <span class="product-o__discount">65.000 VNĐ</span></span>
+                                                    </span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item dslr">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhgiangsinh">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product5.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh gừng.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Bánh Tiramisu</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH GIÁNG SINH</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh kem bắp</a></span>
+                                                    <a href="product-detail.html">BÁNH GỪNG</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">120.000 VNĐ
-
-                                                    <span class="product-o__discount">160.000 VNĐ</span></span>
+                                                <span class="product-o__price">20.000 VNĐ</span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item dslr">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item hamburger">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product6.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/product/Bánh mì kẹp/Burger phô mai.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Bánh Tiramisu</a></span>
+                                                    <a href="shop-side-version-2.html">HAMBURGER</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh hạnh nhân</a></span>
+                                                    <a href="product-detail.html">HAMBURGER PHÔ MAI</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
                                                 <span class="product-o__price">36.000 VNĐ
 
-                                                    <span class="product-o__discount">54.000 VNĐ</span></span>
+                                                    <span class="product-o__discount">45.000 VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhmikep">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product7.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/product/Bánh mì kẹp/Bánh mì kẹp Nutella.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH MÌ KẸP</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Bánh tiramisu</a></span>
+                                                    <a href="product-detail.html">BÁNH MÌ KẸP NUTELLA </a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">40.000 VNĐ
+                                                <span class="product-o__price">17.500 VNĐ
 
-                                                    <span class="product-o__discount">60.000 VNĐ</span></span>
+                                                    <span class="product-o__discount">25.000 VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhsungbo">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product8.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="images/slider/Bánh sừng bò bơ.png" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                             <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
 
                                                 <span class="product-o__category">
 
-                                                    <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                                    <a href="shop-side-version-2.html">BÁNH SỪNG BÒ</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">Cupcakes</a></span>
+                                                    <a href="product-detail.html">BÁNH SỪNG BÒ BƠ</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
-                                                <span class="product-o__price">45.000 VNĐ
+                                                <span class="product-o__price">40.500 VNĐ
 
-                                                    <span class="product-o__discount">60.000 VNĐ</span></span>
+                                                    <span class="product-o__discount">45.000 VNĐ</span></span>
                                             </div>
                                         </div>
                                         
@@ -869,7 +1043,7 @@
 
                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
                                             <!-- Hình ảnh sản phẩm -->
-                                            <img class="aspect__img" src="images/slider/product12.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/slider/Bánh sừng bò chocolate.png" alt=""></a>
                                             <!-- Đồng hồ đếm ngược cho sản phẩm đặc biệt -->
                                         <div class="product-o__special-count-wrap">
                                             <div class="countdown countdown--style-special" data-countdown="2020/05/01"></div>
@@ -878,36 +1052,36 @@
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
-                                                     <!-- Xem nhanh sản phẩm -->
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+
+                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                 <li>
-                                                    <!-- Thêm vào giỏ hàng -->
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+
+                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                 <li>
-                                                    <!-- Thêm vào danh sách yêu thích -->
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                 <li>
-                                                      <!-- Nhận thông báo qua email khi giá giảm -->
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <!-- Danh mục sản phẩm -->
                                     <span class="product-o__category">
 
-                                        <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                        <a href="shop-side-version-2.html">BÁNH SỪNG BÒ </a></span>
                                     <!-- Tên sản phẩm -->
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">Tiramisu</a></span>
+                                        <a href="product-detail.html">BÁNH SỪNG BÒ SOCOLA</a></span>
                                     <!-- Đánh giá sản phẩm -->
                                     <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
                                         <span class="product-o__review">(2)</span></div> <!-- Số lượng đánh giá -->
                                     <!-- Giá sản phẩm -->
-                                        <span class="product-o__price">50.000 VNĐ
+                                        <span class="product-o__price">49.500 VNĐ
 
-                                        <span class="product-o__discount">60.000 VNĐ</span></span> <!-- Giá gốc -->
+                                        <span class="product-o__discount">55.000 VNĐ</span></span> <!-- Giá gốc -->
                                 </div>
                             </div>
                              <!-- Sản phẩm thứ hai -->
@@ -917,7 +1091,7 @@
                                         <!-- Hình ảnh sản phẩm với liên kết đến trang chi tiết -->
                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
                                             <!-- Hình ảnh sản phẩm -->
-                                            <img class="aspect__img" src="images/slider/product10.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/slider/Bánh su kem truyền thống.png" alt=""></a>
                                         <!-- Đồng hồ đếm ngược cho sản phẩm đặc biệt -->
                                         <div class="product-o__special-count-wrap">
                                             <div class="countdown countdown--style-special" data-countdown="2020/05/01"></div><!-- Thời gian còn lại cho deal -->
@@ -925,35 +1099,35 @@
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
-                                                    <!-- Xem nhanh sản phẩm -->
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+
+                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                 <li>
-                                                    <!-- Thêm vào giỏ hàng -->
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+
+                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                 <li>
-                                                    <!-- Thêm vào danh sách yêu thích -->
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                 <li>
-                                                    <!-- Nhận thông báo qua email khi giá giảm -->
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <!-- Danh mục sản phẩm -->
                                     <span class="product-o__category">
 
-                                        <a href="shop-side-version-2.html">Bánh kem</a></span>
+                                        <a href="shop-side-version-2.html">BÁNH SU KEM</a></span>
 
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">Bánh kem Earl Grey</a></span>
+                                        <a href="product-detail.html">BÁNH SU KEM TRUYỀN THỐNG</a></span>
                                     <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
                                         <span class="product-o__review">(2)</span></div>
 
-                                    <span class="product-o__price">140.000 VNĐ
+                                    <span class="product-o__price">40.500 VNĐ
 
-                                        <span class="product-o__discount">160.000 VNĐ</span></span>
+                                        <span class="product-o__discount">45.000 VNĐ</span></span>
                                 </div>
                             </div>
                         </div>
@@ -964,232 +1138,7 @@
             <!--====== End - Section 3 ======-->
 
 
-            <!--====== Section 4 ======-->
-            <div class="u-s-p-b-60">
-
-                <!--====== Section Intro ======-->
-                <div class="section__intro u-s-m-b-46">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Tiêu đề chính của phần giới thiệu -->
-                                <div class="section__text-wrap">
-                                    <h1 class="section__heading u-c-secondary u-s-m-b-12">TRENDING</h1>
-                                    <!-- Thông điệp khuyến khích người dùng -->
-                                    <span class="section__span u-c-silver">ĐÓN CHỜ BST MỚI CÙNG SIXSENSE</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--====== End - Section Intro ======-->
-
-
-                <!--====== Section Content ======-->
-                <div class="section__content">
-                    <div class="container">
-                        <div class="slider-fouc">
-                            <!-- Khởi tạo một slider với carousel -->
-                            <div class="owl-carousel product-slider" data-item="4">
-                                <!-- Sản phẩm đầu tiên -->
-                                <div class="u-s-m-b-30">
-                                    <div class="product-o product-o--hover-on">
-                                        <div class="product-o__wrap">
-                                            <!-- Hình ảnh sản phẩm liên kết đến trang chi tiết -->
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                <img class="aspect__img" src="images/slider/product11.jpg" alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
-                                                        <!-- Xem nhanh sản phẩm -->
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
-                                                    <li>
-                                                        <!-- Thêm sản phẩm vào giỏ hàng -->
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
-                                                    <li>
-                                                        <!-- Thêm sản phẩm vào danh sách yêu thích -->
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                    <li>
-                                                        <!-- Nhận thông báo khi giá sản phẩm giảm -->
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Danh mục sản phẩm -->
-                                        <span class="product-o__category">
-
-                                            <a href="shop-side-version-2.html">Bánh kem</a></span>
-                                        <!-- Tên sản phẩm -->
-                                        <span class="product-o__name">
-
-                                            <a href="product-detail.html">Cheese cake</a></span>
-                                        <!-- Đánh giá sản phẩm -->
-                                        <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                            <span class="product-o__review">(0)</span></div><!-- Số lượng đánh giá -->
-                                        <!-- Giá sản phẩm và giá gốc -->
-                                        <span class="product-o__price">125.000 VNĐ
-
-                                            <span class="product-o__discount">160.000 VNĐ</span></span><!-- Giá gốc -->
-                                    </div>
-                                </div>
-                                <div class="u-s-m-b-30">
-                                    <div class="product-o product-o--hover-on">
-                                        <div class="product-o__wrap">
-
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                <img class="aspect__img" src="images/slider/product13.jpg" alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <span class="product-o__category">
-
-                                            <a href="shop-side-version-2.html">Bánh kem</a></span>
-
-                                        <span class="product-o__name">
-
-                                            <a href="product-detail.html">Bánh kem bông lan</a></span>
-                                        <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                            <span class="product-o__review">(0)</span></div>
-
-                                        <span class="product-o__price">125.000 VNĐ
-
-                                            <span class="product-o__discount">160.000 VNĐ</span></span>
-                                    </div>
-                                </div>
-                                <div class="u-s-m-b-30">
-                                    <div class="product-o product-o--hover-on">
-                                        <div class="product-o__wrap">
-
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                <img class="aspect__img" src="images/slider/product14.jpg" alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <span class="product-o__category">
-
-                                            <a href="shop-side-version-2.html">Bánh tiramisu</a></span>
-
-                                        <span class="product-o__name">
-
-                                            <a href="product-detail.html">Tiramisu kem</a></span>
-                                        <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                            <span class="product-o__review">(0)</span></div>
-
-                                        <span class="product-o__price">65.000 VNĐ
-
-                                            <span class="product-o__discount">75.000 VNĐ</span></span>
-                                    </div>
-                                </div>
-                                <div class="u-s-m-b-30">
-                                    <div class="product-o product-o--hover-on">
-                                        <div class="product-o__wrap">
-
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                <img class="aspect__img" src="images/slider/product15.jpg" alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <span class="product-o__category">
-
-                                            <a href="shop-side-version-2.html">Bánh ngọt</a></span>
-
-                                        <span class="product-o__name">
-
-                                            <a href="product-detail.html">Bánh mousse việt quất</a></span>
-                                        <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                            <span class="product-o__review">(0)</span></div>
-
-                                        <span class="product-o__price">55.000 VNĐ
-
-                                            <span class="product-o__discount">60.000 VNĐ</span></span>
-                                    </div>
-                                </div>
-                                <div class="u-s-m-b-30">
-                                    <div class="product-o product-o--hover-on">
-                                        <div class="product-o__wrap">
-
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                <img class="aspect__img" src="../images/slider/product2.jpg" alt=""></a>
-                                            <div class="product-o__action-wrap">
-                                                <ul class="product-o__action-list">
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
-                                                    <li>
-
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--====== End - Section Content ======-->
-            </div>
-            <!--====== End - Section 4 ======-->
+            
 
 
             <!--====== Section 5 ======-->
@@ -1249,10 +1198,10 @@
 
                                                         <div class="content-sale">
                                                         <span class="heading-sale">
-                                                            <a href="product-detail-variable.html">Bánh Mousse Việt Quất</a></span>
+                                                            <a href="product-detail-variable.html">BÁNH DONUT DÂU/a></span>
                                                             <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
 
-                                                                <span class="product-o__price"><span class="sale-price">59.000đ</span>
+                                                                <span class="product-o__price"><span class="sale-price">36.000 VNĐ</span>
 
                                                             <div class="btn-sale">
                                                                 <a class="banner-bg__shop-now btn--e-secondary" href="shop-side-version-2.html">Mua Ngay</a>
@@ -1289,9 +1238,9 @@
                             <div class="col-lg-12">
                                 <div class="section__text-wrap">
                                     <!-- Tiêu đề phần sản phẩm yêu thích -->
-                                    <h1 class="section__heading u-c-secondary u-s-m-b-12">Bánh ưa chuộng</h1>
+                                    <h1 class="section__heading u-c-secondary u-s-m-b-12">BÁNH ĐƯỢC ƯA CHUỘNG </h1>
 
-                                    <span class="section__span u-c-silver">Khám phá ngay</span>
+                                    <span class="section__span u-c-silver">KHÁM PHÁ NGAY</span>
                                 </div>
                             </div>
                         </div>
@@ -1310,21 +1259,21 @@
                                         <!-- Hình ảnh sản phẩm liên kết đến trang chi tiết sản phẩm -->
                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                            <img class="aspect__img" src="images/slider/product17.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/Các loại bánh khác/Macaron kẹp kem.png" alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
-                                                    <!-- Xem nhanh sản phẩm -->
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+
+                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                 <li>
-                                                    <!-- Thêm vào giỏ hàng -->
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+
+                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                 <li>
-                                                    <!-- Thêm vào danh sách yêu thích -->
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                 <li>
-                                                    <!-- Nhận thông báo khi giá giảm -->
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1332,18 +1281,18 @@
 
                                     <span class="product-o__category">
 
-                                        <a href="shop-side-version-2.html">Bánh tiramisu</a></span>
+                                        <a href="shop-side-version-2.html">MACARON</a></span>
 
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">Tiramisu Matcha</a></span>
+                                        <a href="product-detail.html">MACARON KẸP KEM</a></span>
                                     <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                         <span class="product-o__review">(23)</span></div>
 
-                                    <span class="product-o__price">45.000 VNĐ
+                                    <span class="product-o__price">36.000 VNĐ
 
-                                        <span class="product-o__discount">60.000 VNĐ</span></span>
+                                        <span class="product-o__discount">40.000 VNĐ</span></span>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
@@ -1352,39 +1301,39 @@
 
                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                            <img class="aspect__img" src="images/slider/product18.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/Các loại bánh khác/Donut chocolate.png" alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                 <li>
 
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                 <li>
 
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <span class="product-o__category">
 
-                                        <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                        <a href="shop-side-version-2.html">DONUT</a></span>
 
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">Bánh bông lan kiwi</a></span>
+                                        <a href="product-detail.html">DONUT Chocolate</a></span>
                                     <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                         <span class="product-o__review">(23)</span></div>
 
-                                    <span class="product-o__price">65.000 VNĐ
+                                    <span class="product-o__price">36.000 VNĐ
 
-                                        <span class="product-o__discount">75.000 VNĐ</span></span>
+                                        <span class="product-o__discount">40.000 VNĐ</span></span>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
@@ -1393,39 +1342,39 @@
 
                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                            <img class="aspect__img" src="images/slider/product19.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/product/Các loại bánh khác/Macaron vị matcha.png" alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                 <li>
 
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                 <li>
 
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <span class="product-o__category">
 
-                                        <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                        <a href="shop-side-version-2.html">MACARON</a></span>
 
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">Panna Cotta Ngàn lớp</a></span>
+                                        <a href="product-detail.html">MACARON VỊ MATCHA</a></span>
                                     <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                         <span class="product-o__review">(23)</span></div>
 
-                                    <span class="product-o__price">25.000 VNĐ
+                                    <span class="product-o__price">27.000 VNĐ
 
-                                        <span class="product-o__discount">60.000 VNĐ</span></span>
+                                        <span class="product-o__discount">30.000 VNĐ</span></span>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
@@ -1434,39 +1383,37 @@
 
                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                            <img class="aspect__img" src="images/slider/product20.jpg" alt=""></a>
+                                            <img class="aspect__img" src="images/slider/Bánh bông lan phô mai.png" alt=""></a>
                                         <div class="product-o__action-wrap">
                                             <ul class="product-o__action-list">
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem"><i class="fas fa-search-plus"></i></a></li>
                                                 <li>
 
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Thêm vào giỏ hàng"><i class="fas fa-plus-circle"></i></a></li>
                                                 <li>
 
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"><i class="fas fa-heart"></i></a></li>
                                                 <li>
 
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Nhận mail khi giảm giá"><i class="fas fa-envelope"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <span class="product-o__category">
 
-                                        <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                        <a href="shop-side-version-2.html">BÁNH BÔNG LAN</a></span>
 
                                     <span class="product-o__name">
 
-                                        <a href="product-detail.html">Tiramisu chocolate</a></span>
+                                        <a href="product-detail.html">BÁNH BÔNG LAN PHÔ MAI</a></span>
                                     <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                         <span class="product-o__review">(23)</span></div>
 
-                                    <span class="product-o__price">55.000 VNĐ
-
-                                        <span class="product-o__discount">60.000 VNĐ</span></span>
+                                    <span class="product-o__price">55.000 VNĐ</span>
                                 </div>
                             </div>
                         </div>
@@ -1568,18 +1515,18 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product29.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh ngọt & bánh nướng/Bánh mì kẹp mật ong.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH MÌ</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Bánh trứng chảy</a></span>
+                                                        <a href="product-detail.html">BÁNH MÌ KẸP MẬT ONG</a></span>
 
-                                                    <span class="product-l__price">25.000 VNĐ</span></div>
+                                                    <span class="product-l__price">14.000 VNĐ</span></div>
                                             </div>
                                         </li>
                                         <li class="column-product__item">
@@ -1588,18 +1535,18 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product28.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh Giáng Sinh.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Bánh kem</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH GIÁNG SINH</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Bánh dâu nhiệt đới</a></span>
+                                                        <a href="product-detail.html">BÁNH GIÁNG SINH</a></span>
 
-                                                    <span class="product-l__price">35.000 VNĐ</span></div>
+                                                    <span class="product-l__price">200.000 VNĐ</span></div>
                                             </div>
                                         </li>
                                         <li class="column-product__item">
@@ -1608,18 +1555,18 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product21.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh tuyết Noel.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH GIÁNG SINH</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Panna cotta bọt biển</a></span>
+                                                        <a href="product-detail.html">BÁNH TUYẾT NOEL</a></span>
 
-                                                    <span class="product-l__price">45.000 VNĐ</span></div>
+                                                    <span class="product-l__price">175.000 VNĐ</span></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -1636,20 +1583,18 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product27.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh mini cupcake.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH MINI</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Bánh cade</a></span>
+                                                        <a href="product-detail.html">BÁNH MINI CUPCAKE</a></span>
 
-                                                    <span class="product-l__price">34.000 VNĐ
-
-                                                        <span class="product-l__discount">50.000 VNĐ</span></span></div>
+                                                    <span class="product-l__price">25.000 VNĐ</span>
                                             </div>
                                         </li>
                                         <li class="column-product__item">
@@ -1658,20 +1603,20 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product22.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh mì kẹp/Burger gà.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Các bánh khác</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH HAMBURGER</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Panna cotta kiwi</a></span>
+                                                        <a href="product-detail.html">BURGER GÀ</a></span>
 
-                                                    <span class="product-l__price">34.000 VNĐ
+                                                    <span class="product-l__price">36.000 VNĐ
 
-                                                        <span class="product-l__discount">55.000 VNĐ</span></span></div>
+                                                        <span class="product-l__discount">45.000 VNĐ</span></span></div>
                                             </div>
                                         </li>
                                         <li class="column-product__item">
@@ -1680,20 +1625,20 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product23.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh mì kẹp/Burger bò.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH HAMBURGER</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Mousse Chocolate</a></span>
+                                                        <a href="product-detail.html">BURGER BÒ</a></span>
 
-                                                    <span class="product-l__price">55.000 VNĐ
+                                                    <span class="product-l__price">36.000 VNĐ
 
-                                                        <span class="product-l__discount">60.000 VNĐ</span></span></div>
+                                                        <span class="product-l__discount">45.000 VNĐ</span></span></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -1710,17 +1655,17 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product24.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh mini tart trái cây.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
                                                     <div class="product-l__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH MINI</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Waffle kem</a></span>
+                                                        <a href="product-detail.html">BÁNH MINI TART TRÁI CÂY</a></span>
 
                                                     <span class="product-l__price">25.000 VNĐ</span>
                                                 </div>
@@ -1732,19 +1677,19 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product25.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh mini choco lava.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
                                                     <div class="product-l__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Bánh kem</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH MINI</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Bánh kem bông lan whip</a></span>
+                                                        <a href="product-detail.html">BÁNH MINI CHOCO LAVA</a></span>
 
-                                                    <span class="product-l__price">125.000 VNĐ</span>
+                                                    <span class="product-l__price">20.000 VNĐ</span>
                                                 </div>
                                             </div>
                                         </li>
@@ -1754,19 +1699,19 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/slider/product26.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="images/product/Bánh mì/Bánh Brioche truyền thống.png" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
                                                     <div class="product-l__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
 
                                                     <span class="product-l__category">
 
-                                                        <a href="shop-side-version-2.html">Bánh ngọt</a></span>
+                                                        <a href="shop-side-version-2.html">BÁNH BRIOCHE</a></span>
 
                                                     <span class="product-l__name">
 
-                                                        <a href="product-detail.html">Bánh nướng chuối khoai môn</a></span>
+                                                        <a href="product-detail.html">BÁNH BRIOCHE TRUYỀN THỐNG</a></span>
 
-                                                    <span class="product-l__price">65.000 VNĐ</span>
+                                                    <span class="product-l__price">30.000 VNĐ</span>
                                                 </div>
                                             </div>
                                         </li>
@@ -2552,238 +2497,9 @@
         <!--====== Modal Section ======-->
 
 
-        <!--====== Lướt xem ======-->
-        <div class="modal fade" id="quick-look">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content modal--shadow">
-
-                    <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-5">
-
-                                <!--====== Dấu Dẫn Đường Sản Phẩm ======-->
-                                <div class="pd-breadcrumb u-s-m-b-30">
-                                    <ul class="pd-breadcrumb__list">
-                                        <li class="has-separator">
-
-                                            <a href="index.hml">Home</a></li>
-                                        <li class="has-separator">
-
-                                            <a href="shop-side-version-2.html">Electronics</a></li>
-                                        <li class="has-separator">
-
-                                            <a href="shop-side-version-2.html">DSLR Cameras</a></li>
-                                        <li class="is-marked">
-
-                                            <a href="shop-side-version-2.html">Nikon Cameras</a></li>
-                                    </ul>
-                                </div>
-                                <!--====== Kết thúc - Dấu Dẫn Đường Sản Phẩm ======-->
 
 
-                                <!--====== Chi tiết sản phẩm======-->
-                                <div class="pd u-s-m-b-30">
-                                    <div class="pd-wrap">
-                                        <div id="js-product-detail-modal">
-                                            <div>
 
-                                                <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="u-s-m-t-15">
-                                        <div id="js-product-detail-modal-thumbnail">
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--====== Kết thúc - Chi tiết sản phẩm ======-->
-                            </div>
-                            <div class="col-lg-7">
-
-                                <!--====== Chi tiết sản phẩm lề phải ======-->
-                                <div class="pd-detail">
-                                    <div>
-
-                                        <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span></div>
-                                    <div>
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__price">$6.99</span>
-
-                                            <span class="pd-detail__discount">(76% OFF)</span><del class="pd-detail__del">$28.97</del></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="pd-detail__review u-s-m-l-4">
-
-                                                <a href="product-detail.html">23 Reviews</a></span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__stock">200 in stock</span>
-
-                                            <span class="pd-detail__left">Only 2 left</span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-
-                                        <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
-
-                                                <a href="signin.html">Add to Wishlist</a>
-
-                                                <span class="pd-detail__click-count">(222)</span></span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__click-wrap"><i class="far fa-envelope u-s-m-r-6"></i>
-
-                                                <a href="signin.html">Email me When the price drops</a>
-
-                                                <span class="pd-detail__click-count">(20)</span></span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <ul class="pd-social-list">
-                                            <li>
-
-                                                <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li>
-
-                                                <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li>
-
-                                                <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
-                                            <li>
-
-                                                <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li>
-
-                                                <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <form class="pd-detail__form">
-                                            <div class="pd-detail-inline-2">
-                                                <div class="u-s-m-b-15">
-
-                                                    <!--====== Input Counter ======-->
-                                                    <div class="input-counter">
-
-                                                        <span class="input-counter__minus fas fa-minus"></span>
-
-                                                        <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                                        <span class="input-counter__plus fas fa-plus"></span></div>
-                                                    <!--====== End - Input Counter ======-->
-                                                </div>
-                                                <div class="u-s-m-b-15">
-
-                                                    <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-
-                                        <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
-                                        <ul class="pd-detail__policy-list">
-                                            <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                                                <span>Buyer Protection.</span></li>
-                                            <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                                                <span>Full Refund if you don't receive your order.</span></li>
-                                            <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                                                <span>Returns accepted if product not as described.</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--====== End - Product Right Side Details ======-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--====== End - Quick Look Modal ======-->
-
-
-        <!--====== Thêm vào giỏ hàng ======-->
-        <div class="modal fade" id="add-to-cart">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content modal-radius modal-shadow">
-
-                    <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="success u-s-m-b-30">
-                                    <div class="success__text-wrap"><i class="fas fa-check"></i>
-
-                                        <span>Item is added successfully!</span></div>
-                                    <div class="success__img-wrap">
-
-                                        <img class="u-img-fluid" src="images/product/electronic/product1.jpg" alt=""></div>
-                                    <div class="success__info-wrap">
-
-                                        <span class="success__name">Beats Bomb Wireless Headphone</span>
-
-                                        <span class="success__quantity">Quantity: 1</span>
-
-                                        <span class="success__price">$170.00</span></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="s-option">
-
-                                    <span class="s-option__text">1 item (s) in your cart</span>
-                                    <div class="s-option__link-box">
-
-                                        <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE SHOPPING</a>
-
-                                        <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">VIEW CART</a>
-
-                                        <a class="s-option__link btn--e-brand-shadow" href="checkout.html">PROCEED TO CHECKOUT</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--====== Kết thúc - Thêm vào giỏ hàng ======-->
 
 
         <!--====== Hộp Đăng Ký Nhận Tin======-->

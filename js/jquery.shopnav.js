@@ -107,20 +107,20 @@
             $($megaMenuContent[$(this).index()]).addClass('js-active');
         };
         $(document).ready(function () {
-            $('.table-p__delete-link').on('click', function (e) {
-                e.preventDefault();
-        
-                // Lấy dòng sản phẩm
-                var $row = $(this).closest('tr');
-        
-                // Thêm hiệu ứng fade out
-                $row.fadeOut(500, function () {
-                    // Xóa dòng sau hiệu ứng
-                    $row.remove();
-                });
-            });
+    $('.table-p__delete-link').on('click', function (e) {
+        e.preventDefault();
+
+        // Lấy dòng sản phẩm
+        var $row = $(this).closest('tr');
+
+        // Thêm hiệu ứng fade out
+        $row.fadeOut(500, function () {
+            // Xóa dòng sau hiệu ứng
+            $row.remove();
         });
-        
+    });
+});
+
         /**
          * Mega menu on click function
          */
