@@ -6482,29 +6482,30 @@ input::-ms-clear {
     color: #333333;
 }
 
+.mini-action {
+  width: 100%; /* Use full width for better alignment */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Space between buttons */
+}
+
 .mini-link {
-  display: block;
+  flex: 1; /* Make both buttons take equal space */
   text-align: center;
-  padding: 8px 20px; /* Reduced padding */
+  padding: 10px; /* Consistent padding */
   border-radius: 5px;
-  margin-bottom: 15px; /* Adjusted margin */
-  font-weight: 600; /* Slightly reduced font weight */
-  font-size: 12px; /* Reduced font size */
+  margin: 0 5px; /* Small margin between buttons */
+  font-weight: 600; /* Increased font weight for better visibility */
+  font-size: 12px; /* Font size remains the same */
   color: #ffffff;
-  background-color: #28a745; /* Green */
+  background-color: #F5DEB3; 
   transition: background 0.3s;
 }
 
 .mini-link:hover {
-  background-color: #218838; /* Darker Green */
+  background-color: #FFF8DC; /* Màu nâu */
 }
 
-.mini-action {
-  width: 65%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-}
 
 @media (max-width: 1024px) {
   .mini-cart-shop-link > .total-item-round {
