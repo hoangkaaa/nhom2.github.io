@@ -1436,7 +1436,7 @@ input::-ms-clear {
         justify-content: space-between;
     margin-bottom: 6px; }
   .product-r__name, .product-r__price {
-    -ms-flex: 0 1 auto; }
+    -ms-flexbox: 0 1 auto; }
   .product-r__name {
     display: block; }
     .product-r__name > a {
@@ -2291,7 +2291,7 @@ input::-ms-clear {
     -ms-flex-align: center;
         align-items: center; }
   .lower-footer__copyright, .lower-footer__payment {
-    -ms-flex: 0 1 auto; }
+    -ms-flexbox: 0 1 auto; }
   .lower-footer__copyright span {
     font-size: 13px;
     color: #ffffff; }
@@ -2754,7 +2754,7 @@ input::-ms-clear {
   color: white;
 }
 .service__icon, .service__info-wrap {
-    -ms-flex: 0 1 auto; }
+    -ms-flexbox: 0 1 auto; }
   .service__icon {
     margin-right: 20px; }
     .service__icon > i {
@@ -3275,7 +3275,7 @@ input::-ms-clear {
     -ms-flex-pack: justify;
         justify-content: space-between; }
   .w-r__wrap-1, .w-r__wrap-2 {
-    -ms-flex: 0 1 auto; }
+    -ms-flexbox: 0 1 auto; }
   .w-r__wrap-1 {
     display: -ms-flexbox;
     display: flex;
@@ -3344,7 +3344,7 @@ input::-ms-clear {
   -ms-flex-pack: justify;
       justify-content: space-between; }
   .route-box__g {
-    -ms-flex: 0 1 auto; }
+    -ms-flexxbox: 0 1 auto; }
  /* Phong cách cơ bản cho các nút */
 .route-box__link {
   display: inline-flex;
