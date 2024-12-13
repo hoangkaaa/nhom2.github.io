@@ -2121,23 +2121,21 @@ input::-ms-clear {
 /* 6.2 Secondary Nav */
 .secondary-nav {
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  position: relative;
-  height: 80px;
-  width: 100%;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  -ms-flex-align: center;
-      align-items: center;
-    }
-.maymay{
-    background-image: url(https://i.pinimg.com/736x/17/2f/0c/172f0c3b3fde4f251f7e84b54df4ef62.jpg);
-    }
-.secondary-nav:hover .maymay {
-    opacity: 0.8; /* Giảm độ mờ khi hover */
-    transition: opacity 0.3s ease; /* Hiệu ứng chuyển tiếp */
-  }
+  justify-content: center; /* Center the navigation items */
+}
+
+.ah-list {
+  display: flex;
+  justify-content: center; /* Center the list items */
+  padding: 0; /* Remove default padding */
+}
+
+.ah-list li {
+  list-style: none; /* Remove bullet points */
+  margin: 0 15px; /* Adjust spacing between items */
+}
+
+
 
 .section__heading span{
   color:var(--main-color);
