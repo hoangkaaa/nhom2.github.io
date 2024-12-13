@@ -23,55 +23,55 @@
 
     <style>
         body {
-          padding-bottom: 20px;
+          padding-bottom: 20px; /* Thêm khoảng cách dưới cùng cho body */
         }
         #e_nguyencongnam_left {
-          display: block;
-          position: fixed;
-          z-index: 9999;
-          top: 0;
-          left: 0;
+        display: block; /* Hiển thị hình ảnh bên trái */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+        top: 0; /* Đặt ở trên cùng */
+        left: 0; /* Đặt bên trái */
         }
         #e_nguyencongnam_right {
-          display: block;
-          position: fixed;
-          z-index: 9999;
-          top: 0;
-          right: 0;
+        display: block; /* Hiển thị hình ảnh bên phải */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+        top: 0; /* Đặt ở trên cùng */
+        right: 0; /* Đặt bên phải */
         }
         #e_nguyencongnam_footer {
-          display: block;
-          position: fixed;
-          z-index: 9999;
-          bottom: -50px;
-          left: 0;
-          width: 100%;
-          height: 104px;
-          background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left;
+        display: block; /* Hiển thị footer */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo footer nằm trên các phần tử khác */
+        bottom: -50px; /* Vị trí phía dưới */
+        left: 0; /* Đặt bên trái */
+        width: 100%; /* Chiều rộng 100% */
+        height: 104px; /* Chiều cao cho footer */
+        background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left; /* Hình nền cho footer */
         }
         #e_nguyencongnam_bottom_left {
-          display: block;
-          position: fixed;
-          z-index: 9999;
-          bottom: 20px;
-          left: 20px;
+          display: block; /* Hiển thị hình ảnh ở dưới bên trái */
+          position: fixed; /* Đặt vị trí cố định */
+          z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+          bottom: 20px; /* Vị trí phía dưới */
+          left: 20px; /* Vị trí bên trái */
         }
         .ncv-credit {
           display: none; /* Ẩn dòng chữ và liên kết */
         }
         #snowflakeContainer {
-          position: absolute;
-          left: 0px;
-          top: 0px;
+          position: absolute;/* Đặt vị trí tuyệt đối cho container tuyết */
+          left: 0px;/* Đặt bên trái */
+          top: 0px;/* Đặt ở trên cùng */
         }
         .snowflake {
-          padding-left: 15px;
-          font-size: 14px;
-          line-height: 24px;
-          position: fixed;
-          color: #ebebeb;
-          user-select: none;
-          z-index: 1000;
+          padding-left: 15px;/* Khoảng cách bên trái cho tuyết */
+          font-size: 14px;/* Kích thước chữ cho tuyết */
+          line-height: 24px;/* Chiều cao dòng cho tuyết */
+          position: fixed;/* Đặt vị trí cố định cho tuyết */
+          color: #ebebeb;/* Màu sắc của tuyết */
+          user-select: none;/* Không cho phép chọn tuyết */
+          z-index: 1000;/* Đảm bảo tuyết nằm trên các phần tử khác */
           -moz-user-select: none;
           -ms-user-select: none;
           -khtml-user-select: none;
@@ -79,7 +79,7 @@
           -webkit-touch-callout: none;
         }
         .snowflake:hover {
-          cursor: default;
+          cursor: default;/* Đổi con trỏ khi hover lên tuyết */
         }
       </style>
       
@@ -92,16 +92,16 @@
       </div>
       
       <div id="snowflakeContainer">
-        <p class="snowflake">❄</p>
+        <p class="snowflake">❄</p><!-- Một ký tự tuyết làm mẫu -->
       </div>
       
       <script>
-        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-        var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
+        var requestAnimationFrame = window.requestAnimationFrame || window // Chọn phương thức thích hợp cho animationmozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];// Danh sách các thuộc tính transform
         var transformProperty = getSupportedPropertyName(transforms);
-        var snowflakes = [];
-        var browserWidth;
-        var browserHeight;
+        var snowflakes = [];// Mảng chứa các đối tượng tuyết
+        var browserWidth;// Chiều rộng của trình duyệt
+        var browserHeight;// Chiều cao của trình duyệt
         var numberOfSnowflakes = 100; // Tăng số lượng tuyết
         var resetPosition = false;
       
@@ -114,82 +114,83 @@
         function getSupportedPropertyName(b) {
           for (var a = 0; a < b.length; a++) {
             if (typeof document.body.style[b[a]] != "undefined") {
-              return b[a];
+              return b[a];// Trả về thuộc tính tương thích đầu tiên
             }
           }
-          return null;
+          return null;// Nếu không tìm thấy, trả về null
+    
         }
       
         function Snowflake(b, a, d, e, c) {
-          this.element = b;
-          this.radius = a;
-          this.speed = d;
-          this.xPos = e;
-          this.yPos = c;
-          this.counter = 0;
-          this.sign = Math.random() < 0.5 ? 1 : -1;
-          this.element.style.opacity = 0.5 + Math.random();
-          this.element.style.fontSize = 4 + Math.random() * 20 + "px";
+          this.element = b; // Phần tử tuyết
+          this.radius = a;// Bán kính tuyết
+          this.speed = d;// Tốc độ rơi
+          this.xPos = e;// Vị trí ngang
+          this.yPos = c;// Vị trí dọc
+          this.counter = 0;// Bộ đếm để theo dõi chuyển động
+          this.sign = Math.random() < 0.5 ? 1 : -1;// Ngẫu nhiên chọn chiều chuyển động
+          this.element.style.opacity = 0.5 + Math.random(); // Đặt độ mờ ngẫu nhiên
+          this.element.style.fontSize = 4 + Math.random() * 20 + "px";//Đặt kích thước chữ ngẫu nhiên
         }
       
         Snowflake.prototype.update = function() {
-          this.counter += this.speed / 5000;
-          this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+          this.counter += this.speed / 5000;// Cập nhật bộ đếm
+          this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;// Cập nhật vị trí ngang
           this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
-          setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
+          setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));// Áp dụng vị trí mới
           if (this.yPos > browserHeight) {
-            this.yPos = -50;
+            this.yPos = -50;// Nếu tuyết rơi ra ngoài màn hình, đưa nó trở lại trên cùng
           }
         };
       
         function setTranslate3DTransform(a, c, b) {
-          var d = "translate3d(" + c + "px, " + b + "px, 0)";
-          a.style[transformProperty] = d;
+          var d = "translate3d(" + c + "px, " + b + "px, 0)";// Tạo chuỗi transform
+          a.style[transformProperty] = d;// Áp dụng transform cho phần tử
         }
       
         function generateSnowflakes() {
-          var b = document.querySelector(".snowflake");
+          var b = document.querySelector(".snowflake");// Lấy phần tử tuyết mẫu
           var h = b.parentNode;
-          browserWidth = document.documentElement.clientWidth;
-          browserHeight = document.documentElement.clientHeight;
+          browserWidth = document.documentElement.clientWidth;// Lấy chiều rộng trình duyệt
+          browserHeight = document.documentElement.clientHeight; // Lấy chiều cao trình duyệt
           for (var d = 0; d < numberOfSnowflakes; d++) {
-            var j = b.cloneNode(true);
-            h.appendChild(j);
-            var e = getPosition(50, browserWidth);
-            var a = getPosition(50, browserHeight);
-            var c = 5 + Math.random() * 40;
-            var g = 4 + Math.random() * 10;
-            var f = new Snowflake(j, g, c, e, a);
-            snowflakes.push(f);
+            var j = b.cloneNode(true);// Nhân bản phần tử tuyết
+            h.appendChild(j);// Thêm vào DOM
+            var e = getPosition(50, browserWidth);// Vị trí ngang ngẫu nhiên
+            var a = getPosition(50, browserHeight);// Vị trí dọc ngẫu nhiên
+            var c = 5 + Math.random() * 40;// Tốc độ ngẫu nhiên
+            var g = 4 + Math.random() * 10;// Kích thước ngẫu nhiên
+            var f = new Snowflake(j, g, c, e, a);// Tạo đối tượng tuyết mới
+            snowflakes.push(f);// Thêm vào mảng tuyết
           }
-          h.removeChild(b);
-          moveSnowflakes();
+          h.removeChild(b);// Xóa phần tử mẫu
+          moveSnowflakes();// Bắt đầu di chuyển tuyết
         }
       
         function moveSnowflakes() {
           for (var b = 0; b < snowflakes.length; b++) {
             var a = snowflakes[b];
-            a.update();
+            a.update();// Cập nhật vị trí từng tuyết
           }
           if (resetPosition) {
-            browserWidth = document.documentElement.clientWidth;
-            browserHeight = document.documentElement.clientHeight;
+            browserWidth = document.documentElement.clientWidth; // Cập nhật chiều rộng
+            browserHeight = document.documentElement.clientHeight; // Cập nhật chiều cao
             for (var b = 0; b < snowflakes.length; b++) {
               var a = snowflakes[b];
               a.xPos = getPosition(50, browserWidth);
               a.yPos = getPosition(50, browserHeight);
             }
-            resetPosition = false;
+            resetPosition = false;// Đặt lại cờ
           }
           requestAnimationFrame(moveSnowflakes);
         }
       
         function getPosition(b, a) {
-          return Math.round(-1 * b + Math.random() * (a + 2 * b));
+          return Math.round(-1 * b + Math.random() * (a + 2 * b));// Tạo vị trí ngẫu nhiên
         }
       
         function setResetFlag(a) {
-          resetPosition = true;
+          resetPosition = true;// Đánh dấu cần đặt lại vị trí
         }
       </script>
       
