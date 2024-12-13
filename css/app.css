@@ -3187,12 +3187,12 @@ input::-ms-clear {
 
 .table-p {
   width: 100%;
-  border: 1px solid #eee;
+  border: 1px solid #97602f;
   border-collapse: collapse; 
 }
   .table-p tr {
     position: relative;
-    border-top: 1px solid #eee; 
+    border-top: 1px solid #97602f; 
   }
   .table-p td {
     padding: 20px; 
@@ -3208,7 +3208,7 @@ input::-ms-clear {
   .table-p__img-wrap {
     display: inline-block;
     vertical-align: middle;
-    background-color: #f5f5f5;
+    background-color: #97602f;;
     width: 120px;
     height: 120px;
     overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
