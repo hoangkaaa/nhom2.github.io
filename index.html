@@ -21,187 +21,182 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
 
-<style>
     <style>
-  body {
-    padding-bottom: 20px;
-    margin-top: -26px;
-  }
-  #e_nguyencongnam_left {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-  }
-  #e_nguyencongnam_right {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    right: 0;
-  }
-  #e_nguyencongnam_footer {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    bottom: -50px;
-    left: 0;
-    width: 100%;
-    height: 104px;
-    background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left;
-  }
-  #e_nguyencongnam_bottom_left {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    bottom: 20px;
-    left: 20px;
-  }
-  @media (min-width: 992px) {
-    #e_nguyencongnam_left, #e_nguyencongnam_right, #e_nguyencongnam_footer, #e_nguyencongnam_bottom_left {
-      display: block;
-    }
-  }
-
-  #snowflakeContainer {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-  }
-  .snowflake {
-    padding-left: 15px;
-    font-size: 14px;
-    line-height: 24px;
-    position: fixed;
-    color: #ebebeb;
-    user-select: none;
-    z-index: 1000;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-  }
-  .snowflake:hover {
-    cursor: default;
-  }
-</style>
-
-<img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
-<img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
-<div id="e_nguyencongnam_footer"></div>
-<img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
-<div style="position:fixed;z-index:9999;bottom:3px;right:3px;font-size:12px;color:#8D8D8D;">
-  by <a href="https://nguyencongnam.id.vn/">ncn</a>
-</div>
-
-<div id="snowflakeContainer">
-  <p class="snowflake">❄</p>
-</div>
-
-<script>
-  //<![CDATA[
-  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-  var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
-  var transformProperty = getSupportedPropertyName(transforms);
-  var snowflakes = [];
-  var browserWidth;
-  var browserHeight;
-  var numberOfSnowflakes = 20;
-  var resetPosition = false;
-
-  function setup() {
-    window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
-    window.addEventListener("resize", setResetFlag, false);
-  }
-  setup();
-
-  function getSupportedPropertyName(b) {
-    for (var a = 0; a < b.length; a++) {
-      if (typeof document.body.style[b[a]] != "undefined") {
-        return b[a];
-      }
-    }
-    return null;
-  }
-
-  function Snowflake(b, a, d, e, c) {
-    this.element = b;
-    this.radius = a;
-    this.speed = d;
-    this.xPos = e;
-    this.yPos = c;
-    this.counter = 0;
-    this.sign = Math.random() < 0.5 ? 1 : -1;
-    this.element.style.opacity = 0.5 + Math.random();
-    this.element.style.fontSize = 4 + Math.random() * 20 + "px";
-  }
-
-  Snowflake.prototype.update = function() {
-    this.counter += this.speed / 5000;
-    this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
-    this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
-    setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
-    if (this.yPos > browserHeight) {
-      this.yPos = -50;
-    }
-  };
-
-  function setTranslate3DTransform(a, c, b) {
-    var d = "translate3d(" + c + "px, " + b + "px, 0)";
-    a.style[transformProperty] = d;
-  }
-
-  function generateSnowflakes() {
-    var b = document.querySelector(".snowflake");
-    var h = b.parentNode;
-    browserWidth = document.documentElement.clientWidth;
-    browserHeight = document.documentElement.clientHeight;
-    for (var d = 0; d < numberOfSnowflakes; d++) {
-      var j = b.cloneNode(true);
-      h.appendChild(j);
-      var e = getPosition(50, browserWidth);
-      var a = getPosition(50, browserHeight);
-      var c = 5 + Math.random() * 40;
-      var g = 4 + Math.random() * 10;
-      var f = new Snowflake(j, g, c, e, a);
-      snowflakes.push(f);
-    }
-    h.removeChild(b);
-    moveSnowflakes();
-  }
-
-  function moveSnowflakes() {
-    for (var b = 0; b < snowflakes.length; b++) {
-      var a = snowflakes[b];
-      a.update();
-    }
-    if (resetPosition) {
-      browserWidth = document.documentElement.clientWidth;
-      browserHeight = document.documentElement.clientHeight;
-      for (var b = 0; b < snowflakes.length; b++) {
-        var a = snowflakes[b];
-        a.xPos = getPosition(50, browserWidth);
-        a.yPos = getPosition(50, browserHeight);
-      }
-      resetPosition = false;
-    }
-    requestAnimationFrame(moveSnowflakes);
-  }
-
-  function getPosition(b, a) {
-    return Math.round(-1 * b + Math.random() * (a + 2 * b));
-  }
-
-  function setResetFlag(a) {
-    resetPosition = true;
-  }
-  //]]>
-</script>
-
-</style>
-    
+        body {
+          padding-bottom: 20px;
+        }
+        #e_nguyencongnam_left {
+          display: block;
+          position: fixed;
+          z-index: 9999;
+          top: 0;
+          left: 0;
+        }
+        #e_nguyencongnam_right {
+          display: block;
+          position: fixed;
+          z-index: 9999;
+          top: 0;
+          right: 0;
+        }
+        #e_nguyencongnam_footer {
+          display: block;
+          position: fixed;
+          z-index: 9999;
+          bottom: -50px;
+          left: 0;
+          width: 100%;
+          height: 104px;
+          background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left;
+        }
+        #e_nguyencongnam_bottom_left {
+          display: block;
+          position: fixed;
+          z-index: 9999;
+          bottom: 20px;
+          left: 20px;
+        }
+        .ncv-credit {
+          display: none; /* Ẩn dòng chữ và liên kết */
+        }
+        #snowflakeContainer {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+        }
+        .snowflake {
+          padding-left: 15px;
+          font-size: 14px;
+          line-height: 24px;
+          position: fixed;
+          color: #ebebeb;
+          user-select: none;
+          z-index: 1000;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -khtml-user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+        }
+        .snowflake:hover {
+          cursor: default;
+        }
+      </style>
+      
+      <img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
+      <img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
+      <div id="e_nguyencongnam_footer"></div>
+      <img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
+      <div class="ncv-credit" style="position:fixed;z-index:9999;bottom:3px;right:3px;font-size:12px;color:#8D8D8D;">
+        by <a href="https://nguyencongnam.id.vn/">ncn</a>
+      </div>
+      
+      <div id="snowflakeContainer">
+        <p class="snowflake">❄</p>
+      </div>
+      
+      <script>
+        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];
+        var transformProperty = getSupportedPropertyName(transforms);
+        var snowflakes = [];
+        var browserWidth;
+        var browserHeight;
+        var numberOfSnowflakes = 100; // Tăng số lượng tuyết
+        var resetPosition = false;
+      
+        function setup() {
+          window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+          window.addEventListener("resize", setResetFlag, false);
+        }
+        setup();
+      
+        function getSupportedPropertyName(b) {
+          for (var a = 0; a < b.length; a++) {
+            if (typeof document.body.style[b[a]] != "undefined") {
+              return b[a];
+            }
+          }
+          return null;
+        }
+      
+        function Snowflake(b, a, d, e, c) {
+          this.element = b;
+          this.radius = a;
+          this.speed = d;
+          this.xPos = e;
+          this.yPos = c;
+          this.counter = 0;
+          this.sign = Math.random() < 0.5 ? 1 : -1;
+          this.element.style.opacity = 0.5 + Math.random();
+          this.element.style.fontSize = 4 + Math.random() * 20 + "px";
+        }
+      
+        Snowflake.prototype.update = function() {
+          this.counter += this.speed / 5000;
+          this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+          this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+          setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));
+          if (this.yPos > browserHeight) {
+            this.yPos = -50;
+          }
+        };
+      
+        function setTranslate3DTransform(a, c, b) {
+          var d = "translate3d(" + c + "px, " + b + "px, 0)";
+          a.style[transformProperty] = d;
+        }
+      
+        function generateSnowflakes() {
+          var b = document.querySelector(".snowflake");
+          var h = b.parentNode;
+          browserWidth = document.documentElement.clientWidth;
+          browserHeight = document.documentElement.clientHeight;
+          for (var d = 0; d < numberOfSnowflakes; d++) {
+            var j = b.cloneNode(true);
+            h.appendChild(j);
+            var e = getPosition(50, browserWidth);
+            var a = getPosition(50, browserHeight);
+            var c = 5 + Math.random() * 40;
+            var g = 4 + Math.random() * 10;
+            var f = new Snowflake(j, g, c, e, a);
+            snowflakes.push(f);
+          }
+          h.removeChild(b);
+          moveSnowflakes();
+        }
+      
+        function moveSnowflakes() {
+          for (var b = 0; b < snowflakes.length; b++) {
+            var a = snowflakes[b];
+            a.update();
+          }
+          if (resetPosition) {
+            browserWidth = document.documentElement.clientWidth;
+            browserHeight = document.documentElement.clientHeight;
+            for (var b = 0; b < snowflakes.length; b++) {
+              var a = snowflakes[b];
+              a.xPos = getPosition(50, browserWidth);
+              a.yPos = getPosition(50, browserHeight);
+            }
+            resetPosition = false;
+          }
+          requestAnimationFrame(moveSnowflakes);
+        }
+      
+        function getPosition(b, a) {
+          return Math.round(-1 * b + Math.random() * (a + 2 * b));
+        }
+      
+        function setResetFlag(a) {
+          resetPosition = true;
+        }
+      </script>
+      
+      
+      
+      
+      
 </head>
 <body class="config">
     <div class="preloader is-active">
@@ -638,45 +633,32 @@
                                         <button class="btn filter__btn filter__btn--style-1 js-checked" type="button" data-filter="*">TẤT CẢ</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".headphone">BÁNH TOAST </button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhtoast">BÁNH TOAST </button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".smartphone">BÁNH BRIOCHE</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhbrioche">BÁNH BRIOCHE</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".sportgadget">BÁNH SINH NHẬT</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhsinhnhat">BÁNH SINH NHẬT</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH MINI</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhgiangsinh">BÁNH GIÁNG SINH</button></div>  
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH GIÁNG SINH</button></div>  
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".hamburger">HAMBURGER</button></div>  
+                        
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">HAMBURGER</button></div>  
-                                        <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH MINI</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhmikep">BÁNH MÌ KẸP</button></div>
                                     <div class="filter__category-wrapper">
 
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH MÌ KẸP</button></div>
-                                    <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH SỪNG BÒ</button></div>
-                                    <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH SU KEM</button></div>
-                                    <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH MACARON</button></div>
-                                    <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".dslr">BÁNH DONUT</button></div>
+                                        <button class="btn filter__btn filter__btn--style-1" type="button" data-filter=".banhsungbo">BÁNH SỪNG BÒ</button></div>
+                
 
                                 </div>
                                 <div class="filter__grid-wrapper u-s-m-t-30">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhtoast">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="box">
                                                 <div class="product-o__wrap">
@@ -719,7 +701,7 @@
                                                     <span class="product-o__discount">32.000 VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhbrioche">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -760,7 +742,7 @@
                                                     <span class="product-o__discount">35.000VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhsinhnhat">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -791,17 +773,17 @@
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">BÁNH SINH NHẬT MATCHA</a></span>
+                                                    <a href="product-detail.html">Bánh sinh nhật matcha</a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
                                                 <span class="product-o__price">137.500 VNĐ
 
-                                                    <span class="product-o__discount">250.000 VNĐ</span></span>
+                                                  </span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhsinhnhat">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -832,17 +814,17 @@
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">BÁNH SINH NHẬT SOCOLA</a></span>
+                                                    <a href="product-detail.html">Bánh sinh nhật </a></span>
                                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
 
                                                     <span class="product-o__review">(23)</span></div>
 
                                                 <span class="product-o__price">225.000 VNĐ
 
-                                                    <span class="product-o__discount">250.000 VNĐ</span></span>
+                                                    </span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item dslr">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhgiangsinh">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -881,7 +863,7 @@
                                                 <span class="product-o__price">20.000 VNĐ</span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item dslr">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item hamburger">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -922,7 +904,7 @@
                                                     <span class="product-o__discount">45.000 VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhmikep">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -963,7 +945,7 @@
                                                     <span class="product-o__discount">25.000 VNĐ</span></span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item smartphone">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item banhsungbo">
                                             <div class="product-o product-o--hover-on product-o--radius">
                                                 <div class="product-o__wrap">
 
@@ -2514,238 +2496,9 @@
         <!--====== Modal Section ======-->
 
 
-        <!--====== Lướt xem ======-->
-        <div class="modal fade" id="quick-look">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content modal--shadow">
-
-                    <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-5">
-
-                                <!--====== Dấu Dẫn Đường Sản Phẩm ======-->
-                                <div class="pd-breadcrumb u-s-m-b-30">
-                                    <ul class="pd-breadcrumb__list">
-                                        <li class="has-separator">
-
-                                            <a href="index.hml">Home</a></li>
-                                        <li class="has-separator">
-
-                                            <a href="shop-side-version-2.html">Electronics</a></li>
-                                        <li class="has-separator">
-
-                                            <a href="shop-side-version-2.html">DSLR Cameras</a></li>
-                                        <li class="is-marked">
-
-                                            <a href="shop-side-version-2.html">Nikon Cameras</a></li>
-                                    </ul>
-                                </div>
-                                <!--====== Kết thúc - Dấu Dẫn Đường Sản Phẩm ======-->
 
 
-                                <!--====== Chi tiết sản phẩm======-->
-                                <div class="pd u-s-m-b-30">
-                                    <div class="pd-wrap">
-                                        <div id="js-product-detail-modal">
-                                            <div>
 
-                                                <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
-                                        </div>
-                                    </div>
-                                    <div class="u-s-m-t-15">
-                                        <div id="js-product-detail-modal-thumbnail">
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-1.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-2.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-3.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-4.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg" alt=""></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--====== Kết thúc - Chi tiết sản phẩm ======-->
-                            </div>
-                            <div class="col-lg-7">
-
-                                <!--====== Chi tiết sản phẩm lề phải ======-->
-                                <div class="pd-detail">
-                                    <div>
-
-                                        <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span></div>
-                                    <div>
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__price">$6.99</span>
-
-                                            <span class="pd-detail__discount">(76% OFF)</span><del class="pd-detail__del">$28.97</del></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="pd-detail__review u-s-m-l-4">
-
-                                                <a href="product-detail.html">23 Reviews</a></span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__stock">200 in stock</span>
-
-                                            <span class="pd-detail__left">Only 2 left</span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-
-                                        <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
-
-                                                <a href="signin.html">Add to Wishlist</a>
-
-                                                <span class="pd-detail__click-count">(222)</span></span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__click-wrap"><i class="far fa-envelope u-s-m-r-6"></i>
-
-                                                <a href="signin.html">Email me When the price drops</a>
-
-                                                <span class="pd-detail__click-count">(20)</span></span></div>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <ul class="pd-social-list">
-                                            <li>
-
-                                                <a class="s-fb--color-hover" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li>
-
-                                                <a class="s-tw--color-hover" href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li>
-
-                                                <a class="s-insta--color-hover" href="#"><i class="fab fa-instagram"></i></a></li>
-                                            <li>
-
-                                                <a class="s-wa--color-hover" href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                            <li>
-
-                                                <a class="s-gplus--color-hover" href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-                                        <form class="pd-detail__form">
-                                            <div class="pd-detail-inline-2">
-                                                <div class="u-s-m-b-15">
-
-                                                    <!--====== Input Counter ======-->
-                                                    <div class="input-counter">
-
-                                                        <span class="input-counter__minus fas fa-minus"></span>
-
-                                                        <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="1000">
-
-                                                        <span class="input-counter__plus fas fa-plus"></span></div>
-                                                    <!--====== End - Input Counter ======-->
-                                                </div>
-                                                <div class="u-s-m-b-15">
-
-                                                    <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="u-s-m-b-15">
-
-                                        <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
-                                        <ul class="pd-detail__policy-list">
-                                            <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                                                <span>Buyer Protection.</span></li>
-                                            <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                                                <span>Full Refund if you don't receive your order.</span></li>
-                                            <li><i class="fas fa-check-circle u-s-m-r-8"></i>
-
-                                                <span>Returns accepted if product not as described.</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!--====== End - Product Right Side Details ======-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--====== End - Quick Look Modal ======-->
-
-
-        <!--====== Thêm vào giỏ hàng ======-->
-        <div class="modal fade" id="add-to-cart">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content modal-radius modal-shadow">
-
-                    <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <div class="success u-s-m-b-30">
-                                    <div class="success__text-wrap"><i class="fas fa-check"></i>
-
-                                        <span>Item is added successfully!</span></div>
-                                    <div class="success__img-wrap">
-
-                                        <img class="u-img-fluid" src="images/product/electronic/product1.jpg" alt=""></div>
-                                    <div class="success__info-wrap">
-
-                                        <span class="success__name">Beats Bomb Wireless Headphone</span>
-
-                                        <span class="success__quantity">Quantity: 1</span>
-
-                                        <span class="success__price">$170.00</span></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="s-option">
-
-                                    <span class="s-option__text">1 item (s) in your cart</span>
-                                    <div class="s-option__link-box">
-
-                                        <a class="s-option__link btn--e-white-brand-shadow" data-dismiss="modal">CONTINUE SHOPPING</a>
-
-                                        <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">VIEW CART</a>
-
-                                        <a class="s-option__link btn--e-brand-shadow" href="checkout.html">PROCEED TO CHECKOUT</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--====== Kết thúc - Thêm vào giỏ hàng ======-->
 
 
         <!--====== Hộp Đăng Ký Nhận Tin======-->
