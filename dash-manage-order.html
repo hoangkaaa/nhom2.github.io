@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
-    <title>Ludus - Electronics, Apparel, Computers, Books, DVDs & more</title>
+    <title>Sixsense- tiệm bánh tuyệt vời</title>
 
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
@@ -20,1359 +20,447 @@
 
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
+
+    <style>
+        body {
+          padding-bottom: 20px; /* Thêm khoảng cách dưới cùng cho body */
+        }
+        #e_nguyencongnam_left {
+        display: block; /* Hiển thị hình ảnh bên trái */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+        top: 0; /* Đặt ở trên cùng */
+        left: 0; /* Đặt bên trái */
+        }
+        #e_nguyencongnam_right {
+        display: block; /* Hiển thị hình ảnh bên phải */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+        top: 0; /* Đặt ở trên cùng */
+        right: 0; /* Đặt bên phải */
+        }
+        #e_nguyencongnam_footer {
+        display: block; /* Hiển thị footer */
+        position: fixed; /* Đặt vị trí cố định */
+        z-index: 9999; /* Đảm bảo footer nằm trên các phần tử khác */
+        bottom: -50px; /* Vị trí phía dưới */
+        left: 0; /* Đặt bên trái */
+        width: 100%; /* Chiều rộng 100% */
+        height: 104px; /* Chiều cao cho footer */
+        background: url(https://nguyencongnam.id.vn/wp-content/uploads/2023/11/ft.png) repeat-x bottom left; /* Hình nền cho footer */
+        }
+        #e_nguyencongnam_bottom_left {
+          display: block; /* Hiển thị hình ảnh ở dưới bên trái */
+          position: fixed; /* Đặt vị trí cố định */
+          z-index: 9999; /* Đảm bảo hình ảnh nằm trên các phần tử khác */
+          bottom: 20px; /* Vị trí phía dưới */
+          left: 20px; /* Vị trí bên trái */
+        }
+        .ncv-credit {
+          display: none; /* Ẩn dòng chữ và liên kết */
+        }
+        #snowflakeContainer {
+          position: absolute;/* Đặt vị trí tuyệt đối cho container tuyết */
+          left: 0px;/* Đặt bên trái */
+          top: 0px;/* Đặt ở trên cùng */
+        }
+        .snowflake {
+          padding-left: 15px;/* Khoảng cách bên trái cho tuyết */
+          font-size: 14px;/* Kích thước chữ cho tuyết */
+          line-height: 24px;/* Chiều cao dòng cho tuyết */
+          position: fixed;/* Đặt vị trí cố định cho tuyết */
+          color: #ebebeb;/* Màu sắc của tuyết */
+          user-select: none;/* Không cho phép chọn tuyết */
+          z-index: 1000;/* Đảm bảo tuyết nằm trên các phần tử khác */
+          -moz-user-select: none;
+          -ms-user-select: none;
+          -khtml-user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+        }
+        .snowflake:hover {
+          cursor: default;/* Đổi con trỏ khi hover lên tuyết */
+        }
+      </style>
+      
+      <img id="e_nguyencongnam_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topleft.png" />
+      <img id="e_nguyencongnam_right" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/topright.png" />
+      <div id="e_nguyencongnam_footer"></div>
+      <img id="e_nguyencongnam_bottom_left" src="https://nguyencongnam.id.vn/wp-content/uploads/2023/11/bottomleft.png" />
+      <div class="ncv-credit" style="position:fixed;z-index:9999;bottom:3px;right:3px;font-size:12px;color:#8D8D8D;">
+        by <a href="https://nguyencongnam.id.vn/">ncn</a>
+      </div>
+      
+      <div id="snowflakeContainer">
+        <p class="snowflake">❄</p><!-- Một ký tự tuyết làm mẫu -->
+      </div>
+      
+      <script>
+        var requestAnimationFrame = window.requestAnimationFrame || window // Chọn phương thức thích hợp cho animationmozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        var transforms = ["transform", "msTransform", "webkitTransform", "mozTransform", "oTransform"];// Danh sách các thuộc tính transform
+        var transformProperty = getSupportedPropertyName(transforms);
+        var snowflakes = [];// Mảng chứa các đối tượng tuyết
+        var browserWidth;// Chiều rộng của trình duyệt
+        var browserHeight;// Chiều cao của trình duyệt
+        var numberOfSnowflakes = 100; // Tăng số lượng tuyết
+        var resetPosition = false;
+      
+        function setup() {
+          window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+          window.addEventListener("resize", setResetFlag, false);
+        }
+        setup();
+      
+        function getSupportedPropertyName(b) {
+          for (var a = 0; a < b.length; a++) {
+            if (typeof document.body.style[b[a]] != "undefined") {
+              return b[a];// Trả về thuộc tính tương thích đầu tiên
+            }
+          }
+          return null;// Nếu không tìm thấy, trả về null
+    
+        }
+      
+        function Snowflake(b, a, d, e, c) {
+          this.element = b; // Phần tử tuyết
+          this.radius = a;// Bán kính tuyết
+          this.speed = d;// Tốc độ rơi
+          this.xPos = e;// Vị trí ngang
+          this.yPos = c;// Vị trí dọc
+          this.counter = 0;// Bộ đếm để theo dõi chuyển động
+          this.sign = Math.random() < 0.5 ? 1 : -1;// Ngẫu nhiên chọn chiều chuyển động
+          this.element.style.opacity = 0.5 + Math.random(); // Đặt độ mờ ngẫu nhiên
+          this.element.style.fontSize = 4 + Math.random() * 20 + "px";//Đặt kích thước chữ ngẫu nhiên
+        }
+      
+        Snowflake.prototype.update = function() {
+          this.counter += this.speed / 5000;// Cập nhật bộ đếm
+          this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;// Cập nhật vị trí ngang
+          this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+          setTranslate3DTransform(this.element, Math.round(this.xPos), Math.round(this.yPos));// Áp dụng vị trí mới
+          if (this.yPos > browserHeight) {
+            this.yPos = -50;// Nếu tuyết rơi ra ngoài màn hình, đưa nó trở lại trên cùng
+          }
+        };
+      
+        function setTranslate3DTransform(a, c, b) {
+          var d = "translate3d(" + c + "px, " + b + "px, 0)";// Tạo chuỗi transform
+          a.style[transformProperty] = d;// Áp dụng transform cho phần tử
+        }
+      
+        function generateSnowflakes() {
+          var b = document.querySelector(".snowflake");// Lấy phần tử tuyết mẫu
+          var h = b.parentNode;
+          browserWidth = document.documentElement.clientWidth;// Lấy chiều rộng trình duyệt
+          browserHeight = document.documentElement.clientHeight; // Lấy chiều cao trình duyệt
+          for (var d = 0; d < numberOfSnowflakes; d++) {
+            var j = b.cloneNode(true);// Nhân bản phần tử tuyết
+            h.appendChild(j);// Thêm vào DOM
+            var e = getPosition(50, browserWidth);// Vị trí ngang ngẫu nhiên
+            var a = getPosition(50, browserHeight);// Vị trí dọc ngẫu nhiên
+            var c = 5 + Math.random() * 40;// Tốc độ ngẫu nhiên
+            var g = 4 + Math.random() * 10;// Kích thước ngẫu nhiên
+            var f = new Snowflake(j, g, c, e, a);// Tạo đối tượng tuyết mới
+            snowflakes.push(f);// Thêm vào mảng tuyết
+          }
+          h.removeChild(b);// Xóa phần tử mẫu
+          moveSnowflakes();// Bắt đầu di chuyển tuyết
+        }
+      
+        function moveSnowflakes() {
+          for (var b = 0; b < snowflakes.length; b++) {
+            var a = snowflakes[b];
+            a.update();// Cập nhật vị trí từng tuyết
+          }
+          if (resetPosition) {
+            browserWidth = document.documentElement.clientWidth; // Cập nhật chiều rộng
+            browserHeight = document.documentElement.clientHeight; // Cập nhật chiều cao
+            for (var b = 0; b < snowflakes.length; b++) {
+              var a = snowflakes[b];
+              a.xPos = getPosition(50, browserWidth);
+              a.yPos = getPosition(50, browserHeight);
+            }
+            resetPosition = false;// Đặt lại cờ
+          }
+          requestAnimationFrame(moveSnowflakes);
+        }
+      
+        function getPosition(b, a) {
+          return Math.round(-1 * b + Math.random() * (a + 2 * b));// Tạo vị trí ngẫu nhiên
+        }
+      
+        function setResetFlag(a) {
+          resetPosition = true;// Đánh dấu cần đặt lại vị trí
+        }
+      </script>
+      
+      
+      
+      
+      
 </head>
 <body class="config">
     <div class="preloader is-active">
         <div class="preloader__wrap">
-
-            <img class="preloader__img" src="images/preloader.png" alt=""></div>
+            <img class="preloader__img" src="images/banners/Brown Cream Modern Minimalist Homemade Cookies Facebook Cover (1920 x 900 px).jpg" alt="">
+        </div>
     </div>
 
-    <!--====== Main App ======-->
+    <!--====== Ứng Dụng Chính ======-->
     <div id="app">
+        <div class="top-banner">
+            <p id="banner-text">MERRY CHRISTMAS - GIẢM GIÁ 50% CÁC LOẠI BÁNH SỬ DỤNG TRONG NGÀY</p>
+        </div>
 
-        <!--====== Main Header ======-->
-        <header class="header--style-1 header--box-shadow">
+        <!--====== Tiêu đề chính ======-->
+        <header class="header--style-1">
 
-            <!--====== Nav 1 ======-->
-            <nav class="primary-nav primary-nav-wrapper--border">
+            <!--====== Thanh điều hướng 1  ======-->
+            <nav class="primary-nav primary-nav-wrapper--border catchy">
                 <div class="container">
 
-                    <!--====== Primary Nav ======-->
+                    <!--====== Thanh điều hướng chính ======-->
                     <div class="primary-nav">
 
-                        <!--====== Main Logo ======-->
+                        <!--====== Logo chính ======-->
 
                         <a class="main-logo" href="index.html">
 
-                            <img src="images/logo/logo-1.png" alt=""></a>
-                        <!--====== End - Main Logo ======-->
+                            <img src="images/logo/logo1.png" alt=""></a>
+                        <!--====== Kết thúc - Logo chính======-->
 
 
-                        <!--====== Search Form ======-->
-                        <form class="main-form">
 
+                        <form class="main-form"> <!--Biểu mẫu được điều chỉnh bởi lớp là main-form -->
                             <label for="main-search"></label>
+                            <!--Trường nhập liệu (input) kiểu văn bản (text) được điều chỉnh bởi lớp có tên như bên dưới 
+                              và Gợi ý hoặc mô tả ngắn về nội dung được mong đợi -->
+                            <input class="input-text input-text--border-radius input-text--style-1" type="text" id="main-search" placeholder="Tìm kiếm">
+                            <!-- Nút (button) tìm kiếm, có biểu tượng (icon) từ thư viện Font Awesome được điều chỉnh bởi lớp có tên btn btn--icon fas fa-search main-search-button  -->
+                            <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button>
+                          </form>
+                          <!--====== Kết thúc điều chỉnh thanh tìm kiếm ======-->
+                          <!--====== Thành phần đổ xuống ======-->
 
-                            <input class="input-text input-text--border-radius input-text--style-1" type="text" id="main-search" placeholder="Search">
-
-                            <button class="btn btn--icon fas fa-search main-search-button" type="submit"></button></form>
-                        <!--====== End - Search Form ======-->
-
-
-                        <!--====== Dropdown Main plugin ======-->
-                        <div class="menu-init" id="navigation">
-
-                            <button class="btn btn--icon toggle-button fas fa-cogs" type="button"></button>
-
+                          <div class="menu-init" id="navigation">
+                
                             <!--====== Menu ======-->
                             <div class="ah-lg-mode">
-
-                                <span class="ah-close">✕ Close</span>
-
-                                <!--====== List ======-->
-                                <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
-                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
-
-                                        <a><i class="far fa-user-circle"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:120px">
-                                            <li>
-
-                                                <a href="dashboard.html"><i class="fas fa-user-circle u-s-m-r-6"></i>
-
-                                                    <span>Account</span></a></li>
-                                            <li>
-
-                                                <a href="signup.html"><i class="fas fa-user-plus u-s-m-r-6"></i>
-
-                                                    <span>Signup</span></a></li>
-                                            <li>
-
-                                                <a href="signin.html"><i class="fas fa-lock u-s-m-r-6"></i>
-
-                                                    <span>Signin</span></a></li>
-                                            <li>
-
-                                                <a href="signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
-
-                                                    <span>Signout</span></a></li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Settings">
-
-                                        <a><i class="fas fa-user-cog"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:120px">
-                                            <li class="has-dropdown has-dropdown--ul-right-100">
-
-                                                <a>Language<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:120px">
-                                                    <li>
-
-                                                        <a class="u-c-brand">ENGLISH</a></li>
-                                                    <li>
-
-                                                        <a>ARABIC</a></li>
-                                                    <li>
-
-                                                        <a>FRANCAIS</a></li>
-                                                    <li>
-
-                                                        <a>ESPANOL</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-right-100">
-
-                                                <a>Currency<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:225px">
-                                                    <li>
-
-                                                        <a class="u-c-brand">$ - US DOLLAR</a></li>
-                                                    <li>
-
-                                                        <a>£ - BRITISH POUND STERLING</a></li>
-                                                    <li>
-
-                                                        <a>€ - EURO</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li data-tooltip="tooltip" data-placement="left" title="Contact">
-
-                                        <a href="tel:+0900901904"><i class="fas fa-phone-volume"></i></a></li>
-                                    <li data-tooltip="tooltip" data-placement="left" title="Mail">
-
-                                        <a href="mailto:contact@domain.com"><i class="far fa-envelope"></i></a></li>
-                                </ul>
-                                <!--====== End - List ======-->
-                            </div>
-                            <!--====== End - Menu ======-->
-                        </div>
-                        <!--====== End - Dropdown Main plugin ======-->
-                    </div>
-                    <!--====== End - Primary Nav ======-->
-                </div>
-            </nav>
-            <!--====== End - Nav 1 ======-->
-
-
-            <!--====== Nav 2 ======-->
-            <nav class="secondary-nav-wrapper">
-                <div class="container">
-
-                    <!--====== Secondary Nav ======-->
-                    <div class="secondary-nav">
-
-                        <!--====== Dropdown Main plugin ======-->
-                        <div class="menu-init" id="navigation1">
-
-                            <button class="btn btn--icon toggle-mega-text toggle-button" type="button">M</button>
-
-                            <!--====== Menu ======-->
-                            <div class="ah-lg-mode">
-
-                                <span class="ah-close">✕ Close</span>
-
-                                <!--====== List ======-->
-                                <ul class="ah-list">
-                                    <li class="has-dropdown">
-
-                                        <span class="mega-text">M</span>
-
-                                        <!--====== Mega Menu ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <div class="mega-menu">
-                                            <div class="mega-menu-wrap">
-                                                <div class="mega-menu-list">
-                                                    <ul>
-                                                        <li class="js-active">
-
-                                                            <a href="shop-side-version-2.html"><i class="fas fa-tv u-s-m-r-6"></i>
-
-                                                                <span>Electronics</span></a>
-
-                                                            <span class="js-menu-toggle js-toggle-mark"></span></li>
-                                                        <li>
-
-                                                            <a href="shop-side-version-2.html"><i class="fas fa-female u-s-m-r-6"></i>
-
-                                                                <span>Women's Clothing</span></a>
-
-                                                            <span class="js-menu-toggle"></span></li>
-                                                        <li>
-
-                                                            <a href="shop-side-version-2.html"><i class="fas fa-male u-s-m-r-6"></i>
-
-                                                                <span>Men's Clothing</span></a>
-
-                                                            <span class="js-menu-toggle"></span></li>
-                                                        <li>
-
-                                                            <a href="index.html"><i class="fas fa-utensils u-s-m-r-6"></i>
-
-                                                                <span>Food & Supplies</span></a>
-
-                                                            <span class="js-menu-toggle"></span></li>
-                                                        <li>
-
-                                                            <a href="index.html"><i class="fas fa-couch u-s-m-r-6"></i>
-
-                                                                <span>Furniture & Decor</span></a>
-
-                                                            <span class="js-menu-toggle"></span></li>
-                                                        <li>
-
-                                                            <a href="index.html"><i class="fas fa-football-ball u-s-m-r-6"></i>
-
-                                                                <span>Sports & Game</span></a>
-
-                                                            <span class="js-menu-toggle"></span></li>
-                                                        <li>
-
-                                                            <a href="index.html"><i class="fas fa-heartbeat u-s-m-r-6"></i>
-
-                                                                <span>Beauty & Health</span></a>
-
-                                                            <span class="js-menu-toggle"></span></li>
-                                                    </ul>
-                                                </div>
-
-                                                <!--====== Electronics ======-->
-                                                <div class="mega-menu-content js-active">
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">3D PRINTER & SUPPLIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">3d Printer</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">3d Printing Pen</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">3d Printing Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">3d Printer Module Board</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">HOME AUDIO & VIDEO</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">TV Boxes</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">TC Receiver & Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Display Dongle</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Home Theater System</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">MEDIA PLAYERS</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Earphones</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Mp3 Players</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Speakers & Radios</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Microphones</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">VIDEO GAME ACCESSORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Nintendo Video Games Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Sony Video Games Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Xbox Video Games Accessories</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">SECURITY & PROTECTION</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Security Cameras</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Alarm System</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Security Gadgets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">CCTV Security & Accessories</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">PHOTOGRAPHY & CAMERA</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Digital Cameras</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Sport Camera & Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Camera Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Lenses & Accessories</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">ARDUINO COMPATIBLE</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Raspberry Pi & Orange Pi</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Module Board</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Smart Robot</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Board Kits</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">DSLR Camera</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Nikon Cameras</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Canon Camera</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Sony Camera</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">DSLR Lenses</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">NECESSARY ACCESSORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Flash Cards</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Memory Cards</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Flash Pins</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Compact Discs</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-9 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-0.jpg" alt=""></a></div>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                </div>
-                                                <!--====== End - Electronics ======-->
-
-
-                                                <!--====== Women ======-->
-                                                <div class="mega-menu-content">
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-6 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-1.jpg" alt=""></a></div>
-                                                        </div>
-                                                        <div class="col-lg-6 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-2.jpg" alt=""></a></div>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">HOT CATEGORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Dresses</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Blouses & Shirts</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">T-shirts</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Rompers</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">INTIMATES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Bras</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Brief Sets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Bustiers & Corsets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Panties</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">WEDDING & EVENTS</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Wedding Dresses</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Evening Dresses</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Prom Dresses</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Flower Dresses</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">BOTTOMS</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Skirts</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Shorts</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Leggings</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Jeans</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">OUTWEAR</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Blazers</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Basics Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Trench</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Leather & Suede</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">JACKETS</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Denim Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Trucker Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Windbreaker Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Leather Jackets</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">ACCESSORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Tech Accessories</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Headwear</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Baseball Caps</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Belts</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">OTHER ACCESSORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Bags</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Wallets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Watches</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Sunglasses</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-9 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-3.jpg" alt=""></a></div>
-                                                        </div>
-                                                        <div class="col-lg-3 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-4.jpg" alt=""></a></div>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                </div>
-                                                <!--====== End - Women ======-->
-
-
-                                                <!--====== Men ======-->
-                                                <div class="mega-menu-content">
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-4 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-5.jpg" alt=""></a></div>
-                                                        </div>
-                                                        <div class="col-lg-4 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-6.jpg" alt=""></a></div>
-                                                        </div>
-                                                        <div class="col-lg-4 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-7.jpg" alt=""></a></div>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">HOT SALE</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">T-Shirts</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Tank Tops</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Polo</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Shirts</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">OUTWEAR</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Hoodies</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Trench</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Parkas</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Sweaters</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">BOTTOMS</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Casual Pants</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Cargo Pants</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Jeans</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Shorts</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">UNDERWEAR</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Boxers</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Briefs</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Robes</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Socks</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">JACKETS</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Denim Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Trucker Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Windbreaker Jackets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Leather Jackets</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">SUNGLASSES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Pilot</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Wayfarer</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Square</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Round</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">ACCESSORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Eyewear Frames</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Scarves</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Hats</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Belts</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <ul>
-                                                                <li class="mega-list-title">
-
-                                                                    <a href="shop-side-version-2.html">OTHER ACCESSORIES</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Bags</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Wallets</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Watches</a></li>
-                                                                <li>
-
-                                                                    <a href="shop-side-version-2.html">Tech Accessories</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                    <br>
-
-                                                    <!--====== Mega Menu Row ======-->
-                                                    <div class="row">
-                                                        <div class="col-lg-6 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-8.jpg" alt=""></a></div>
-                                                        </div>
-                                                        <div class="col-lg-6 mega-image">
-                                                            <div class="mega-banner">
-
-                                                                <a class="u-d-block" href="shop-side-version-2.html">
-
-                                                                    <img class="u-img-fluid u-d-block" src="images/banners/banner-mega-9.jpg" alt=""></a></div>
-                                                        </div>
-                                                    </div>
-                                                    <!--====== End - Mega Menu Row ======-->
-                                                </div>
-                                                <!--====== End - Men ======-->
-
-
-                                                <!--====== No Sub Categories ======-->
-                                                <div class="mega-menu-content">
-                                                    <h5>No Categories</h5>
-                                                </div>
-                                                <!--====== End - No Sub Categories ======-->
-
-
-                                                <!--====== No Sub Categories ======-->
-                                                <div class="mega-menu-content">
-                                                    <h5>No Categories</h5>
-                                                </div>
-                                                <!--====== End - No Sub Categories ======-->
-
-
-                                                <!--====== No Sub Categories ======-->
-                                                <div class="mega-menu-content">
-                                                    <h5>No Categories</h5>
-                                                </div>
-                                                <!--====== End - No Sub Categories ======-->
-
-
-                                                <!--====== No Sub Categories ======-->
-                                                <div class="mega-menu-content">
-                                                    <h5>No Categories</h5>
-                                                </div>
-                                                <!--====== End - No Sub Categories ======-->
+            
+                              <!--====== Danh sách ======-->
+                              <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
+                                <li> <!--Thêm home vào header-->
+                                    <a href="index.html"> <!-- Link đến trang chủ -->
+                                      <i class="fas fa-home u-c-brand"></i> <!-- Icon home sử dụng Font Awesome -->
+                                    </a>
+                                </li>
+                                <li><!--Thêm wishlist vào header-->
+                                    <a href="wishlist.html">  <!-- Link đến trang wishlist -->
+                                      <i class="far fa-heart"></i> <!-- Icon heart (dùng Font Awesome) -->
+                                    </a>
+                                </li>
+                                <!-- Đổ xuống cho Giỏ Hàng Mini -->
+                                <li class="has-dropdown">
+                                  <!-- Điều chỉnh bởi class có tên -->
+                                    <a class="mini-cart-shop-link">
+                                      <i class="fas fa-shopping-bag"></i> <!-- Biểu tượng Túi mua sắm -->
+                                      <span class="total-item-round">3</span>  <!-- Tổng số sản phẩm trong giỏ hàng -->
+                                    </a>
+                                    <!--====== Đổ xuống ======-->
+                                    <span class="js-menu-toggle"></span>
+                                    <div class="mini-cart">
+                                       <!-- Vùng chứa cho Giỏ Hàng Mini -->
+                                      <div class="mini-product-container gl-scroll u-s-m-b-15">
+                                        <!-- Vùng chứa cho Sản Phẩm Mini -->
+                                        <div class="card-mini-product"> <!--Điều chỉnh cho sản phẩm mini 1-->
+                                          <div class="mini-product"><!-- Điều chỉnh thông tin về Sản Phẩm Mini -->
+                                            <div class="mini-product__image-wrapper">  <!-- Điều chỉnh Hình ảnh cho Sản Phẩm Mini -->
+                                              <a class="mini-product__link" href="#"> <!--Điều chỉnh Link sản phẩm-->
+                                                <!--Hình bộ sản phẩm hồ điệp đa sắc-->
+                                                <img class="u-img-fluid" src="images/product/Bánh mì/Bánh toast bơ.png" alt="">
+                                              </a>
                                             </div>
+                                            <div class="mini-product__info-wrapper"> <!-- Điều chỉnh Thông tin chi tiết Sản Phẩm Mini -->
+                                              <span class="mini-product__category">
+                                                <a href="shop-side-version-2.html">Toast</a>
+                                              </span>
+                                              <span class="mini-product__name">
+                                                <a href="#">Bánh Toast Bơ</a><!--Thêm link product detail-->
+                                              </span>
+                                              <span class="mini-product__quantity">1 x</span>
+                                              <span class="mini-product__price">32.000VND</span>
+                                            </div>
+                                          </div>
+                                          <a class="mini-product__delete-link far fa-trash-alt"></a> <!-- Điều chỉnh Liên kết Xóa Sản Phẩm -->
                                         </div>
-                                        <!--====== End - Mega Menu ======-->
-                                    </li>
-                                </ul>
-                                <!--====== End - List ======-->
-                            </div>
-                            <!--====== End - Menu ======-->
-                        </div>
-                        <!--====== End - Dropdown Main plugin ======-->
-
-
-                        <!--====== Dropdown Main plugin ======-->
-                        <div class="menu-init" id="navigation2">
-
-                            <button class="btn btn--icon toggle-button fas fa-cog" type="button"></button>
-
-                            <!--====== Menu ======-->
-                            <div class="ah-lg-mode">
-
-                                <span class="ah-close">✕ Close</span>
-
-                                <!--====== List ======-->
-                                <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
-                                    <li>
-
-                                        <a href="shop-side-version-2.html">NEW ARRIVALS</a></li>
-                                    <li class="has-dropdown">
-
-                                        <a>PAGES<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:170px">
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a>Home<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:118px">
-                                                    <li>
-
-                                                        <a href="index.html">Home 1</a></li>
-                                                    <li>
-
-                                                        <a href="index-2.html">Home 2</a></li>
-                                                    <li>
-
-                                                        <a href="index-3.html">Home 3</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a>Account<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:200px">
-                                                    <li>
-
-                                                        <a href="signin.html">Signin / Already Registered</a></li>
-                                                    <li>
-
-                                                        <a href="signup.html">Signup / Register</a></li>
-                                                    <li>
-
-                                                        <a href="lost-password.html">Lost Password</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a href="dashboard.html">Dashboard<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:200px">
-                                                    <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                        <a href="dashboard.html">Manage My Account<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                        <!--====== Dropdown ======-->
-
-                                                        <span class="js-menu-toggle"></span>
-                                                        <ul style="width:180px">
-                                                            <li>
-
-                                                                <a href="dash-edit-profile.html">Edit Profile</a></li>
-                                                            <li>
-
-                                                                <a href="dash-address-book.html">Edit Address Book</a></li>
-                                                            <li>
-
-                                                                <a href="dash-manage-order.html">Manage Order</a></li>
-                                                        </ul>
-                                                        <!--====== End - Dropdown ======-->
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="dash-my-profile.html">My Profile</a></li>
-                                                    <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                        <a href="dash-address-book.html">Address Book<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                        <!--====== Dropdown ======-->
-
-                                                        <span class="js-menu-toggle"></span>
-                                                        <ul style="width:180px">
-                                                            <li>
-
-                                                                <a href="dash-address-make-default.html">Address Make Default</a></li>
-                                                            <li>
-
-                                                                <a href="dash-address-add.html">Add New Address</a></li>
-                                                            <li>
-
-                                                                <a href="dash-address-edit.html">Edit Address Book</a></li>
-                                                        </ul>
-                                                        <!--====== End - Dropdown ======-->
-                                                    </li>
-                                                    <li>
-
-                                                        <a href="dash-track-order.html">Track Order</a></li>
-                                                    <li>
-
-                                                        <a href="dash-my-order.html">My Orders</a></li>
-                                                    <li>
-
-                                                        <a href="dash-payment-option.html">My Payment Options</a></li>
-                                                    <li>
-
-                                                        <a href="dash-cancellation.html">My Returns & Cancellations</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a>Empty<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:200px">
-                                                    <li>
-
-                                                        <a href="empty-search.html">Empty Search</a></li>
-                                                    <li>
-
-                                                        <a href="empty-cart.html">Empty Cart</a></li>
-                                                    <li>
-
-                                                        <a href="empty-wishlist.html">Empty Wishlist</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a>Product Details<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:200px">
-                                                    <li>
-
-                                                        <a href="product-detail.html">Product Details</a></li>
-                                                    <li>
-
-                                                        <a href="product-detail-variable.html">Product Details Variable</a></li>
-                                                    <li>
-
-                                                        <a href="product-detail-affiliate.html">Product Details Affiliate</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a>Shop Grid Layout<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:200px">
-                                                    <li>
-
-                                                        <a href="shop-grid-left.html">Shop Grid Left Sidebar</a></li>
-                                                    <li>
-
-                                                        <a href="shop-grid-right.html">Shop Grid Right Sidebar</a></li>
-                                                    <li>
-
-                                                        <a href="shop-grid-full.html">Shop Grid Full Width</a></li>
-                                                    <li>
-
-                                                        <a href="shop-side-version-2.html">Shop Side Version 2</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                                <a>Shop List Layout<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                                <!--====== Dropdown ======-->
-
-                                                <span class="js-menu-toggle"></span>
-                                                <ul style="width:200px">
-                                                    <li>
-
-                                                        <a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                                    <li>
-
-                                                        <a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                                    <li>
-
-                                                        <a href="shop-list-full.html">Shop List Full Width</a></li>
-                                                </ul>
-                                                <!--====== End - Dropdown ======-->
-                                            </li>
-                                            <li>
-
-                                                <a href="cart.html">Cart</a></li>
-                                            <li>
-
-                                                <a href="wishlist.html">Wishlist</a></li>
-                                            <li>
-
-                                                <a href="checkout.html">Checkout</a></li>
-                                            <li>
-
-                                                <a href="faq.html">FAQ</a></li>
-                                            <li>
-
-                                                <a href="about.html">About us</a></li>
-                                            <li>
-
-                                                <a href="contact.html">Contact</a></li>
-                                            <li>
-
-                                                <a href="404.html">404</a></li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li class="has-dropdown">
-
-                                        <a>BLOG<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:200px">
-                                            <li>
-
-                                                <a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                            <li>
-
-                                                <a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                            <li>
-
-                                                <a href="blog-sidebar-none.html">Blog Sidebar None</a></li>
-                                            <li>
-
-                                                <a href="blog-masonry.html">Blog Masonry</a></li>
-                                            <li>
-
-                                                <a href="blog-detail.html">Blog Details</a></li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li>
-
-                                        <a href="shop-side-version-2.html">VALUE OF THE DAY</a></li>
-                                    <li>
-
-                                        <a href="shop-side-version-2.html">GIFT CARDS</a></li>
-                                </ul>
-                                <!--====== End - List ======-->
-                            </div>
-                            <!--====== End - Menu ======-->
-                        </div>
-                        <!--====== End - Dropdown Main plugin ======-->
-
-
-                        <!--====== Dropdown Main plugin ======-->
-                        <div class="menu-init" id="navigation3">
-
-                            <button class="btn btn--icon toggle-button fas fa-shopping-bag toggle-button-shop" type="button"></button>
-
-                            <span class="total-item-round">2</span>
-
-                            <!--====== Menu ======-->
-                            <div class="ah-lg-mode">
-
-                                <span class="ah-close">✕ Close</span>
-
-                                <!--====== List ======-->
-                                <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
-                                    <li>
-
-                                        <a href="index.html"><i class="fas fa-home"></i></a></li>
-                                    <li>
-
-                                        <a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="has-dropdown">
-
-                                        <a class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>
-
-                                            <span class="total-item-round">2</span></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <div class="mini-cart">
-
-                                            <!--====== Mini Product Container ======-->
-                                            <div class="mini-product-container gl-scroll u-s-m-b-15">
-
-                                                <!--====== Card for mini cart ======-->
-                                                <div class="card-mini-product">
-                                                    <div class="mini-product">
-                                                        <div class="mini-product__image-wrapper">
-
-                                                            <a class="mini-product__link" href="product-detail.html">
-
-                                                                <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></a></div>
-                                                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                            <span class="mini-product__name">
-
-                                                                <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-
-                                                            <span class="mini-product__quantity">1 x</span>
-
-                                                            <span class="mini-product__price">$8</span></div>
-                                                    </div>
-
-                                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                                </div>
-                                                <!--====== End - Card for mini cart ======-->
-
-
-                                                <!--====== Card for mini cart ======-->
-                                                <div class="card-mini-product">
-                                                    <div class="mini-product">
-                                                        <div class="mini-product__image-wrapper">
-
-                                                            <a class="mini-product__link" href="product-detail.html">
-
-                                                                <img class="u-img-fluid" src="images/product/electronic/product18.jpg" alt=""></a></div>
-                                                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                            <span class="mini-product__name">
-
-                                                                <a href="product-detail.html">Nikon DSLR Camera 4k</a></span>
-
-                                                            <span class="mini-product__quantity">1 x</span>
-
-                                                            <span class="mini-product__price">$8</span></div>
-                                                    </div>
-
-                                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                                </div>
-                                                <!--====== End - Card for mini cart ======-->
-
-
-                                                <!--====== Card for mini cart ======-->
-                                                <div class="card-mini-product">
-                                                    <div class="mini-product">
-                                                        <div class="mini-product__image-wrapper">
-
-                                                            <a class="mini-product__link" href="product-detail.html">
-
-                                                                <img class="u-img-fluid" src="images/product/women/product8.jpg" alt=""></a></div>
-                                                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="shop-side-version-2.html">Women Clothing</a></span>
-
-                                                            <span class="mini-product__name">
-
-                                                                <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                                            <span class="mini-product__quantity">1 x</span>
-
-                                                            <span class="mini-product__price">$8</span></div>
-                                                    </div>
-
-                                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                                </div>
-                                                <!--====== End - Card for mini cart ======-->
-
-
-                                                <!--====== Card for mini cart ======-->
-                                                <div class="card-mini-product">
-                                                    <div class="mini-product">
-                                                        <div class="mini-product__image-wrapper">
-
-                                                            <a class="mini-product__link" href="product-detail.html">
-
-                                                                <img class="u-img-fluid" src="images/product/men/product8.jpg" alt=""></a></div>
-                                                        <div class="mini-product__info-wrapper">
-
-                                                            <span class="mini-product__category">
-
-                                                                <a href="shop-side-version-2.html">Men Clothing</a></span>
-
-                                                            <span class="mini-product__name">
-
-                                                                <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                                                            <span class="mini-product__quantity">1 x</span>
-
-                                                            <span class="mini-product__price">$8</span></div>
-                                                    </div>
-
-                                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
-                                                </div>
-                                                <!--====== End - Card for mini cart ======-->
+                                        <!-- Kết thúc - Thẻ cho Sản Phẩm Mini - Sản phẩm 1 -->
+                                         <!-- Lặp lại cấu trúc tương tự cho Sản phẩm 2 và Sản phẩm 3 -->
+                                        <!--Điều chỉnh cho sản phẩm mini 2-->
+                                        <div class="card-mini-product">
+                                          <div class="mini-product">
+                                            <div class="mini-product__image-wrapper">
+                                              <a class="mini-product__link" href="#"><!--Link sản phẩm-->
+                                                <img class="u-img-fluid" src="images/product/Bánh mì/Bánh Toast Mứt.png" alt=""> <!--Hình-->
+                                              </a>
                                             </div>
-                                            <!--====== End - Mini Product Container ======-->
-
-
-                                            <!--====== Mini Product Statistics ======-->
-                                            <div class="mini-product-stat">
-                                                <div class="mini-total">
-
-                                                    <span class="subtotal-text">SUBTOTAL</span>
-
-                                                    <span class="subtotal-value">$16</span></div>
-                                                <div class="mini-action">
-
-                                                    <a class="mini-link btn--e-brand-b-2" href="checkout.html">PROCEED TO CHECKOUT</a>
-
-                                                    <a class="mini-link btn--e-transparent-secondary-b-2" href="cart.html">VIEW CART</a></div>
+                                            <div class="mini-product__info-wrapper">
+                                              <span class="mini-product__category">
+                                                <a href="shop-side-version-2.html">Toast</a>
+                                              </span>
+                                              <span class="mini-product__name">
+                                                <a href="#">Bánh toast mứt</a><!--Thêm link product detail-->
+                                              </span>
+                                              <span class="mini-product__quantity">1 x</span>
+                                              <span class="mini-product__price">35.00VND</span>
                                             </div>
-                                            <!--====== End - Mini Product Statistics ======-->
+                                          </div>
+                                          <a class="mini-product__delete-link far fa-trash-alt"></a>
                                         </div>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                </ul>
-                                <!--====== End - List ======-->
-                            </div>
-                            <!--====== End - Menu ======-->
-                        </div>
-                        <!--====== End - Dropdown Main plugin ======-->
-                    </div>
-                    <!--====== End - Secondary Nav ======-->
+                                         <!-- Kết thúc - Thẻ cho Sản Phẩm Mini - Sản phẩm 2 -->
+                                       <!--Điều chỉnh cho sản phẩm mini 3-->
+                                        <div class="card-mini-product">
+                                          <div class="mini-product">
+                                            <div class="mini-product__image-wrapper">
+                                              <a class="mini-product__link" href="#"> <!--Link sản phẩm-->
+                                                <img class="u-img-fluid" src="images/product/Bánh mì/Bánh toast socola.png" alt=""><!--Hình-->
+                                              </a>
+                                            </div>
+                                            <div class="mini-product__info-wrapper">
+                                              <span class="mini-product__category">
+                                                <a href="shop-side-version-2.html">Toast</a>
+                                              </span>
+                                              <span class="mini-product__name">
+                                                <a href="#">Bánh Toast Socola</a><!--Thêm link product detail-->
+                                              </span>
+                                              <span class="mini-product__quantity">1 x</span>
+                                              <span class="mini-product__price">45.000VND</span>
+                                            </div>
+                                          </div>
+                                          <a class="mini-product__delete-link far fa-trash-alt"></a>
+                                        </div>
+                                        <!-- Kết thúc - Thẻ cho Sản Phẩm Mini - Sản phẩm 3 -->
+                                      </div>
+                                      <!--====== Kết thúc điều chỉnh vùng chứa cho mini cart ======-->
+                                      <!-- Điều chỉnh phần tạm tính và thao tác của các sản phẩm mini -->
+                                      <div class="mini-product-stat">
+                                        <div class="mini-total"> <!-- Điều chỉnh hiển thị thông tin về Tổng cộng -->
+                                          <span class="subtotal-text">Tạm tính</span>
+                                          <span class="subtotal-value">112.000VND</span>
+                                        </div>
+                                        <div class="mini-action">  <!-- Hành động trong giỏ hàng mini -->
+                                          <a class="mini-link btn--e-brand-b-2" href="checkout.html">TIẾN HÀNH THANH TOÁN</a> <!-- Liên kết tới trang thanh toán -->
+                                          <a class="mini-link-2 btn--e-transparent-secondary-b-2" href="cart.html">Xem giỏ hàng</a> <!-- Liên kết tới trang giỏ hàng -->
+                                        </div>
+                                      </div>
+                                     <!-- Kết thúc điều chỉnh phần tạm tính và thao tác của các sản phẩm mini -->
+                                    </div>
+                                     <!-- Kết thúc đổ xuống cho Giỏ Hàng Mini -->
+                                </li>
+                                    <!--Tạo ra một cửa sổ thông báo nhỏ (tooltip) khi người dùng di chuột qua hoặc nhấp vào mục này.-->
+                    <li class="has-dropdown" data-tooltip="tooltip" > 
+                        <a>
+                           <i class="far fa-user-circle"></i> <!-- Điều chỉnh biểu tượng Người dùng -->
+                        </a>
+                     <!--====== Phần đổ xuống khi hover chuột qua biểu tượng ======-->
+                     <span class="js-menu-toggle"></span>
+                     <ul style="width:120px">
+                       <li> <!-- Liên kết đến Trang Dashboard -->
+                         <a href="dashboard.html">
+                           <i class="fas fa-user-circle u-s-m-r-6"></i>
+                           <span>Tài khoản</span>
+                         </a>
+                       </li>
+                       <li> <!--  Liên kết đến Trang Đăng ký -->
+                         <a href="signup.html">
+                           <i class="fas fa-user-plus u-s-m-r-6"></i> <!-- Biểu tượng " người dùng" -->
+                           <span>Đăng ký</span>  <!-- Văn bản hiển thị cho liên kết -->
+                         </a>
+                       </li>
+                       <li> <!--Liên kết đến Trang Đăng nhập -->
+                         <a href="signin.html">
+                           <i class="fas fa-lock u-s-m-r-6"></i>
+                           <span>Đăng nhập</span>
+                         </a>
+                       </li>
+                       <li>  <!-- Liên kết Đăng xuất -->
+                         <a href="signup.html">
+                           <i class="fas fa-lock-open u-s-m-r-6"></i>
+                           <span>Đăng xuất</span>
+                         </a>
+                       </li>
+                     </ul>
+                     <!--====== Kết thúc phần đổ xuống khi hover chuột qua biểu tượng ======-->                  
+                   </li>                   
+                 </ul>
+                 <!--====== Kết thúc danh sách ======-->
+               </div>
+               <!--====== Kết thúc menu ======-->
+             </div>
+             <!--====== Kết thúc thành phần đổ xuống ======-->
+           </div>
+           <!--====== Kết thúc thanh điều hướng chính ======-->
+         </div>
+       </nav>
+            <!--====== Kết thúc thanh điều hướng 1 ======-->
+
+
+           <!--====== Thanh điều hướng 22 ======-->
+           <nav class="secondary-nav-wrapper">
+            <div class="container">
+              <!--====== Thanh điều hướng phụ ======-->
+              <div class="secondary-nav">
+                <!-- Nút kích hoạt menu -->
+                <div class="menu-init" id="navigation2">
+                  <button class="btn btn--icon toggle-button toggle-button--secondary fa fa-bars" type="button"></button>
+                  <!--====== Menu ======-->
+                  <div class="ah-lg-mode">
+                    <span class="ah-close">✕ Đóng</span>  <!-- Điều chỉnh nút đóng menu -->
+                    <!-- Danh sách menu -->
+                    <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
+                      <li>
+                          <a href="index.html">TRANG CHỦ</a>  <!-- Dẫn link đến trang chủ -->
+                      </li>
+                      <li class="has-dropdown"> <!-- Dẫn link đến cửa hàng (Có menu đổ xuống) -->
+                        <a href="shop-side-version-2.html">CỬA HÀNG<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
+                        <span class="js-menu-toggle"></span>
+                        <ul style="width:170px">  <!-- Menu đổ xuống -->
+                          <li>
+                            <a href="#">Bánh mì</a>
+                          </li>
+                          <li>
+                            <a href="#">Bánh kem</a>
+                          </li>
+                          <li>
+                            <a href="#">Bánh mì kẹp</a>
+                          </li>
+                          <li>
+                            <a href="#">Bánh ngọt & nướng</a>
+                          </li>
+                          <li>
+                            <a href="#">Các loại bánh khác</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                          <a href="blog-sidebar-none.html">BÀI VIẾT</a> <!-- Dẫn link đến trang bài viết -->
+                      </li>
+                      <li>
+                        <a href="about.html">VỀ CHÚNG TÔI</a> <!-- Dẫn link đến trang Về chúng tôi -->
+                      </li>
+                      <li>
+                        <a href="contact.html">LIÊN HỆ</a><!-- Dẫn link đến trang về trang liên hệ -->
+                      </li>
+                    </ul>
+                    <!--====== Kết thúc danh sách menu ======-->
+                  </div>
+                  <!--====== Kết thúc menu ======-->
                 </div>
-            </nav>
-            <!--====== End - Nav 2 ======-->
+              <!--====== Kết thúc thanh điều hướng phụ ======-->
+            </div>
+          </nav>
+        <!--====== Kết thúc thanh điều hướng 2 ======-->
         </header>
-        <!--====== End - Main Header ======-->
+        <!--====== Kết thúc - Header chính ======-->
 
 
         <!--====== App Content ======-->
@@ -1415,30 +503,21 @@
                                     <!--====== Các tính năng của Dashboard ======-->
                                   <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
                                     <div class="dash__pad-1">
-
                                         <span class="dash__text u-s-m-b-16">Xin chào bạn</span>
                                         <ul class="dash__f-list">
                                             <li>
-<!-- Tính năng Quản lý tài khoản -->
+                                            <!-- Tính năng Quản lý tài khoản -->
                                                 <a class="dash-active" href="dashboard.html">Quản lý tài khoản </a></li>
                                             <li>
-<!-- Tính năng Thông tin của tôi -->
+                                            <!-- Tính năng Thông tin của tôi -->
                                                 <a href="dash-my-profile.html">Thông tin của tôi</a></li>
                                             <li>
-<!-- Tính năng Địa chỉ -->
+                                            <!-- Tính năng Địa chỉ -->
                                                 <a href="dash-address-book.html">Địa chỉ</a></li>
                                             <li>
-<!-- Tính năng Theo dõi đơn hàng -->
-                                                <a href="dash-track-order.html">Theo dõi đơn hàng</a></li>
-                                            <li>
-<!-- Tính năng Đơn hàng của tôi -->
+                                            <!-- Tính năng Đơn hàng của tôi -->
                                                 <a href="dash-my-order.html">Đơn hàng của tôi</a></li>
                                             <li>
-<!-- Tính năng Phương thức thanh toán -->
-                                                <a href="dash-payment-option.html">Phương thức thanh toán</a></li>
-                                            <li>
-<!-- Tính năng Hoàn trả và hủy đơn -->
-                                                <a href="dash-cancellation.html">Hoàn trả và hủy đơn</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1475,7 +554,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!--====== End - Dashboard Features ======-->
+                                    <!--====== Kết thúc - Các tính năng của dashboard ======-->
                                 </div>
                                 <div class="col-lg-9 col-md-12">
                                     <h1 class="dash__h1 u-s-m-b-30">Chi tiết đơn hàng </h1>
