@@ -1412,37 +1412,38 @@
                             <div class="col-lg-12">
                                 <div id="checkout-msg-group">
                                     <div class="msg u-s-m-b-30">
-
+                             <!-- Thông báo về việc có tài khoản và liên kết đến phần đăng nhập -->
                                         <span class="msg__text">Bạn là khách hàng thành viên của SixSense?
-
+                            <!-- Phần đăng nhập sẽ hiện ra khi nhấn vào liên kết trên -->
                                             <a class="gl-link" href="#return-customer" data-toggle="collapse">Nhấn vào đây để đăng nhập</a></span>
                                         <div class="collapse" id="return-customer" data-parent="#checkout-msg-group">
                                             <div class="l-f u-s-m-b-16">
-
+                                    <!-- Hướng dẫn người dùng nếu đã có tài khoản -->
                                                 <span class="gl-text u-s-m-b-16">Nếu bạn có tài khoản, hãy đăng nhập ở đây.</span>
+                                                <!-- Form đăng nhập -->
                                                 <form class="l-f__form">
                                                     <div class="gl-inline">
                                                         <div class="u-s-m-b-15">
-
+                                                <!-- Nhập địa chỉ Email -->
                                                             <label class="gl-label" for="login-email">ĐỊA CHỈ E-MAIL *</label>
 
                                                             <input class="input-text input-text--primary-style" type="text" id="login-email" placeholder="Nhập địa chỉ E-mail"></div>
                                                         <div class="u-s-m-b-15">
-
+                                                <!-- Nhập mật khẩu -->
                                                             <label class="gl-label" for="login-password">PASSWORD *</label>
 
                                                             <input class="input-text input-text--primary-style" type="text" id="login-password" placeholder="Nhập mật khẩu"></div>
                                                     </div>
                                                     <div class="gl-inline">
                                                         <div class="u-s-m-b-15">
-
+                                                <!-- Nút đăng nhập -->
                                                             <button class="btn btn--e-transparent-brand-b-2" type="submit">Đăng nhập</button></div>
                                                         <div class="u-s-m-b-15">
-
+                                                <!-- Liên kết quên mật khẩu -->
                                                             <a class="gl-link" href="lost-password.html">Quên mật khẩu?</a></div>
                                                     </div>
 
-                                                    <!--====== Hộp kiểm ======-->
+                                                    <!-- Nhãn cho ô chọn -->
                                                     <div class="check-box">
 
                                                         <input type="checkbox" id="remember-me">
@@ -1498,12 +1499,14 @@
                         <div class="checkout-f">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h1 class="checkout-f__h1">THÔNG TIN GIAO HÀNG</h1>
+                                    <!-- Tiêu đề thông tin người nhận -->
+                                    <h1 class="checkout-f__h1">THÔNG TIN NGƯỜI DÙNG</h1>
+                                    <!-- Form nhập thông tin giao hàng -->
                                     <form class="checkout-f__delivery">
                                         <div class="u-s-m-b-30">
                                             <div class="u-s-m-b-15">
 
-                                                <!--====== Hộp kiểm ======-->
+                                               <!-- Ô chọn sử dụng địa chỉ mặc định của tài khoản -->
                                                 <div class="check-box">
 
                                                     <input type="checkbox" id="get-address">
@@ -1511,15 +1514,15 @@
 
                                                         <label class="check-box__label" for="get-address">Sử dụng địa chỉ giao hàng và thanh toán mặc định từ tài khoản</label></div>
                                                 </div>
-                                                <!--===== Hết hộp kiểm ======-->
+                                                 <!--====== Kết thúc - Ô chọn ======-->
                                             </div>
 
                                             <!--====== HỌ VÀ TÊN ======-->
                                             <div class="gl-inline">
                                                 <div class="u-s-m-b-15">
-
+                                                 <!-- Nhãn cho ô nhập -->
                                                     <label class="gl-label" for="billing-fname">HỌ *</label>
-
+                                                  <!-- Ô nhập thông tin -->
                                                     <input class="input-text input-text--primary-style" type="text" id="billing-fname" data-bill=""></div>
                                                 <div class="u-s-m-b-15">
 
@@ -1532,21 +1535,67 @@
 
                                             <!--====== Địa chỉ Email ======-->
                                             <div class="u-s-m-b-15">
-
+                                             <!-- Nhãn cho ô nhập -->
                                                 <label class="gl-label" for="billing-email">ĐỊA CHỈ E-MAIL *</label>
-
+                                                <!-- Ô nhập thông tin -->
                                                 <input class="input-text input-text--primary-style" type="text" id="billing-email" data-bill=""></div>
-                                            <!--====== End - E-MAIL ======-->
+                                            <!--====== HẾT ĐỊA CHỈ E-MAIL ======-->
 
                                             <!--====== SỐ ĐIỆN THOẠI ======-->
                                             <div class="u-s-m-b-15">
-
+                                                <!-- Nhãn cho ô nhập -->
                                                 <label class="gl-label" for="billing-phone">SỐ ĐIỆN THOẠI *</label>
-
+                                                <!-- Ô nhập thông tin -->
                                                 <input class="input-text input-text--primary-style" type="text" id="billing-phone" data-bill=""></div>
                                             <!--====== HẾT SỐ ĐIỆN THOẠI ======-->
 
-
+                                           <!--====== JS ĐỊA CHỈ  ======-->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+                            <script>
+                              var citis = document.getElementById("city");
+                              var districts = document.getElementById("district");
+                              var wards = document.getElementById("ward");
+                              // Thiết lập các thông số cho request
+                              var Parameter = {
+                                url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+                                method: "GET",
+                                responseType: "application/json",
+                              };
+                              // Gửi request để lấy dữ liệu địa chỉ
+                              var promise = axios(Parameter);
+                              promise.then(function(result) {
+                                renderCity(result.data);
+                              });
+                              // Hàm để hiển thị thông tin thành phố
+                              function renderCity(data) {
+                                for (const x of data) {
+                                  citis.options[citis.options.length] = new Option(x.Name, x.Id);
+                                }
+                                // Sự kiện khi chọn thành phố
+                                citis.onchange = function() {
+                                  district.length = 1;
+                                  ward.length = 1;
+                                  if (this.value != "") {
+                                    const result = data.filter(n => n.Id === this.value);
+                                    for (const k of result[0].Districts) {
+                                      districts.options[districts.options.length] = new Option(k.Name, k.Id);
+                                    }
+                                  }
+                                };
+                                // Sự kiện khi chọn quận/huyện
+                                districts.onchange = function() {
+                                  ward.length = 1;
+                                  const dataCity = data.filter((n) => n.Id === citis.value);
+                                  if (this.value != "") {
+                                    const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+                                    for (const w of dataWards) {
+                                      wards.options[wards.options.length] = new Option(w.Name, w.Id);
+                                    }
+                                  }
+                                };
+                              }
+                            </script>
+                            <!--====== Kết thúc - JS ĐỊA CHỈ  ======-->
                                             <!--====== ĐỊA CHỈ ======-->
                                             <div class="u-s-m-b-15">
 
@@ -1562,7 +1611,7 @@
 
                                             <!--====== THÀNH PHỐ ======-->
                                             <div class="u-s-m-b-15">
-
+                                             <!--====== Ô chọn thông tin ======-->
                                                 <label class="gl-label" for="billing-town-city">THÀNH PHỐ *</label>
                                                 <select class="select-box select-box--primary-style" id="billing-town-city" data-bill="">
                                                     <option selected value="">Chọn Thành phố</option>
@@ -1576,7 +1625,7 @@
                                             <!--====== QUẬN/HUYỆN ======-->
                                             <div class="u-s-m-b-15">
 
-                                                <!--====== HỘP LỰA CHỌN ======-->
+                                                <!--====== Ô chọn thông tin ======-->
 
                                                 <label class="gl-label" for="billing-state">QUẬN/HUYỆN *</label><select class="select-box select-box--primary-style" id="billing-state" data-bill="">
                                                     <option selected value="">Chọn Quận/Huyện</option>
@@ -1603,9 +1652,9 @@
                                                     <option value="hcg">Huyện Cần Giờ</option>
                                                     <option value="hcc">Huyện Củ Chi</option>
                                                 </select>
-                                                <!--====== Hết hộp lựa chọn ======-->
+                                                <!--====== Kết thúc - ô chọn ======-->
                                             </div>
-                                            <!--====== End - STATE/PROVINCE ======-->
+                                            <!--====== HẾT QUẬN/HUYỆN ======-->
 
                                             <div class="u-s-m-b-10">
 
@@ -1658,6 +1707,11 @@
                                                             <span class="o-card__quantity">Quantity x 1</span>
 
                                                             <span class="o-card__price">$150.00</span></div>
+                                                            <div class="input-counter">
+                                                                <span class="input-counter_minus fas fa-minus"></span>
+                                                                <input class="input-counter_text input-counter -- text-primary-style" type="text" value="1" data-min="1" data-max="1000">
+                                                                <span class="input-counter_plus fas fa-plus"></span>
+                                                              </div>
                                                     </div>
 
                                                     <a class="o-card__del far fa-trash-alt"></a>
@@ -1676,6 +1730,11 @@
                                                             <span class="o-card__quantity">Quantity x 1</span>
 
                                                             <span class="o-card__price">$150.00</span></div>
+                                                            <div class="input-counter">
+                                                                <span class="input-counter_minus fas fa-minus"></span>
+                                                                <input class="input-counter_text input-counter -- text-primary-style" type="text" value="1" data-min="1" data-max="1000">
+                                                                <span class="input-counter_plus fas fa-plus"></span>
+                                                              </div>
                                                     </div>
 
                                                     <a class="o-card__del far fa-trash-alt"></a>
@@ -1694,6 +1753,11 @@
                                                             <span class="o-card__quantity">Quantity x 1</span>
 
                                                             <span class="o-card__price">$150.00</span></div>
+                                                            <div class="input-counter">
+                                                                <span class="input-counter_minus fas fa-minus"></span>
+                                                                <input class="input-counter_text input-counter -- text-primary-style" type="text" value="1" data-min="1" data-max="1000">
+                                                                <span class="input-counter_plus fas fa-plus"></span>
+                                                              </div>
                                                     </div>
 
                                                     <a class="o-card__del far fa-trash-alt"></a>
@@ -1712,33 +1776,148 @@
                                                             <span class="o-card__quantity">Quantity x 1</span>
 
                                                             <span class="o-card__price">$150.00</span></div>
+                                                            <td>
+                                                                <!-- Bộ đếm số lượng -->
+                                                                <div class="table-p__input-counter-wrap">
+                                                                    <div class="input-counter">
+                                                                        <span class="input-counter__minus fas fa-minus"></span>
+                                                                        <input class="input-counter__text input-counter--text-primary-style" type="text" value="1" data-min="1" data-max="23">
+                                                                        <span class="input-counter__plus fas fa-plus"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
                                                     </div>
 
                                                     <a class="o-card__del far fa-trash-alt"></a>
                                                 </div>
                                             </div>
                                         </div>
+                                                                                                                                        
                                         <div class="o-summary__section u-s-m-b-30">
+                                             <!--====== Hộp Tóm tắt (Summary Box) ======-->
                                             <div class="o-summary__box">
-                                                <h1 class="checkout-f__h1">GIAO HÀNG</h1>
+                                                <!--====== Tiêu đề (Heading) ======-->
+                                                <h1 class="checkout-f__h1">ĐỊA CHỈ NHẬN HÀNG</h1>
+                                                <!--====== Hộp Vận chuyển (Shipping Box) ======-->
                                                 <div class="ship-b">
-
-                                                    <span class="ship-b__text">GỬI ĐẾN:</span>
+                                                <!--====== Văn bản (Text) ======-->
+                                                    <span class="ship-b__text">VẬN CHUYỂN ĐẾN:</span>
+                                                     <!--====== Hộp Địa chỉ và Liên kết Chỉnh sửa (Address Box and Edit Link) ======-->
                                                     <div class="ship-b__box u-s-m-b-10">
+                                                        <!--====== Địa chỉ và Thông tin liên lạc (Address and Contact Information) ======-->
                                                         <p class="ship-b__p">279 Nguyễn Tri Phương Phường 5 Quận 10 TPHCM (+0) 900901904</p>
-
-                                                        <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a>
+                                                    <!--====== Liên kết Chỉnh sửa (Edit Link) ======-->
+                                                        <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Sửa</a>
                                                     </div>
                                                     <div class="ship-b__box">
 
                                                         <span class="ship-b__text">Thanh toán theo địa chỉ thanh toán mặc định</span>
 
-                                                        <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Edit</a></div>
+                                                        <a class="ship-b__edit btn--e-transparent-platinum-b-2" data-modal="modal" data-modal-id="#edit-ship-address">Sửa</a></div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="o-summary__section u-s-m-b-30">
+                                            <!--====== Hộp Tóm tắt (Summary Box) ======-->
+                                            <div class="o-summary__box">
+                                              <!--====== Bảng Tóm tắt Đơn hàng (Order Summary Table) ======-->
+                                              <table class="o-summary__table">
+                                                <tbody>
+                                                  <!--====== Dòng Phí Vận chuyển (Shipping Fee Row) ======-->
+                                                  <tr>
+                                                    <td>PHÍ VẬN CHUYỂN</td>
+                                                    <td>20.000VND</td>
+                                                  </tr>
+                                                  <!--====== Kết thúc - Dòng Phí Vận chuyển (Shipping Fee Row) ======-->
+                                                  <!--====== Dòng Tạm tính (Subtotal Row) ======-->
+                                                  <tr>
+                                                    <td>TẠM TÍNH</td>
+                                                    <td>578.000VND</td>
+                                                  </tr>
+                                                  <!--====== Kết thúc - Dòng Tạm tính (Subtotal Row) ======-->
+                                                  <!--====== Dòng Tổng cộng (Total Row) ======-->
+                                                  <tr>
+                                                    <td>TỔNG CỘNG</td>
+                                                    <td>598.000VND</td>
+                                                  </tr>
+                                                  <!--====== Kết thúc - Dòng Tổng cộng (Total Row) ======-->
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+
+                                                                  <!-- Phần hiển thị thông tin Voucher -->
+                          <div class="o-summary__section u-s-m-b-30">
+                            <div class="o-summary__box">
+                              <!-- Tiêu đề của phần -->
+                              <h1 class="checkout-f__h1">VOUCHER</h1>
+                              <!-- Form thanh toán -->
+                              <form class="checkout-f__payment">
+                                <!-- Mã giảm giá -->
+                                <div class="u-s-m-b-15">
+                                  <span class="msg__text">Bạn có mã giảm giá độc quyền? <a class="gl-link" href="#have-coupon" data-toggle="collapse">Nhấn vào đây để nhập</a>
+                                  </span>
+                                  <div class="collapse" id="have-coupon" data-parent="#checkout-msg-group">
+                                    <div class="c-f u-s-m-b-16">
+                                      <span class="gl-text u-s-m-b-16">Nhập mã giảm giá nếu bạn có.</span>
+                                      <form class="c-f__form">
+                                        <div class="u-s-m-b-16">
+                                          <div class="u-s-m-b-15">
+                                            <label for="coupon"></label>
+                                            <input class="input-text input-text--primary-style" type="text" id="coupon" placeholder="Mã giảm giá">
+                                          </div>
+                                          <div class="u-s-m-b-15">
+                                            <button class="btn btn--e-transparent-brand-b-2" type="submit">SỬ DỤNG</button>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Voucher 1 -->
+                                <div class="msg u-s-m-b-30">
+                                  <div class="u-s-m-b-15">
+                                    <div class="radio-box">
+                                      <input type="radio" id="pay-pal" name="payment">
+                                      <div class="radio-box__state radio-box__state--primary">
+                                        <label class="radio-box__label" for="pay-pal">Giảm 10% Giảm tối đa 150k</label>
+                                      </div>
+                                    </div>
+                                    <span class="gl-text u-s-m-t-6">Đơn tối thiểu 400k</span>
+                                    <span style="font-size: 10px;" class="gl-text u-s-m-t-6">Đã dùng 71%, hết hạn 24.12.2023</span>
+                                  </div>
+                                </div>
+                                <!-- Voucher 2 -->
+                                <div class="msg u-s-m-b-30">
+                                  <div class="u-s-m-b-15">
+                                    <div class="radio-box">
+                                      <input type="radio" id="pay-pal" name="payment">
+                                      <div class="radio-box__state radio-box__state--primary">
+                                        <label class="radio-box__label" for="pay-pal">Giảm 20k</label>
+                                      </div>
+                                    </div>
+                                    <span class="gl-text u-s-m-t-6">Đơn tối thiểu 120k</span>
+                                    <span style="font-size: 10px;" class="gl-text u-s-m-t-6">Đã dùng 88%, hết hạn 24.12.2023</span>
+                                  </div>
+                                </div>
+                                <!-- Voucher 3 (bị vô hiệu hóa) -->
+                                <div class="msg u-s-m-b-30" style="opacity: 0.5; pointer-events: none;">
+                                  <div class="u-s-m-b-15">
+                                    <div class="radio-box">
+                                      <input type="radio" id="pay-pal" name="payment" disabled="">
+                                      <div class="radio-box__state radio-box__state--primary">
+                                        <label class="radio-box__label" for="pay-pal">Giảm 12% Giảm tối đa 120k</label>
+                                      </div>
+                                    </div>
+                                    <span class="gl-text u-s-m-t-6">Đơn tối thiểu 1000k</span>
+                                    <span style="font-size: 10px;" class="gl-text u-s-m-t-6">Đã dùng 41%, hết hạn 24.12.2023</span>
+                                    <span style="font-size: 12px; color: red;" class="gl-text u-s-m-t-6">Đơn hàng không đáp ứng điều kiện áp dụng của Voucher</span>
+                                  </div>
+                                </div>
+
+                                        <div class="o-summary__section u-s-m-b-30">
+                                            <!--====== Hộp Tóm tắt (Summary Box) ======-->
                                             <div class="o-summary__box">
                                                 <h1 class="checkout-f__h1">THÔNG TIN THANH TOÁN</h1>
                                                 <form class="checkout-f__payment">
@@ -1766,7 +1945,7 @@
                                                         </div>
                                                         <!--====== Hết Radio Box ======-->
 
-                                                        <span class="gl-text u-s-m-t-6">Thực hiện thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm nội dung thanh toán chuyển khoản. Đơn đặt hàng của bạn sẽ không được vận chuyển cho đến khi tiền đã được thanh toán trong tài khoản của chúng tôi.</span>
+                                                        <span class="gl-text u-s-m-t-6">Thực hiện thanh toán trực tiếp vào tài khoản ngân hàng của Sixsense. Vui lòng sử dụng ID đơn hàng của bạn làm nội dung thanh toán chuyển khoản. Đơn đặt hàng của bạn sẽ không được vận chuyển cho đến khi tiền đã được thanh toán trong tài khoản của chúng tôi.</span>
                                                     </div>
                                                     <div class="u-s-m-b-10">
 
@@ -1784,7 +1963,7 @@
                                                     </div>
                                                     <div class="u-s-m-b-15">
 
-                                                        <a class="gl-link">Điều khoản dịch vụ.</a>
+                                                        <a class="gl-link">Tôi đồng ý với tất cả điều khoản dịch vụ.</a>
                                                     </div>
                                                     <div>
 
@@ -1801,7 +1980,7 @@
                 </div>
                 <!--====== Hết nội dung ======-->
             </div>
-            <!--====== hết phần 3 ======-->
+            <!--====== Hết phần 3 ======-->
         </div>
         <!--====== Hết nội dung trang ======-->
 
@@ -1967,7 +2146,7 @@
         <!--====== Modal Section ======-->
 
 
-        <!--====== Shipping Address Add Modal ======-->
+        <!--====== Thông tin giao hàng gần đây ======-->
         <div class="modal fade" id="edit-ship-address">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -1975,10 +2154,10 @@
                         <div class="checkout-modal2">
                             <div class="u-s-m-b-30">
                                 <div class="dash-l-r">
-                                    <h1 class="gl-modal-h1">Shipping Address</h1>
+                                    <h1 class="gl-modal-h1">Địa chỉ giao hàng</h1>
                                     <div class="dash__link dash__link--brand">
 
-                                        <a data-modal="modal" data-modal-id="#add-ship-address" data-dismiss="modal">Add new Address</a></div>
+                                        <a data-modal="modal" data-modal-id="#add-ship-address" data-dismiss="modal">Nhập thông tin giao hàng mới</a></div>
                                 </div>
                             </div>
                             <form class="checkout-modal2__form">
@@ -1986,12 +2165,12 @@
                                     <table class="dash__table-2">
                                         <thead>
                                             <tr>
-                                                <th>Action</th>
-                                                <th>Full Name</th>
-                                                <th>Address</th>
-                                                <th>Region</th>
-                                                <th>Phone Number</th>
-                                                <th>Status</th>
+                                                <th>Số thứ tự</th>
+                                                <th>Họ và Tên</th>
+                                                <th>Số nhà, Tên đường</th>
+                                                <th>Quận</th>
+                                                <th>Thành phố</th>
+                                                <th>Số điện thoại</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2008,52 +2187,30 @@
                                                     </div>
                                                     <!--====== End - Radio Box ======-->
                                                 </td>
-                                                <td>John Doe</td>
-                                                <td>4247 Ashford Drive Virginia VA-20006 USA</td>
-                                                <td>Virginia VA-20006 USA</td>
-                                                <td>(+0) 900901904</td>
-                                                <td>
-                                                    <div class="gl-text">Default Shipping Address</div>
-                                                    <div class="gl-text">Default Billing Address</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-
-                                                    <!--====== Radio Box ======-->
-                                                    <div class="radio-box">
-
-                                                        <input type="radio" id="address-2" name="default-address">
-                                                        <div class="radio-box__state radio-box__state--primary">
-
-                                                            <label class="radio-box__label" for="address-2"></label></div>
-                                                    </div>
-                                                    <!--====== End - Radio Box ======-->
-                                                </td>
-                                                <td>Doe John</td>
-                                                <td>1484 Abner Road</td>
-                                                <td>Eau Claire WI - Wisconsin</td>
-                                                <td>(+0) 7154419563</td>
-                                                <td></td>
-                                            </tr>
+                                                <td>Lê Thị Quỳnh Như</td>
+                                                <td>59C Nguyễn Đình Chiểu</td>
+                                                <td>Quận 3</td>
+                                                <td>Thành phố Hồ Chí Minh</td>
+                                                <td> 0928478709 </td>
+                                            </tr>  
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="gl-modal-btn-group">
 
-                                    <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
+                                    <button class="btn btn--e-brand-b-2" type="submit">LƯU THÔNG TIN</button>
 
-                                    <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button></div>
+                                    <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">HỦY</button></div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--====== End - Shipping Address Add Modal ======-->
+        <!--====== Hết thông tin giao hàng gần đây ======-->
 
 
-        <!--====== Shipping Address Add Modal ======-->
+        <!--====== Thông tin giao hàng mới ======-->
         <div class="modal fade" id="add-ship-address">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -2061,85 +2218,93 @@
                         <div class="checkout-modal1">
                             <form class="checkout-modal1__form">
                                 <div class="u-s-m-b-30">
-                                    <h1 class="gl-modal-h1">Add new Shipping Address</h1>
+                                    <h1 class="gl-modal-h1">Thêm địa chỉ giao hàng</h1>
                                 </div>
                                 <div class="gl-inline">
                                     <div class="u-s-m-b-30">
 
-                                        <label class="gl-label" for="address-fname">FIRST NAME *</label>
+                                        <label class="gl-label" for="address-fname">TÊN *</label>
 
-                                        <input class="input-text input-text--primary-style" type="text" id="address-fname" placeholder="First Name"></div>
+                                        <input class="input-text input-text--primary-style" type="text" id="address-fname" placeholder="Điền tên"></div>
                                     <div class="u-s-m-b-30">
 
-                                        <label class="gl-label" for="address-lname">LAST NAME *</label>
+                                        <label class="gl-label" for="address-lname">HỌ *</label>
 
-                                        <input class="input-text input-text--primary-style" type="text" id="address-lname" placeholder="Last Name"></div>
+                                        <input class="input-text input-text--primary-style" type="text" id="address-lname" placeholder="Điền họ"></div>
                                 </div>
                                 <div class="gl-inline">
                                     <div class="u-s-m-b-30">
 
-                                        <label class="gl-label" for="address-phone">PHONE *</label>
+                                        <label class="gl-label" for="address-phone">SỐ ĐIỆN THOẠI *</label>
 
                                         <input class="input-text input-text--primary-style" type="text" id="address-phone"></div>
                                     <div class="u-s-m-b-30">
 
-                                        <label class="gl-label" for="address-street">STREET ADDRESS *</label>
+                                        <label class="gl-label" for="address-street">ĐỊA CHỈ *</label>
 
-                                        <input class="input-text input-text--primary-style" type="text" id="address-street" placeholder="House Name and Street"></div>
+                                        <input class="input-text input-text--primary-style" type="text" id="address-street" placeholder="Địa chỉ nhà"></div>
                                 </div>
                                 <div class="gl-inline">
                                     <div class="u-s-m-b-30">
 
-                                        <!--====== Select Box ======-->
+                                            <!--====== THÀNH PHỐ ======-->
+                                            <div class="u-s-m-b-15">
 
-                                        <label class="gl-label" for="address-country">COUNTRY *</label><select class="select-box select-box--primary-style" id="address-country">
-                                            <option selected value="">Choose Country</option>
-                                            <option value="uae">United Arab Emirate (UAE)</option>
-                                            <option value="uk">United Kingdom (UK)</option>
-                                            <option value="us">United States (US)</option>
-                                        </select>
-                                        <!--====== End - Select Box ======-->
-                                    </div>
-                                    <div class="u-s-m-b-30">
+                                                <label class="gl-label" for="billing-town-city">THÀNH PHỐ *</label>
+                                                <select class="select-box select-box--primary-style" id="billing-town-city" data-bill="">
+                                                    <option selected value="">Chọn Thành phố</option>
+                                                    <option value="al">Thành phố Hồ Chí Minh</option>
+                                                    <option value="al">Thành phố Thủ Đức</option>
+                                                    </select>
+                                            </div>
+                                            <!--====== HẾT THÀNH PHỐ ======-->
+                                   <!--====== QUẬN/HUYỆN ======-->
+                                   <div class="u-s-m-b-15">
 
-                                        <!--====== Select Box ======-->
+                                    <!--====== HỘP LỰA CHỌN ======-->
 
-                                        <label class="gl-label" for="address-state">STATE/PROVINCE *</label><select class="select-box select-box--primary-style" id="address-state">
-                                            <option selected value="">Choose State/Province</option>
-                                            <option value="al">Alabama</option>
-                                            <option value="al">Alaska</option>
-                                            <option value="ny">New York</option>
-                                        </select>
-                                        <!--====== End - Select Box ======-->
-                                    </div>
+                                    <label class="gl-label" for="billing-state">QUẬN/HUYỆN *</label><select class="select-box select-box--primary-style" id="billing-state" data-bill="">
+                                        <option selected value="">Chọn Quận/Huyện</option>
+                                        <option value="q1">Quận 1</option>
+                                        <option value="q2">Quận 2</option>
+                                        <option value="q3">Quận 3</option>
+                                        <option value="q4">Quận 4</option>
+                                        <option value="q5">Quận 5</option>
+                                        <option value="q6">Quận 6</option>
+                                        <option value="q7">Quận 7</option>
+                                        <option value="q8">Quận 8</option>
+                                        <option value="q9">Quận 9</option>
+                                        <option value="q10">Quận 10</option>
+                                        <option value="q11">Quận 11</option>
+                                        <option value="q12">Quận 12</option>
+                                        <option value="qgv">Quận Gò Vấp</option>
+                                        <option value="qbth">Quận Bình Thạnh</option>
+                                        <option value="qbt">Quận Bình Tân</option>
+                                        <option value="qtb">Quận Tân Bình</option>
+                                        <option value="qtp">Quận Tân Phú</option>
+                                        <option value="hnb">Huyện Nhà Bè</option>
+                                        <option value="hhm">Huyện Hóc Môn</option>
+                                        <option value="hbc">Huyện Bình Chánh</option>
+                                        <option value="hcg">Huyện Cần Giờ</option>
+                                        <option value="hcc">Huyện Củ Chi</option>
+                                    </select>
+                                    <!--====== Hết hộp lựa chọn ======-->
                                 </div>
-                                <div class="gl-inline">
-                                    <div class="u-s-m-b-30">
-
-                                        <label class="gl-label" for="address-city">TOWN/CITY *</label>
-
-                                        <input class="input-text input-text--primary-style" type="text" id="address-city"></div>
-                                    <div class="u-s-m-b-30">
-
-                                        <label class="gl-label" for="address-street">ZIP/POSTAL CODE *</label>
-
-                                        <input class="input-text input-text--primary-style" type="text" id="address-postal" placeholder="Zip/Postal Code"></div>
-                                </div>
+                                <!--====== HẾT QUẬN/HUYỆN ======-->
                                 <div class="gl-modal-btn-group">
 
-                                    <button class="btn btn--e-brand-b-2" type="submit">SAVE</button>
+                                    <button class="btn btn--e-brand-b-2" type="submit">LƯU THÔNG TIN</button>
 
-                                    <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">CANCEL</button></div>
+                                    <button class="btn btn--e-grey-b-2" type="button" data-dismiss="modal">HỦY</button></div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--====== End - Shipping Address Add Modal ======-->
-        <!--====== End - Modal Section ======-->
+        <!--====== HẾT THÔNG TIN GIAO HÀNG ======-->
     </div>
-    <!--====== End - Main App ======-->
+    <!--====== HẾT NỘI DUNG TRANG ======-->
 
 
     <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
