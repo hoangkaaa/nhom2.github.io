@@ -346,23 +346,23 @@ body {
 
 /* instagram */
 .s-insta--bgcolor-hover:hover {
-  background-color: #b48534; }
+  background-color: #b12a60; }
 
 .s-insta--color-hover:hover {
-  color: #b48534; }
+  color: #b12a60; }
 
 .s-insta--color {
-  color: #b48534; }
+  color: #b12a60; }
 
 /* youtube */
 .s-youtube--bgcolor-hover:hover {
-  background-color: #b48534; }
+  background-color: #ec3232; }
 
 .s-youtube--color-hover:hover {
-  color: #b48534; }
+  color: #ec3232; }
 
 .s-youtube--color {
-  color: #b48534; }
+  color: #ec3232; }
 
 /* linkedin */
 .s-linked--bgcolor-hover:hover {
@@ -3568,6 +3568,64 @@ input::-ms-clear {
 .product-o__discount {
   text-decoration: line-through; /* Gạch ngang giá cũ */
   color: #999;
+}
+/* Banner Khuyến Mãi */
+.promotion-banner {
+  background-color: #f8b400; /* Màu nền banner */
+  color: #fff; /* Màu chữ trắng */
+  padding: 15px 0; /* Padding trên và dưới */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px; /* Khoảng cách dưới banner */
+}
+
+.promotion-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.promotion-banner__text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.countdown-product {
+  display: flex;
+  align-items: center;
+}
+
+.countdown-product__label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.countdown {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #97602f; /* Màu nền đếm ngược */
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.promotion-banner__link {
+  background-color: #fff;
+  color: #d4462f;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+}
+
+.promotion-banner__link:hover {
+  background-color: #d4462f;
+  color: #fff;
 }
 
 
