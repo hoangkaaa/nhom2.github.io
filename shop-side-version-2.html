@@ -726,6 +726,87 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Phần Lọc theo hương vị-->
+                                    <div class="u-s-m-b-30">
+                                        <!-- Bố cục chung của một module lọc -->
+                                        <div class="shop-w shop-w--style">
+                                            <!-- Tiêu đề của bộ lọc -->
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">HƯƠNG VỊ</h1> <!-- Hiển thị tiêu đề "HƯƠNG VỊ" -->
+                                    
+                                                <!-- Nút toggle ẩn/hiện danh sách bộ lọc -->
+                                                <span class="fas fa-minus collapsed shop-w__toggle" data-target="#s-size" data-toggle="collapse"></span>
+                                            </div>
+                                    
+                                            <!-- Nội dung bộ lọc được ẩn/hiện khi nhấn toggle -->
+                                            <div class="shop-w__wrap collapse" id="s-size">
+                                                <ul class="shop-w__list gl-scroll"> <!-- Danh sách các hương vị có thể lọc -->
+                                                    <li>
+                                                        <!-- Một hương vị (Chocolate) -->
+                                                        <div class="check-box"> <!-- Hộp kiểm chọn -->
+                                                            <input type="checkbox" id="ccl"> <!-- Input dạng checkbox -->
+                                                            <div class="check-box__state check-box__state--primary">
+                                                                <!-- Nhãn hiển thị tên hương vị -->
+                                                                <label class="check-box__label" for="ccl">Chocolate</label>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Tổng số sản phẩm thuộc hương vị này -->
+                                                        <span class="shop-w__total-text">(2)</span>
+                                                    </li>
+                                                    <li>
+                                                        <!-- Hương vị: Quế -->
+                                                        <div class="check-box">
+                                                            <input type="checkbox" id="que">
+                                                            <div class="check-box__state check-box__state--primary">
+                                                                <label class="check-box__label" for="que">Quế</label>
+                                                            </div>
+                                                        </div>
+                                                        <span class="shop-w__total-text">(4)</span>
+                                                    </li>
+                                                    <li>
+                                                        <!-- Hương vị: Matcha -->
+                                                        <div class="check-box">
+                                                            <input type="checkbox" id="matcha">
+                                                            <div class="check-box__state check-box__state--primary">
+                                                                <label class="check-box__label" for="matcha">Matcha</label>
+                                                            </div>
+                                                        </div>
+                                                        <span class="shop-w__total-text">(6)</span>
+                                                    </li>
+                                                    <li>
+                                                        <!-- Hương vị: Mật ong -->
+                                                        <div class="check-box">
+                                                            <input type="checkbox" id="matong">
+                                                            <div class="check-box__state check-box__state--primary">
+                                                                <label class="check-box__label" for="matong">Mật ong</label>
+                                                            </div>
+                                                        </div>
+                                                        <span class="shop-w__total-text">(8)</span>
+                                                    </li>
+                                                    <li>
+                                                        <!-- Hương vị: Trái cây -->
+                                                        <div class="check-box">
+                                                            <input type="checkbox" id="fr">
+                                                            <div class="check-box__state check-box__state--primary">
+                                                                <label class="check-box__label" for="fr">Trái cây</label>
+                                                            </div>
+                                                        </div>
+                                                        <span class="shop-w__total-text">(10)</span>
+                                                    </li>
+                                                    <li>
+                                                        <!-- Hương vị: Dâu -->
+                                                        <div class="check-box">
+                                                            <input type="checkbox" id="dau">
+                                                            <div class="check-box__state check-box__state--primary">
+                                                                <label class="check-box__label" for="dau">Dâu</label>
+                                                            </div>
+                                                        </div>
+                                                        <span class="shop-w__total-text">(12)</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -832,443 +913,543 @@
                                                 </div>
                                             </div>
                                         </div>
-                       
-                            <!-- Sản phẩm 2: Bánh Toast Mứt -->
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Bánh mì/Bánh Toast Mứt.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Bánh Toast Mứt</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Bánh Toast Mứt</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 60</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">28.000 ₫
-                                            <span class="product-o__discount">35.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Bánh toast thơm ngon, kết hợp giữa độ giòn của bánh và vị ngọt ngào, chua nhẹ của mứt trái cây.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Sản phẩm 3: Bánh Toast Socola -->
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Bánh mì/Bánh toast socola.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Bánh Toast Socola</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Bánh Toast Socola</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 70</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">17.500 ₫
-                                            <span class="product-o__discount">35.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Bánh toast phô mai có lớp phô mai béo ngậy, tan chảy hoàn hảo, tạo nên sự kết hợp tuyệt vời giữa vị mặn và ngọt.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                       
-                            <!-- Sản phẩm 4: Bánh Brioche nhân chocolate -->
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Bánh mì/Bánh Brioche nhân chocolate.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Bánh Brioche nhân chocolate</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Bánh Brioche nhân chocolate</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 80</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">26.250 ₫
-                                            <span class="product-o__discount">35.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Bánh brioche mềm mịn, thơm lừng, nhân chocolate đậm đà, mang đến trải nghiệm tuyệt vời cho những tín đồ yêu thích socola.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                       
-                            <!-- Sản phẩm 5: Bánh Brioche xoắn -->
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Bánh mì/Bánh Brioche xoắn.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Bánh Brioche xoắn</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Bánh Brioche xoắn</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 98</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">26.250 ₫
-                                            <span class="product-o__discount">35.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Bánh brioche xoắn mềm xốp với lớp vỏ vàng ruộm, mỗi cuộn bánh là một trải nghiệm ngọt ngào đầy hấp dẫn.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <!-- Sản phẩm 5: Bánh sinh nhật socola -->
-                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Bánh kem/Bánh sinh nhật socola.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Bánh sinh nhật socola</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Bánh sinh nhật socola</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 18</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">225.000 ₫
-                                            <span class="product-o__discount">250.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Những chiếc bánh mini cupcake xinh xắn với lớp kem ngọt ngào, mềm mịn, là lựa chọn tuyệt vời cho bữa tiệc nhỏ.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <!-- Sản phẩm 5: Bánh mini tart trái cây -->
-                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Bánh kem/Bánh mini tart trái cây.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Bánh mini tart trái cây</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Bánh mini tart trái cây</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 88</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">25.000 ₫
-                                          
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Bánh mini tart trái cây với lớp vỏ giòn và những trái cây tươi ngon, mang đến sự kết hợp hoàn hảo giữa vị ngọt và chua nhẹ.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                             <!-- Sản phẩm 5: Macaron vị socola -->
-                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Các loại bánh khác/Macaron vị socola.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Macaron vị socola</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Macaron vị socola</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 118</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">27.000 ₫
-                                            <span class="product-o__discount">30.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Macaron socola với lớp vỏ giòn, bên trong là nhân socola mềm mịn, mang đến hương vị đậm đà và ngọt ngào.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                       
-                            <!-- Sản phẩm 6: Macaron vị matcha -->
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Các loại bánh khác/Macaron vị matcha.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Macaron vị matcha</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Macaron vị matcha</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 158</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">30.000 ₫
-                                          
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Macaron vị matcha với hương vị trà xanh thanh mát, kết hợp cùng lớp kem ngọt nhẹ, là lựa chọn lý tưởng cho những ai yêu thích matcha.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                       
-                            <!-- Sản phẩm 7: Donut chocolate -->
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product-m">
-                                    <div class="product-m__thumb">
-                                        <!--Hình ảnh sản phẩm-->
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/Các loại bánh khác/Donut chocolate.png" alt=""></a>
-                                        <!--Nút "Xem nhanh"-->
-                                        <div class="product-m__quick-look">
-
-                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
-                                        <!--Nút "Thêm vào giỏ hàng"-->
-                                        <div class="product-m__add-cart">
-                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
-                                    </div>
-                                    <!--Nội dung của sản phẩm-->
-                                    <div class="product-m__content">
-                                        <div class="product-m__category">                                                   
-
-                                            <a href="shop-side-version-2.html">Donut chocolate</a></div>
-                                        <!--Tên sản phẩm-->
-                                        <div class="product-m__name">
-
-                                            <a href="product-detail.html">Donut chocolate</a></div>
-                                        <!--Đánh giá và số lượt bán-->
-                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                            <span class="product-m__review">Đã bán 111</span></div>
-                                        <!--Giá bán và giá giảm của sản phẩm-->
-                                        <div class="product-m__price">36.000 ₫
-                                            <span class="product-o__discount">40.000 ₫</span>
-                                        </div>
-                                        <!--Phần mô tả sản phẩm khi rê chuột qua-->
-                                        <div class="product-m__hover">
-                                            <!--Mô tả sản phẩm xem trước-->
-                                            <div class="product-m__preview-description">
-
-                                                <span>Donut chocolate với lớp phủ socola béo ngậy, đem lại trải nghiệm ngọt ngào, mềm mịn, và đậm đà.</span></div>
-                                            <!--Nút thêm vào danh sách yêu thích-->
-                                            <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                                                 
+                                        <!-- Sản phẩm 2: Bánh Toast Mứt -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh mì/Bánh Toast Mứt.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
                                                 </div>
-
-                                                             </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh Toast Mứt</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh Toast Mứt</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 60</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">28.000 ₫
+                                                        <span class="product-o__discount">35.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh toast thơm ngon, kết hợp giữa độ giòn của bánh và vị ngọt ngào, chua nhẹ của mứt trái cây.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                       
+                                                       
+                                        <!-- Sản phẩm 3: Bánh Toast Socola -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh mì/Bánh toast socola.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh Toast Socola</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh Toast Socola</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 70</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">17.500 ₫
+                                                        <span class="product-o__discount">35.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh toast phô mai có lớp phô mai béo ngậy, tan chảy hoàn hảo, tạo nên sự kết hợp tuyệt vời giữa vị mặn và ngọt.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                        <!-- Sản phẩm 4: Bánh Brioche nhân chocolate -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh mì/Bánh Brioche nhân chocolate.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh Brioche nhân chocolate</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh Brioche nhân chocolate</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 80</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">26.250 ₫
+                                                        <span class="product-o__discount">35.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh brioche mềm mịn, thơm lừng, nhân chocolate đậm đà, mang đến trải nghiệm tuyệt vời cho những tín đồ yêu thích socola.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                       
+                                        <!-- Sản phẩm 5: Bánh Brioche xoắn -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh mì/Bánh Brioche xoắn.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh Brioche xoắn</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh Brioche xoắn</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 98</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">26.250 ₫
+                                                        <span class="product-o__discount">35.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh brioche xoắn mềm xốp với lớp vỏ vàng ruộm, mỗi cuộn bánh là một trải nghiệm ngọt ngào đầy hấp dẫn.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sản phẩm 6: Bánh sinh nhật socola -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh sinh nhật socola.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh sinh nhật socola</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh sinh nhật socola</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 18</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">225.000 ₫
+                                                        <span class="product-o__discount">250.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Những chiếc bánh mini cupcake xinh xắn với lớp kem ngọt ngào, mềm mịn, là lựa chọn tuyệt vời cho bữa tiệc nhỏ.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sản phẩm 7: Bánh mini tart trái cây -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh kem/Bánh mini tart trái cây.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh mini tart trái cây</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh mini tart trái cây</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 88</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">25.000 ₫
+                                                      
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh mini tart trái cây với lớp vỏ giòn và những trái cây tươi ngon, mang đến sự kết hợp hoàn hảo giữa vị ngọt và chua nhẹ.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sản phẩm 8: Macaron vị socola -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Các loại bánh khác/Macaron vị socola.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Macaron vị socola</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Macaron vị socola</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 118</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">27.000 ₫
+                                                        <span class="product-o__discount">30.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Macaron socola với lớp vỏ giòn, bên trong là nhân socola mềm mịn, mang đến hương vị đậm đà và ngọt ngào.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                     
+                                        <!-- Sản phẩm 9: Macaron vị matcha -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Các loại bánh khác/Macaron vị matcha.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Macaron vị matcha</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Macaron vị matcha</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 158</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">30.000 ₫
+                                                      
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Macaron vị matcha với hương vị trà xanh thanh mát, kết hợp cùng lớp kem ngọt nhẹ, là lựa chọn lý tưởng cho những ai yêu thích matcha.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sản phẩm 10: Bánh bông lan dâu -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh ngọt & bánh nướng/Bánh bông lan dâu.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh bông lan dâu</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh bông lan dâu</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 160</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">55.000 ₫
+                                                        
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh bông lan dâu mang đến một hương vị ngọt ngào tự nhiên từ dâu tươi, kết hợp với độ mềm mịn của bánh. Dâu tươi được sử dụng trong bánh giúp tạo ra một món bánh ngọt mát lành, dễ ăn và đầy sức sống. Vị ngọt từ dâu không quá gắt mà nhẹ nhàng lan tỏa trong từng miếng bánh, tạo cảm giác tươi mới và thanh mát. Bánh bông lan dâu là lựa chọn tuyệt vời cho những ai yêu thích sự nhẹ nhàng và tinh tế trong món bánh ngọt, phù hợp cho bữa sáng, bữa xế hoặc khi bạn muốn thưởng thức một món ăn ngọt dịu dàng.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sản phẩm 11: Bánh su kem truyền thống -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Bánh ngọt & bánh nướng/Bánh su kem truyền thống.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Bánh su kem truyền thống</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Bánh su kem truyền thống</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 65</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">40.500 ₫
+                                                        <span class="product-o__discount">45.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Bánh su kem truyền thống với lớp vỏ giòn và nhân kem ngọt mịn là món ăn lý tưởng cho những ai yêu thích sự đơn giản. Mỗi miếng bánh su kem mang đến sự kết hợp hoàn hảo giữa độ giòn của vỏ và độ mềm mịn của nhân kem, tạo nên một trải nghiệm dễ chịu và nhẹ nhàng.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sản phẩm 12: Donut chocolate -->
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="product-m">
+                                                <div class="product-m__thumb">
+                                                    <!--Hình ảnh sản phẩm-->
+                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+            
+                                                        <img class="aspect__img" src="images/product/Các loại bánh khác/Donut chocolate.png" alt=""></a>
+                                                    <!--Nút "Xem nhanh"-->
+                                                    <div class="product-m__quick-look">
+            
+                                                        <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Xem nhanh"></a></div>
+                                                    <!--Nút "Thêm vào giỏ hàng"-->
+                                                    <div class="product-m__add-cart">
+                                                        <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart">Thêm vào giỏ hàng</a></div>
+                                                </div>
+                                                <!--Nội dung của sản phẩm-->
+                                                <div class="product-m__content">
+                                                    <div class="product-m__category">                                                   
+            
+                                                        <a href="shop-side-version-2.html">Donut chocolate</a></div>
+                                                    <!--Tên sản phẩm-->
+                                                    <div class="product-m__name">
+            
+                                                        <a href="product-detail.html">Donut chocolate</a></div>
+                                                    <!--Đánh giá và số lượt bán-->
+                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            
+                                                        <span class="product-m__review">Đã bán 111</span></div>
+                                                    <!--Giá bán và giá giảm của sản phẩm-->
+                                                    <div class="product-m__price">36.000 ₫
+                                                        <span class="product-o__discount">40.000 ₫</span>
+                                                    </div>
+                                                    <!--Phần mô tả sản phẩm khi rê chuột qua-->
+                                                    <div class="product-m__hover">
+                                                        <!--Mô tả sản phẩm xem trước-->
+                                                        <div class="product-m__preview-description">
+            
+                                                            <span>Donut chocolate với lớp phủ socola béo ngậy, đem lại trải nghiệm ngọt ngào, mềm mịn, và đậm đà.</span></div>
+                                                        <!--Nút thêm vào danh sách yêu thích-->
+                                                        <div class="product-m__wishlist">
+            
+                                                            <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Thêm vào mục yêu thích"></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="u-s-p-y-60">
+                                    <!--====== Phân trang ======-->
+                                    <ul class="shop-p__pagination">
+                                        <!--Trang hiện tại - đang hoạt động-->
+                                        <li class="is-active">
+            
+                                            <a href="shop-side-version-2.html">1</a></li>
+                                        <li>
+                                            <!--Trang thứ 2-->
+                                            <a href="shop-side-version-2.html">2</a></li>
+                                        <!--Nút chuyển trang kế tiếp-->
+                                        <li>
+            
+                                            <a class="fas fa-angle-right" href="shop-side-version-2.html"></a></li>
+                                    </ul>   
                                     <!--====== End - Pagination ======-->
                                 </div>
                             </div>
@@ -1276,8 +1457,8 @@
                     </div>
                 </div>
             </div>
-            <!--====== End - Section 1 ======-->
         </div>
+        <!--====== End - Section 1 ======-->
         <!--====== End - App Content ======-->
 
         <!--====== Mở đầu Footer ======-->
@@ -1643,7 +1824,7 @@
                                 <div class="success u-s-m-b-30">
                                     <div class="success__text-wrap"><i class="fas fa-check"></i>
 
-                                        <span>Item is added successfully!</span></div>
+                                        <span>Sản phẩm đã được thêm thành công!</span></div>
                                     <div class="success__img-wrap">
 
                                         <img class="u-img-fluid" src="images/product/Bánh kem/Bánh Giáng Sinh.png" alt=""></div>
@@ -1666,7 +1847,7 @@
 
                                         <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">XEM GIỎ HÀNG</a>
 
-                                        <a class="s-option__link btn--e-brand-shadow" href="checkout.html">TIẾN HÀNH THANH TO</a></div>
+                                        <a class="s-option__link btn--e-brand-shadow" href="checkout.html">TIẾN HÀNH THANH TOÁN</a></div>
                                 </div>
                             </div>
                         </div>

@@ -891,10 +891,20 @@ body {
     .input-counter__text:focus {
       outline: 0; }
   .input-counter--text-primary-style {
-    color: #333333;
-    transition: all 0.6s linear;
-    border: 2px solid transparent;
-    background-color: #f1f1f1; }
+    color: #853333;
+    border: 2px solid gold; /* Đặt viền màu vàng xung quanh khung sản phẩm */
+    border-radius: 15px; /* Bo tròn các góc của khung sản phẩm */
+    overflow: hidden; /* Đảm bảo không bị tràn ra ngoài */
+    padding: 15px; /* Thêm khoảng cách bên trong khung sản phẩm */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động cho khung sản phẩm */ }
+    .input-counter--text-primary-style:hover {
+      background-color: gold ;
+      /* Nền nâu khi hover */
+      color: #853333 /* Chữ vàng khi hover */
+      border: 2px solid brown; /* Đặt viền màu vàng xung quanh khung sản phẩm */
+      border-radius: 15px; /* Bo tròn các góc của khung sản phẩm */
+
+    }
     .input-counter--text-primary-style:focus {
       background-color: transparent;
       border-color: #de7a3c; }
@@ -5707,27 +5717,84 @@ ol {
       margin-right: 0; }
   .rev-f1__group {
     display: block; } }
+<<<<<<< HEAD
+=======
+  
+    /*Bỏ word - responsive cho nút "Mua Ngay"*/
+  .pd-detail__form .btn{
+    padding: 1rem 1.5rem;
+  }
+  /*ĐIỀU CHỈNH KHUNG SẢN PHẨM*/
+  .product-m {
+    border: 2px solid gold; /* Đặt viền màu vàng xung quanh khung sản phẩm */
+    border-radius: 15px; /* Bo tròn các góc của khung sản phẩm */
+    overflow: hidden; /* Đảm bảo không bị tràn ra ngoài */
+    padding: 15px; /* Thêm khoảng cách bên trong khung sản phẩm */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động cho khung sản phẩm */
+}
+
+.product-m:hover {
+    transform: scale(1.02); /* Phóng to khung sản phẩm khi hover */
+}
+ /*ĐIỀU CHỈNH BẢNG ĐÁNH GIÁ*/
+.rev-f2__table{  
+  border: 2px solid #8B4513; /* Viền nâu */
+  border-radius: 10px; /* Bo tròn các góc */
+  padding: 10px; /* Khoảng cách bên trong */
+  text-align: center; /* Căn giữa nội dung */
+  transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
+  background-color: #f9f9f9; /* Màu nền nhẹ */
+}
+/*ĐIỀU CHỈNH CÁC NHÃN PHẦN THÊM ĐÁNH GIÁ*/
+.gl-label {
+  color: gold; /* Màu chữ vàng */
+    border: 2px solid #8B0000; /* Viền đỏ đô */
+    border-radius: 5px; /* Bo tròn các góc */
+    padding: 5px 10px; /* Khoảng cách bên trong */
+    background-color: #8B4513; /* Màu nền nâu */
+    display: inline-block; /* Để viền hiển thị đúng */
+    
+    /*ĐIỀU CHỈNH CÁC NHÃN PHẦN THÊM ĐÁNH GIÁ*/
+}
+ .btn--e-brand-shadow{color: gold; /* Màu chữ vàng */
+  border: 2px solid #8B0000; /* Viền đỏ đô */
+  border-radius: 5px; /* Bo tròn các góc */
+  padding: 5px 10px; /* Khoảng cách bên trong */
+  background-color: #8B4513; /* Màu nền nâu */
+  display: inline-block; /* Để viền hiển thị đúng */}
+
+ 
+  .pd-o-thumbnail {
+    transition: transform 0.3s; /* Hiệu ứng chuyển động cho transform */
+}
+
+.pd-o-thumbnail:hover {
+    transform: scale(1.1); /* Tăng kích thước khi hover qua */
+}
+
+>>>>>>> 890d9fa0b8cb429a68227a4cb1809157fc73c081
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
 --------------------------------------------------------------*/
+/* Thiết lập class này để điều chỉnh Thanh bên của trang shop */
 .shop-w-master__heading {
   font-size: 18px;
   color: #333333;
   font-weight: 700;
   line-height: 20px; }
-
+/* Thiết lập màu nền cho phần tử có class sidebar--bg-snow */
 .sidebar--bg-snow {
   background-color: #f9f9f9; }
-
+/* Thiết lập các thuộc tính border, màu nền và box-shadow cho phần tử có class shop-w--style */
 .shop-w--style {
   border: 1px solid #f1f1f1;
   background-color: #ffffff;
   box-shadow: 0 6px 15px 0 rgba(36, 37, 38, 0.08); }
-
+/* Điều chỉnh vị trí của các danh mục trong sidebar */
 .shop-w__intro-wrap {
   position: relative; }
-
+/*Thiết lập kiểu chữ, kích thước, padding, màu sắc và đường viền dưới cho các danh mục trong sidebar */ 
 .shop-w__h {
   font-size: 14px;
   padding: 14px 18px;
@@ -5735,13 +5802,13 @@ ol {
   color: #333333;
   font-weight: 700;
   line-height: 20px; }
-
+/*Điều chỉnh vị trí các phần tử trong danh mục Sidebar so với khung */
 .shop-w__wrap {
   padding: 14px; }
-
+/* Thiết lập biểu tượng (dấu cộng) trước khi click cho phần tử Danh mục trong sidebar */
 .shop-w__toggle.collapsed:before {
   content: "\F067"; }
-
+/* Thiết lập các thuộc tính vị trí, padding, màu sắc, kích thước, v.v. cho biểu tượng (dấu cộng và dấu trừ) bên cạnh Danh mục sidebar */
 .shop-w__toggle {
   position: absolute;
   top: 50%;
@@ -5753,28 +5820,29 @@ ol {
   font-size: 12px;
   cursor: pointer;
   color: #444; }
-
+/* Reset margin và padding của phần tử ul */
 .shop-w ul {
   margin: 0;
   padding-left: 0;
   list-style: none; }
-
+/* Thiết lập overflow và chiều cao tối đa cho phần tử  */
 .shop-w__list {
   overflow: auto;
   max-height: 290px; }
   .shop-w__list > li {
     position: relative;
     padding: 8px 16px; }
-
+/*Thiết lập overflow và chiều cao tối đa cho các phần tử con của Danh mục Sidebar */
 .shop-w__list-2 {
   overflow: auto;
   max-height: 290px; }
   .shop-w__list-2 > li {
     padding: 0.25rem 0;
     position: relative; }
-
+/*Thiết lập vị trí tương tác  và định dạnh cho các phần tử con của Danh mục Sidebar */
 .list__content {
   position: relative; }
+/* Thiết lập các thuộc tính của checkbox */
   .list__content [type="checkbox"] {
     position: absolute;
     left: 0;
@@ -5791,17 +5859,17 @@ ol {
     font-size: 14px;
     transition: background-color 110ms ease-in-out,color 110ms ease-in-out;
     color: #7f7f7f; }
-
+/* Hiển thị thay đổi màu sắc khi rê chuột vào phần tử con của mục Phong cách */
 .list__content:hover span {
   color: #333333;
   background-color: #ececec;
   border-radius: .5rem; }
-
+/* Thiết lập màu sắc khi checkbox được chọn */
 .list__content input:checked + span {
   background-color: #ececec;
   color: #333333;
   border-radius: .5rem; }
-
+/* Định dạng cho các ngôi sao đánh giá trong mục Đánh giá */
 .shop-w__total-text {
   font-size: 11px;
   position: absolute;
@@ -5811,10 +5879,11 @@ ol {
           transform: translateY(-50%);
   color: #333333;
   right: 13px; }
-
+/*Định dạng phần tử con trong Danh mục Sản Phẩm */
 .shop-w__category-list {
   overflow: auto;
   max-height: 290px; }
+  /* Thiết lập padding cho từng phần tử li trong danh sách */
   .shop-w__category-list > li {
     padding: 4px 14px; }
     .shop-w__category-list > li > a {
@@ -5836,10 +5905,10 @@ ol {
         transition: color 110ms ease-in-out; }
         .shop-w__category-list > li ul li a:hover {
           color: #ffaa00; }
-
+/*Thiết lập vị trí tương đối các phần tử con trong Danh mục Sản phẩm */
 .has-list {
   position: relative; }
-
+/*Định dạng cho hiển thị số lượng sản phẩm cho từng loại sản phẩm */
 .category-list__text {
   font-size: 10px;
   color: #a0a0a0; }
@@ -5854,7 +5923,7 @@ ol {
 
 .js-shop-category-span.is-expanded:before {
   content: '\f068'; }
-
+/* Định dạng các phần tử con trong GIÁ */
 .shop-w__form-p-wrap {
   display: -ms-flexbox;
   display: flex;
@@ -5914,7 +5983,7 @@ ol {
 
 .color__check input:checked + label:before {
   border-color: #d2d2d2; }
-
+/*Thiết lập cho các ngôi sao đánh giá trong phần ĐÁNH GIÁ */
 .rating__check {
   position: relative;
   cursor: pointer; }
@@ -5940,30 +6009,30 @@ ol {
   font-size: 12px;
   color: #333333;
   margin-right: 2px; }
-
+/* Hiển thị màu khi di chuột qua rating__check */
 .rating__check:hover .rating__check-star-wrap > i {
   color: #ff9600; }
-
+/* Hiển thị màu cho các sao đã được chọn */
 .rating__check input:checked + .rating__check-star-wrap > i {
   color: #ff9600; }
-
+/*Thiết lập cho phần thông báo đầu trang */
 .shop-p__meta-wrap {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   padding: 20px;
   border-radius: 0.625rem; }
-
+/*Thiết lập định dạng cho phần TÌM THẤY 15 KẾT QUẢ */
 .shop-p__meta-text-1 {
   display: block;
   font-size: 14px;
   margin-bottom: 6px;
   font-weight: 700;
-  color: #333333; }
-
+  color: #8b4513; }
+/*Thiết lập định dạng cho phần Từ khóa tương tự */
 .shop-p__meta-text-2 {
   font-size: 14px;
   font-weight: 700;
-  color: #7f7f7f; }
-
+  color: #333333; }
+/*Thiết lập định dạng cho phần Lọc sản phẩm */
 .shop-p__tool-style {
   display: -ms-flexbox;
   display: flex;
@@ -6009,7 +6078,7 @@ ol {
     margin-left: 15px; }
   .tool-style__form-wrap select {
     border-radius: .25rem; }
-
+/*Thiết lập định dạng cho cho phần hiển thị sản phẩm */
 .is-grid-active .product-m {
   position: relative;
   margin-bottom: 30px;
@@ -6235,7 +6304,7 @@ ol {
   .is-list-active .product-m:hover .product-m__quick-look {
     opacity: 1;
     visibility: visible; }
-
+/*Điều chỉnh phần chuyển trang */
 .shop-p__pagination {
   margin: 0;
   padding: 0;
@@ -6264,7 +6333,7 @@ ol {
   .shop-p__pagination > li.is-active > a {
     background-color: #f7f7f7; }
   .shop-p__pagination > li:not(.is-active) > a:hover {
-    color: #ffaa00;
+    color: #F4af3d;
     text-decoration: underline; }
 
 .shop-a__wrap {
@@ -6293,20 +6362,28 @@ ol {
           transform: translate(0, 0);
   visibility: visible;
   opacity: 1; }
-
+/* Truy vấn phương tiện chỉ định đến màn hình có chiều rộng tối đa là 575px */
 @media (max-width: 575px) {
+/* Điều chỉnh khi lớp is-list-active được áp dụng */
+
+   /* Làm cho hình ảnh sản phẩm chiếm toàn bộ chiều rộng và điều chỉnh margin */
   .is-list-active .product-m__thumb {
     margin-bottom: 30px;
     -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     max-width: 100%; }
+
+     /* Làm cho nội dung sản phẩm chiếm toàn bộ chiều rộng */
   .is-list-active .product-m__content {
     -ms-flex: 0 0 100%;
         flex: 0 0 100%;
     max-width: 100%; }
+    /* Điều chỉnh vị trí mong muốn thành static và căn chỉnh văn bản sang phải */
   .is-list-active .product-m__wishlist {
     position: static;
     text-align: right; }
+
+    /* Hiển thị khối cho phần Lọc sản phẩm */
   .shop-p__tool-style {
     display: block; }
   .tool-style__form-wrap {
