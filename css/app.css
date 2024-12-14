@@ -6166,6 +6166,7 @@ ol {
     opacity: 1;
     visibility: visible; }
 
+/*Điều chỉnh phần chuyển trang */
 .shop-p__pagination {
   margin: 0;
   padding: 0;
@@ -6194,7 +6195,7 @@ ol {
   .shop-p__pagination > li.is-active > a {
     background-color: #f7f7f7; }
   .shop-p__pagination > li:not(.is-active) > a:hover {
-    color: #ffaa00;
+    color: #F4af3d;
     text-decoration: underline; }
 
 .shop-a__wrap {
@@ -6224,25 +6225,36 @@ ol {
   visibility: visible;
   opacity: 1; }
 
+/* Truy vấn phương tiện chỉ định đến màn hình có chiều rộng tối đa là 575px */
 @media (max-width: 575px) {
-  .is-list-active .product-m__thumb {
-    margin-bottom: 30px;
-    -ms-flex: 0 0 100%;
-        flex: 0 0 100%;
-    max-width: 100%; }
-  .is-list-active .product-m__content {
-    -ms-flex: 0 0 100%;
-        flex: 0 0 100%;
-    max-width: 100%; }
-  .is-list-active .product-m__wishlist {
-    position: static;
-    text-align: right; }
-  .shop-p__tool-style {
-    display: block; }
-  .tool-style__form-wrap {
-    display: block; }
-    .tool-style__form-wrap div + div {
-      margin-left: 0; } }
+  /* Điều chỉnh khi lớp is-list-active được áp dụng */
+  
+    /* Làm cho hình ảnh sản phẩm chiếm toàn bộ chiều rộng và điều chỉnh margin */
+   .is-list-active .product-m__thumb {
+     margin-bottom: 30px;
+     -ms-flex: 0 0 100%;
+         flex: 0 0 100%;
+     max-width: 100%; }
+     
+      /* Làm cho nội dung sản phẩm chiếm toàn bộ chiều rộng */
+   .is-list-active .product-m__content {
+     -ms-flex: 0 0 100%;
+         flex: 0 0 100%;
+     max-width: 100%; }
+     
+     /* Điều chỉnh vị trí mong muốn thành static và căn chỉnh văn bản sang phải */
+   .is-list-active .product-m__wishlist {
+     position: static;
+     text-align: right; }
+     
+      /* Hiển thị khối cho phần Lọc sản phẩm */
+   .shop-p__tool-style {
+     display: block; }
+     
+   .tool-style__form-wrap {
+     display: block; }
+     .tool-style__form-wrap div + div {
+       margin-left: 0; } }
 
 /* Hiển thị sản phẩm sau khi lọc*/
 .product-m {
@@ -6287,52 +6299,6 @@ ol {
 
 .product-m__add-cart {
   margin-bottom: 10px; /* Thêm khoảng cách trên nút "Thêm vào giỏ hàng" */
-}
-
-/* Bố cục hiển thị chân trang - số trang sản phẩm */
-/* Căn giữa phân trang */
-.pagination-container {
-  display: flex; /* Sử dụng Flexbox */
-  justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-  align-items: center; /* Căn giữa nội dung theo chiều dọc (nếu cần) */
-  height: 100%; /* Đảm bảo chiều cao bao bọc đủ lớn để thấy rõ căn giữa */
-  margin: 0 auto; /* Căn giữa với các phần tử khác trong trang */
-  padding: 20px 0; /* Tạo khoảng cách giữa phân trang và các phần tử xung quanh */
-}
-
-/* Định dạng danh sách phân trang */
-.shop-p__pagination {
-  list-style: none; /* Loại bỏ ký hiệu mặc định của danh sách */
-  display: flex; /* Sắp xếp các mục nằm ngang */
-  gap: 10px; /* Khoảng cách giữa các mục */
-  padding: 0;
-  margin: 0;
-}
-
-/* Định dạng từng mục trong danh sách */
-.shop-p__pagination li {
-  font-size: 16px;
-}
-
-/* Định dạng liên kết trong danh sách */
-.shop-p__pagination li a {
-  text-decoration: none; /* Loại bỏ gạch chân */
-  color: gray; /* Màu liên kết mặc định */
-  padding: 5px 10px; /* Tạo khoảng cách bên trong liên kết */
-  border-radius: 4px; /* Bo góc cho liên kết */
-  transition: background-color 0.3s ease; /* Hiệu ứng hover */
-}
-
-/* Định dạng liên kết khi hover */
-.shop-p__pagination li a:hover {
-  background-color: #f0f0f0; /* Màu nền khi hover */
-}
-
-/* Định dạng mục đang hoạt động */
-.shop-p__pagination li.is-active a {
-  font-weight: bold; /* Tăng độ đậm chữ */
-  color: black; /* Màu chữ của trang hiện tại */
-  background-color: #e0e0e0; /* Màu nền cho trang hiện tại */
 }
 
 /*--------------------------------------------------------------
