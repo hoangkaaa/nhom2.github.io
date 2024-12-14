@@ -2823,7 +2823,7 @@ input::-ms-clear {
       display: block;
       width: 70px;
       position: absolute;
-      border: solid #97602f; }
+      border: solid #ffaa00; }
     .about .about__p-wrap:before {
       top: -10px;
       left: -8px;
@@ -3037,7 +3037,7 @@ input::-ms-clear {
 }
 
 .arrow-button {
-    background-color: #97602f; /* Màu nền chủ đề */
+    background-color: rgba(130, 111, 44, 0.7); /* Màu nền đen mờ */
     color: white; /* Màu mũi tên */
     border: none;
     border-radius: 50%;
@@ -3054,7 +3054,7 @@ input::-ms-clear {
 
 .arrow-button:hover {
     background-color: rgba(255, 255, 255, 0.9); /* Hiệu ứng khi hover */
-    color: #97602f;
+    color: #ba9a64;
     transform: scale(1.2); /* Zoom nhẹ */
 }
 
@@ -3405,8 +3405,8 @@ input::-ms-clear {
 }
 /* Hiệu ứng hover */
 .route-box__link:hover {
-  background-color: #e1ca7f; /* Đổi màu nền */
-  color: #97602f; /* Đổi màu chữ */
+  background-color: #e1ca7f; /* Đổi màu nền sang cam */
+  color: #ffffff; /* Đổi màu chữ sang trắng */
   box-shadow: 0px 4px 10px rgba(255, 69, 0, 0.3); /* Đổ bóng nổi bật */
   transform: translateY(-3px); /* Hiệu ứng nổi lên */
   border-color:#97602f; /* Viền đồng bộ màu nền */
@@ -3418,7 +3418,7 @@ input::-ms-clear {
 }
 .route-box__link:hover i {
   transform: rotate(-15deg); /* Xoay nhẹ icon */
-  color: #97602f; /* Đổi màu icon */
+  color: #ffffff; /* Đổi màu icon sang trắng */
 }
 .f-cart__pad-box {
   border: 1px solid #eee;
@@ -5030,182 +5030,251 @@ textarea.stylish-input {
   color: #7f7f7f;
   font-size: 12px; }
 
+/* Tiêu đề lớn với font chữ to và đậm */
+.d-meta__text {
+  display: block; /* Hiển thị dạng khối */
+  color: #333333; /* Màu chữ xám đậm */
+  font-size: 32px; /* Cỡ chữ lớn */
+  font-weight: 700; /* Chữ rất đậm */
+}
+
+/* Tiêu đề phụ với font chữ nhỏ hơn */
+.d-meta__text-2 {
+  display: block; /* Hiển thị dạng khối */
+  color: #333333; /* Màu chữ xám đậm */
+  font-size: 18px; /* Cỡ chữ trung bình */
+  font-weight: 600; /* Chữ đậm vừa */
+}
+
+/* Tiêu đề nhỏ với màu và cỡ chữ nhạt hơn */
+.d-meta__text-3 {
+  display: block; /* Hiển thị dạng khối */
+  color: #7f7f7f; /* Màu chữ xám nhạt */
+  font-size: 12px; /* Cỡ chữ nhỏ */
+}
+
+/* Danh sách bình luận, bỏ dấu đầu dòng */
 .d-meta__comments ol {
-  margin: 0;
-  padding: 0;
-  list-style: none; }
+  margin: 0; /* Xóa khoảng cách mặc định */
+  padding: 0; /* Xóa lề mặc định */
+  list-style: none; /* Bỏ dấu đầu dòng */
+}
 
+/* Bình luận con có lề trái để thụt vào */
 .d-meta__comments .comment-children {
-  padding-left: 1rem; }
+  padding-left: 1rem; /* Thụt vào 1rem ở bên trái */
+}
 
+/* Bố cục bình luận chính */
 .d-meta__p-comment {
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 1.5rem; }
+  display: -ms-flexbox; /* Hiển thị dạng Flexbox (hỗ trợ IE) */
+  display: flex; /* Hiển thị dạng Flexbox */
+  margin-bottom: 1.5rem; /* Khoảng cách dưới giữa các bình luận */
+}
 
+/* Vùng chứa ảnh đại diện bình luận */
 .p-comment__wrap1 {
-  margin-right: 20px; }
+  margin-right: 20px; /* Khoảng cách phải giữa ảnh và nội dung */
+}
 
+/* Ảnh đại diện với kích thước cố định */
 .p-comment__img-wrap {
-  width: 80px;
-  height: 80px;
-  background-color: #f5f5f5; }
+  width: 80px; /* Chiều rộng ảnh */
+  height: 80px; /* Chiều cao ảnh */
+  background-color: #f5f5f5; /* Màu nền xám nhạt */
+}
 
+/* Tên tác giả hiển thị nổi bật */
 .p-comment__author {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333333; }
+  display: block; /* Hiển thị dạng khối */
+  margin-bottom: 2px; /* Khoảng cách dưới */
+  font-size: 14px; /* Cỡ chữ vừa */
+  font-weight: 600; /* Chữ đậm */
+  color: #333333; /* Màu chữ xám đậm */
+}
 
+/* Hiển thị thời gian bình luận */
 .p-comment__timestamp {
-  display: block;
-  margin-bottom: 2px; }
-  .p-comment__timestamp a {
-    font-size: 12px;
-    font-weight: 600;
-    color: #7f7f7f;
-    transition: color 110ms ease-in-out; }
-    .p-comment__timestamp a:hover {
-      color: #ffaa00; }
+  display: block; /* Hiển thị dạng khối */
+  margin-bottom: 2px; /* Khoảng cách dưới */
+}
+.p-comment__timestamp a {
+  font-size: 12px; /* Cỡ chữ nhỏ */
+  font-weight: 600; /* Chữ đậm */
+  color: #7f7f7f; /* Màu xám nhạt */
+  transition: color 110ms ease-in-out; /* Hiệu ứng chuyển màu trong 110ms */
+}
+.p-comment__timestamp a:hover {
+  color: #ffaa00; /* Đổi màu cam khi rê chuột */
+}
 
+/* Nội dung bình luận */
 .p-comment__paragraph {
-  color: #7f7f7f;
-  font-size: 13px;
-  margin-bottom: 8px;
-  width: 100%;
-  max-width: 470px; }
+  color: #7f7f7f; /* Màu xám nhạt */
+  font-size: 13px; /* Cỡ chữ nhỏ */
+  margin-bottom: 8px; /* Khoảng cách dưới */
+  width: 100%; /* Chiều rộng đầy đủ */
+  max-width: 470px; /* Giới hạn chiều rộng tối đa */
+}
 
+/* Link trả lời bình luận */
 .p-comment__reply {
-  font-size: 13px;
-  font-weight: 600;
-  color: #ffaa00;
-  border-bottom: 0; }
-  .p-comment__reply:hover {
-    border-bottom: 1px solid #ffaa00; }
+  font-size: 13px; /* Cỡ chữ nhỏ */
+  font-weight: 600; /* Chữ đậm */
+  color: #ffaa00; /* Màu cam sáng */
+  border-bottom: 0; /* Bỏ gạch chân mặc định */
+}
+.p-comment__reply:hover {
+  border-bottom: 1px solid #ffaa00; /* Thêm gạch chân khi rê chuột */
+}
+
 
 .respond__form {
-  width: 100%; }
-  .respond__form .btn, .respond__form .input-text, .respond__form .text-area {
-    border-radius: 6px; }
-  .respond__form .input-text, .respond__form .text-area {
-    width: 100%; }
-  .respond__form .text-area {
-    height: 15.625rem; }
-  .respond__form .btn {
-    font-weight: 600;
-    padding: 16px 46px; }
+  width: 100%; /* Chiều rộng form chiếm toàn bộ không gian */
+}
+.respond__form .btn, .respond__form .input-text, .respond__form .text-area {
+  border-radius: 6px; /* Bo tròn góc cho nút bấm, ô nhập văn bản và ô nhập nội dung */
+}
+.respond__form .input-text, .respond__form .text-area {
+  width: 100%; /* Chiều rộng của ô nhập văn bản chiếm toàn bộ form */
+}
+.respond__form .text-area {
+  height: 15.625rem; /* Chiều cao của ô nhập nội dung */
+}
+.respond__form .btn {
+  font-weight: 600; /* Độ đậm chữ cho nút bấm */
+  padding: 16px 46px; /* Khoảng cách bên trong nút bấm */
+}
 
 .respond__group {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap; }
-  .respond__group div {
-    -ms-flex: 1;
-        flex: 1;
-    margin-right: 14px; }
-    .respond__group div:last-child {
-      margin-right: 0; }
+  display: -ms-flexbox; /* Hiển thị bố cục dạng Flexbox (hỗ trợ trình duyệt cũ) */
+  display: flex; /* Hiển thị bố cục dạng Flexbox */
+  -ms-flex-wrap: nowrap; /* Không cho phép xuống dòng (hỗ trợ trình duyệt cũ) */
+      flex-wrap: nowrap; /* Không cho phép xuống dòng */
+}
+.respond__group div {
+  -ms-flex: 1; /* Các phần tử con chiếm đều không gian (hỗ trợ trình duyệt cũ) */
+      flex: 1; /* Các phần tử con chiếm đều không gian */
+  margin-right: 14px; /* Khoảng cách giữa các phần tử con */
+}
+.respond__group div:last-child {
+  margin-right: 0; /* Phần tử cuối cùng không có khoảng cách bên phải */
+}
 
 @media (max-width: 991px) {
   .blog-m__element {
-    width: 50%; }
+    width: 50%; /* Khi màn hình nhỏ hơn 991px, phần tử chiếm 50% chiều rộng */
+  }
   .respond__group {
-    display: block; }
-    .respond__group div {
-      display: block;
-      margin-right: 0; } }
+    display: block; /* Các phần tử con hiển thị dạng khối */
+  }
+  .respond__group div {
+    display: block; /* Hiển thị mỗi phần tử trên một dòng */
+    margin-right: 0; /* Xóa khoảng cách phải giữa các phần tử */
+  }
+}
 
 @media (max-width: 767px) {
   .blog-m__element {
-    width: 100%; } }
+    width: 100%; /* Khi màn hình nhỏ hơn 767px, phần tử chiếm toàn bộ chiều rộng */
+  }
+}
 
 /* Styling for comment list */
+/* Định dạng danh sách bình luận */
 ol {
-  padding-left: 0;
-  list-style: none;
+  padding-left: 0; /* Xóa khoảng cách thụt lề mặc định */
+  list-style: none; /* Loại bỏ dấu đầu dòng */
 }
 
 /* Comment container */
+/* Khung chứa bình luận */
 .d-meta__p-comment {
-  margin: 10px 0;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #800000; /* Viền màu đỏ đô */
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px 0; /* Khoảng cách trên và dưới giữa các bình luận */
+  padding: 15px; /* Khoảng cách bên trong khung bình luận */
+  background-color: #f9f9f9; /* Nền xám nhạt */
+  border: 1px solid #800000; /* Viền đỏ đô */
+  border-radius: 5px; /* Bo tròn góc khung bình luận */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ nhẹ */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Các phần tử con hiển thị dạng cột */
 }
 
 /* Align author and timestamp */
+/* Sắp xếp tên tác giả và thời gian */
 .p-comment__wrap2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
+  display: flex; /* Hiển thị ngang các phần tử con */
+  flex-direction: column; /* Sắp xếp dạng cột (nếu cần) */
+  align-items: flex-start; /* Canh trái */
+  gap: 5px; /* Khoảng cách giữa các phần tử con */
 }
 
 /* Author name styling */
+/* Định dạng tên tác giả */
 .p-comment__author {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
+  font-weight: bold; /* Tên tác giả in đậm */
+  color: #333; /* Màu xám đậm */
+  margin-bottom: 5px; /* Khoảng cách dưới tên tác giả */
 }
 
 /* Timestamp styling */
+/* Định dạng thời gian */
 .p-comment__timestamp a {
-  font-size: 12px;
-  color: #777;
-  text-decoration: none;
+  font-size: 12px; /* Kích thước chữ nhỏ */
+  color: #777; /* Màu xám nhạt */
+  text-decoration: none; /* Bỏ gạch chân */
 }
 
 /* Comment paragraph */
+/* Nội dung bình luận */
 .p-comment__paragraph {
-  margin: 10px 0;
-  color: #555;
-  line-height: 1.6;
+  margin: 10px 0; /* Khoảng cách trên và dưới nội dung */
+  color: #555; /* Màu chữ trung tính */
+  line-height: 1.6; /* Giãn dòng để dễ đọc */
 }
 
 /* Reply link */
+/* Định dạng liên kết trả lời */
 .p-comment__reply {
-  font-size: 14px;
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 14px; /* Kích thước chữ vừa */
+  color: #007bff; /* Màu xanh dương cho liên kết */
+  text-decoration: none; /* Bỏ gạch chân */
+  transition: color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
 }
 
 .p-comment__reply:hover {
-  color: #0056b3;
+  color: #0056b3; /* Màu xanh đậm hơn khi hover */
 }
 
 /* Nested comments */
+/* Định dạng bình luận con */
 .comment-children {
-  margin-left: 20px;
+  margin-left: 20px; /* Thụt lề bình luận con */
   padding-left: 10px;
-  border-left: 2px solid #800000; /* Viền màu đỏ đô cho comment con */
+  border-left: 2px solid #800000; /* Viền đỏ đô bên trái */
 }
 
 /* Responsive styling */
+/* Định dạng trên màn hình nhỏ */
 @media (max-width: 768px) {
   .d-meta__p-comment {
-      padding: 10px;
+      padding: 10px; /* Thu nhỏ padding khi màn hình nhỏ hơn 768px */
   }
 
   .p-comment__paragraph {
-      font-size: 14px;
+      font-size: 14px; /* Thu nhỏ kích thước chữ */
   }
 
   .p-comment__reply {
-      font-size: 13px;
+      font-size: 13px; /* Thu nhỏ kích thước liên kết trả lời */
   }
 }
+
+
 
 /*--------------------------------------------------------------
 18.0 Product-Detail-Pages
 --------------------------------------------------------------*/
-/* Thiết lập định dạng cho phần breadcrumb */
 .pd-breadcrumb__list {
   list-style: none;
   padding: 0;
@@ -5223,14 +5292,12 @@ ol {
       color: #333333;
       font-weight: 700; }
     .pd-breadcrumb__list > li.has-separator:after {
-      content: '/';
+      content: '-';
       margin: 0 6px; }
 
-/* Thiết lập định dạng con trỏ chuột hình bàn tay cho phần .pd */
 .pd {
   cursor: pointer; }
 
-/* Thiết lập vị trí và kiểu dáng cho phần .pd-wrap */
 .pd-wrap {
   position: relative; }
 
@@ -5259,30 +5326,28 @@ ol {
       transition: color 110ms ease-in-out;
       color: #333333; }
 
-/* Các định dạng cho phần chi tiết sản phẩm */
 .pd-detail__label {
   display: block;
   font-size: 14px;
   font-weight: 700;
   color: #333333; }
 
-  .pd-detail__inline span {
-    margin-right: 0.375rem; }
-    .pd-detail__inline span:last-child {
+.pd-detail__inline span {
+  margin-right: 0.375rem; }
+  .pd-detail__inline span:last-child {
+    margin-right: 0; }
+
+.pd-detail-inline-2 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-align: center;
+      align-items: center; }
+  .pd-detail-inline-2 div {
+    margin-right: 14px; }
+    .pd-detail-inline-2 div:last-child {
       margin-right: 0; }
-  
-  .pd-detail-inline-2 {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    -ms-flex-align: center;
-        align-items: center; }
-    .pd-detail-inline-2 div {
-      margin-right: 14px; }
-      .pd-detail-inline-2 div:last-child {
-        margin-right: 0; }
-  
 
 .pd-detail__name {
   display: block;
@@ -5440,7 +5505,6 @@ ol {
   .pd-detail__policy-list > li span {
     color: #7f7f7f; }
 
-/* Danh sách tab sản phẩm */
 .pd-tab__list {
   margin: 0;
   border-bottom: 2px solid #e7e7e7; }
@@ -5465,7 +5529,6 @@ ol {
     .pd-tab__list > li + li {
       margin-left: 28px; }
 
-/* Phần mô tả sản phẩm */
 .pd-tab__desc, .pd-tab__tag {
   max-width: 691px; }
 
@@ -5489,7 +5552,6 @@ ol {
   font-weight: 700;
   line-height: 1.4; }
 
-/* Bảng mô tả sản phẩm */
 .pd-tab__desc .pd-table {
   overflow: auto; }
   .pd-tab__desc .pd-table table {
@@ -5507,14 +5569,12 @@ ol {
     color: #333333;
     font-weight: 600; }
 
-/* Tiêu đề của tag */
 .pd-tab__tag h2 {
   font-size: 16px;
   font-weight: 700;
   color: #333333;
   line-height: 1.18; }
 
-/* Form trong phần tag */
 .pd-tab__tag form {
   width: 100%; }
   .pd-tab__tag form .btn {
@@ -5528,7 +5588,6 @@ ol {
     margin-right: 8px;
     width: 50%; }
 
-/* Phần đánh giá*/
 .pd-tab__rev-f1 {
   width: 100%; }
 
@@ -5547,7 +5606,6 @@ ol {
     line-height: 0.875;
     color: #333333; }
 
-/* Nhóm đánh giá */
 .rev-f1__group {
   display: -ms-flexbox;
   display: flex;
@@ -5563,10 +5621,9 @@ ol {
   .rev-f1__group .select-box {
     border-radius: 0.375rem; }
 
-/* Phần đánh giá chi tiết */   
 .rev-f1__review {
   max-width: 691px; }
-/* Phần đánh giá từng người dùng */
+
 .review-o {
   padding: 1rem 0;
   border-bottom: 1px solid #f0f0f0; }
@@ -5629,26 +5686,6 @@ ol {
       font-size: 11px;
       color: #333333; }
 
- /*làm biến mất nút radio*/
- .pd-tab__rev-f2 .star-widget input{
-  display: none;
-}
-/*định dạng ngôi sao và đảo ngược vị trí (theo trục Y) của các ngôi sao*/
-.pd-tab__rev-f2 .star-widget{
-  display: flex;
-  justify-content: end;
-  font-size: 40px;
-  color:#444;
-  transform: rotateY(180deg);
-}
-
-/* ngôi sao được hover, ngôi sao họ hàng của ngôi sao được hover và ngôi sao họ hàng của ngôi sao được chọn sẽ đổi màu vàng*/
-.star-widget label:hover,
-.star-widget label:hover ~ label,
-.star-widget input:checked ~ label{
-  color:#f4af3d;
-}
-
 .rev-f2__group {
   display: -ms-flexbox;
   display: flex;
@@ -5671,6 +5708,7 @@ ol {
     .rev-f2__group div {
       display: block;
       margin-right: 0; } }
+<<<<<<< HEAD
     /* Responsive phần tên và giá sản phẩm sẽ mất và phần form "mua ngay" sẽ về giữa khi màn hình <991px */
   .pd-stickyBuyNow .pd-detail{
     display:none;
@@ -5680,6 +5718,8 @@ ol {
     justify-content: center;
   }
 
+=======
+>>>>>>> adce4230620c0c2df970ab14d4ebaf1dcca102b7
 
 @media (max-width: 575px) {
   .pd-detail-inline-2 {
@@ -5689,6 +5729,8 @@ ol {
       margin-right: 0; }
   .rev-f1__group {
     display: block; } }
+<<<<<<< HEAD
+=======
   
     /*Responsive cho nút "Mua Ngay"*/
   .pd-detail__form .btn{
@@ -5742,6 +5784,7 @@ ol {
     transform: scale(1.1); /* Tăng kích thước khi hover qua */
 }
 
+>>>>>>> 890d9fa0b8cb429a68227a4cb1809157fc73c081
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
