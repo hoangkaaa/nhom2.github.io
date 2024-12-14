@@ -5684,6 +5684,18 @@ ol {
   .pd-detail__form .btn{
     padding: 1rem 1.5rem;
   }
+  /*ĐIỀU CHỈNH KHUNG SẢN PHẨM*/
+  .product-m {
+    border: 2px solid gold; /* Đặt viền màu vàng xung quanh khung sản phẩm */
+    border-radius: 15px; /* Bo tròn các góc của khung sản phẩm */
+    overflow: hidden; /* Đảm bảo không bị tràn ra ngoài */
+    padding: 15px; /* Thêm khoảng cách bên trong khung sản phẩm */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động cho khung sản phẩm */
+}
+
+.product-m:hover {
+    transform: scale(1.02); /* Phóng to khung sản phẩm khi hover */
+}
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
