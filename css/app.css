@@ -5708,7 +5708,6 @@ ol {
     .rev-f2__group div {
       display: block;
       margin-right: 0; } }
-<<<<<<< HEAD
     /* Responsive phần tên và giá sản phẩm sẽ mất và phần form "mua ngay" sẽ về giữa khi màn hình <991px */
   .pd-stickyBuyNow .pd-detail{
     display:none;
@@ -5718,8 +5717,6 @@ ol {
     justify-content: center;
   }
 
-=======
->>>>>>> adce4230620c0c2df970ab14d4ebaf1dcca102b7
 
 @media (max-width: 575px) {
   .pd-detail-inline-2 {
@@ -5729,8 +5726,6 @@ ol {
       margin-right: 0; }
   .rev-f1__group {
     display: block; } }
-<<<<<<< HEAD
-=======
   
     /*Responsive cho nút "Mua Ngay"*/
   .pd-detail__form .btn{
@@ -5784,7 +5779,6 @@ ol {
     transform: scale(1.1); /* Tăng kích thước khi hover qua */
 }
 
->>>>>>> 890d9fa0b8cb429a68227a4cb1809157fc73c081
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
