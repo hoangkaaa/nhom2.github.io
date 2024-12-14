@@ -7392,3 +7392,122 @@ ol {
 
 #js-product-detail-modal-thumbnail:hover .pt-prev, #js-product-detail-modal-thumbnail:hover .pt-next {
   opacity: .8; }
+
+/* Hiệu ứng hover các chức năng*/
+  .dash__f-list li a {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #333; /* Màu chữ mặc định */
+    text-decoration: none; 
+    transition: all 0.3s ease; /* Tạo hiệu ứng mượt mà khi hover */
+}
+
+.dash__f-list li a:hover {
+    color: #fff; /* Màu chữ khi hover */
+    background-color: #007bff; /* Màu nền khi hover */
+    border-radius: 5px; /* Làm tròn góc khi hover (tuỳ chọn) */
+    transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+/* Thay đổi hiệu ứng quản lý thông tin tài khoản */
+.dash__box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dash__box:hover {
+  transform: translateY(-5px); /* Di chuyển hộp lên trên nhẹ */
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
+}
+
+.dash__link a {
+  color: #007bff; /* Màu liên kết mặc định */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.dash__link a:hover {
+  color: #ff5722; /* Đổi màu khi hover */
+  transform: scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+/* Hiệu ứng hover đơn hàng */
+.m-order__get {
+  border: 1px solid #ddd; /* Đường viền mặc định */
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 15px;
+  transition: all 0.3s ease; /* Hiệu ứng mượt mà */
+}
+
+.m-order__get:hover {
+  border-color: #007bff; /* Đổi màu viền khi hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng đổ bóng */
+  transform: translateY(-5px); /* Nâng nhẹ khi hover */
+}
+
+/* Hiệu ứng cho hình ảnh của sản phẩm đơn hàng */
+.description__img-wrap img {
+  transition: transform 0.3s ease; /* Hiệu ứng mượt mà */
+  border-radius: 5px; /* Bo tròn góc cho hình ảnh */
+}
+
+.description__img-wrap img:hover {
+  transform: scale(1.1) rotate(3deg); /* Phóng to và xoay nhẹ khi hover */
+}
+
+/* Hiệu ứng cho quản lý địa chỉ*/
+/* Hiệu ứng hover cho hàng trong bảng */
+.dash__table-2 tbody tr:hover {
+  background-color: #f9f9f9; /* Màu nền khi hover */
+  transition: background-color 0.3s ease; /* Thêm hiệu ứng mượt */
+}
+
+/* Hiệu ứng hover cho các liên kết "Chỉnh Sửa" */
+.address-book-edit {
+  position: relative;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.address-book-edit:hover {
+  color: #0056b3; /* Thay đổi màu chữ khi hover */
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+/* Hiệu ứng nút "Chỉnh Sửa" */
+.address-book-edit::after {
+  content: "✎"; /* Biểu tượng chỉnh sửa */
+  font-size: 0.8em;
+  color: #007bff;
+  margin-left: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.address-book-edit:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hiệu ứng hover cho các ô dữ liệu */
+.dash__table-2 tbody td {
+  position: relative;
+  padding: 10px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.dash__table-2 tbody td:hover {
+  transform: scale(1.02); /* Phóng to nhẹ */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tạo hiệu ứng nổi */
+}
+
+.gl-label {
+  color: gold; /* Màu chữ vàng */
+    border: 2px solid #8B0000; /* Viền đỏ đô */
+    border-radius: 5px; /* Bo tròn các góc */
+    padding: 5px 10px; /* Khoảng cách bên trong */
+    background-color: #8B4513; /* Màu nền nâu */
+    display: inline-block; /* Để viền hiển thị đúng */}
