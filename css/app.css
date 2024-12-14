@@ -5723,6 +5723,14 @@ ol {
   background-color: #8B4513; /* Màu nền nâu */
   display: inline-block; /* Để viền hiển thị đúng */}
 
+  .pd-o-thumbnail {
+    transition: transform 0.3s; /* Hiệu ứng chuyển động cho transform */
+}
+
+.pd-o-thumbnail:hover {
+    transform: scale(1.1); /* Tăng kích thước khi hover qua */
+}
+
 /*--------------------------------------------------------------
 19.0 Shop-Pages
 --------------------------------------------------------------*/
