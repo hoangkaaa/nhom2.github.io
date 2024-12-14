@@ -6288,6 +6288,38 @@ ol {
 .product-m__add-cart {
   margin-bottom: 10px; /* Thêm khoảng cách trên nút "Thêm vào giỏ hàng" */
 }
+
+/* Bố cục hiển thị chân trang - số trang sản phẩm */
+/* CSS cho Pagination */
+.pagination-container {
+  display: flex; /* Sử dụng Flexbox để bố cục các phần tử con */
+  justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+  align-items: center; /* Căn giữa nội dung theo chiều dọc */
+  margin-top: 20px; /* Tạo khoảng cách trên so với nội dung khác */
+}
+
+.shop-p__pagination {
+  list-style: none; /* Loại bỏ ký hiệu dấu đầu dòng mặc định của danh sách */
+  display: flex; /* Hiển thị các mục li dưới dạng hàng ngang */
+  gap: 10px; /* Tạo khoảng cách đều giữa các mục trong danh sách */
+  padding: 0; /* Loại bỏ khoảng cách mặc định bên trong danh sách */
+  margin: 0; /* Loại bỏ khoảng cách mặc định bên ngoài danh sách */
+}
+
+.shop-p__pagination li {
+  font-size: 16px; /* Đặt kích thước chữ cho các mục trong phân trang */
+}
+
+.shop-p__pagination li a {
+  text-decoration: none; /* Loại bỏ gạch chân mặc định của liên kết */
+  color: gray; /* Đặt màu chữ xám cho các liên kết */
+}
+
+.shop-p__pagination li.is-active a {
+  font-weight: bold; /* Tăng độ đậm của chữ để làm nổi bật trang hiện tại */
+  color: black; /* Đặt màu chữ đen cho liên kết của trang hiện tại */
+}
+
 /*--------------------------------------------------------------
 20.0 Vendor Extension Pages
 --------------------------------------------------------------*/
