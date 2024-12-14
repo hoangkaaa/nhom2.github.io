@@ -565,7 +565,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <!-- Tiêu đề thông tin người nhận -->
-                                    <h1 class="checkout-f__h1">THÔNG TIN NGƯỜI DÙNG</h1>
+                                    <h1 class="checkout-f__h1">THÔNG TIN KHÁCH HÀNG</h1>
                                     <!-- Form nhập thông tin giao hàng -->
                                     <form class="checkout-f__delivery">
                                         <div class="u-s-m-b-30">
@@ -614,53 +614,7 @@
                                                 <input class="input-text input-text--primary-style" type="text" id="billing-phone" data-bill=""></div>
                                             <!--====== HẾT SỐ ĐIỆN THOẠI ======-->
 
-                                           <!--====== JS ĐỊA CHỈ  ======-->
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-                            <script>
-                              var citis = document.getElementById("city");
-                              var districts = document.getElementById("district");
-                              var wards = document.getElementById("ward");
-                              // Thiết lập các thông số cho request
-                              var Parameter = {
-                                url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-                                method: "GET",
-                                responseType: "application/json",
-                              };
-                              // Gửi request để lấy dữ liệu địa chỉ
-                              var promise = axios(Parameter);
-                              promise.then(function(result) {
-                                renderCity(result.data);
-                              });
-                              // Hàm để hiển thị thông tin thành phố
-                              function renderCity(data) {
-                                for (const x of data) {
-                                  citis.options[citis.options.length] = new Option(x.Name, x.Id);
-                                }
-                                // Sự kiện khi chọn thành phố
-                                citis.onchange = function() {
-                                  district.length = 1;
-                                  ward.length = 1;
-                                  if (this.value != "") {
-                                    const result = data.filter(n => n.Id === this.value);
-                                    for (const k of result[0].Districts) {
-                                      districts.options[districts.options.length] = new Option(k.Name, k.Id);
-                                    }
-                                  }
-                                };
-                                // Sự kiện khi chọn quận/huyện
-                                districts.onchange = function() {
-                                  ward.length = 1;
-                                  const dataCity = data.filter((n) => n.Id === citis.value);
-                                  if (this.value != "") {
-                                    const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-                                    for (const w of dataWards) {
-                                      wards.options[wards.options.length] = new Option(w.Name, w.Id);
-                                    }
-                                  }
-                                };
-                              }
-                            </script>
-                            <!--====== Kết thúc - JS ĐỊA CHỈ  ======-->
+                      
                                             <!--====== ĐỊA CHỈ ======-->
                                             <div class="u-s-m-b-15">
 
@@ -885,7 +839,7 @@
                                              <!--====== Hộp Tóm tắt (Summary Box) ======-->
                                             <div class="o-summary__box">
                                                 <!--====== Tiêu đề (Heading) ======-->
-                                                <h1 class="checkout-f__h1">ĐỊA CHỈ NHẬN HÀNG</h1>
+                                                <h1 class="checkout-f__h1">ĐỊA CHỈ GIAO HÀNG</h1>
                                                 <!--====== Hộp Vận chuyển (Shipping Box) ======-->
                                                 <div class="ship-b">
                                                 <!--====== Văn bản (Text) ======-->
