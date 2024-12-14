@@ -6302,7 +6302,7 @@ ol {
   .shop-p__pagination > li.is-active > a {
     background-color: #f7f7f7; }
   .shop-p__pagination > li:not(.is-active) > a:hover {
-    color: #ffaa00;
+    color: #F4af3d;
     text-decoration: underline; }
 
 .shop-a__wrap {
