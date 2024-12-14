@@ -5696,6 +5696,32 @@ ol {
 .product-m:hover {
     transform: scale(1.02); /* Phóng to khung sản phẩm khi hover */
 }
+ /*ĐIỀU CHỈNH BẢNG ĐÁNH GIÁ*/
+.rev-f2__table{  
+  border: 2px solid #8B4513; /* Viền nâu */
+  border-radius: 10px; /* Bo tròn các góc */
+  padding: 10px; /* Khoảng cách bên trong */
+  text-align: center; /* Căn giữa nội dung */
+  transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động */
+  background-color: #f9f9f9; /* Màu nền nhẹ */
+}
+/*ĐIỀU CHỈNH CÁC NHÃN PHẦN THÊM ĐÁNH GIÁ*/
+.gl-label {
+  color: gold; /* Màu chữ vàng */
+    border: 2px solid #8B0000; /* Viền đỏ đô */
+    border-radius: 5px; /* Bo tròn các góc */
+    padding: 5px 10px; /* Khoảng cách bên trong */
+    background-color: #8B4513; /* Màu nền nâu */
+    display: inline-block; /* Để viền hiển thị đúng */
+    
+    /*ĐIỀU CHỈNH CÁC NHÃN PHẦN THÊM ĐÁNH GIÁ*/
+}
+ .btn--e-brand-shadow{color: gold; /* Màu chữ vàng */
+  border: 2px solid #8B0000; /* Viền đỏ đô */
+  border-radius: 5px; /* Bo tròn các góc */
+  padding: 5px 10px; /* Khoảng cách bên trong */
+  background-color: #8B4513; /* Màu nền nâu */
+  display: inline-block; /* Để viền hiển thị đúng */}
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
