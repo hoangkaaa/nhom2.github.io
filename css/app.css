@@ -5671,7 +5671,7 @@ ol {
     .rev-f2__group div {
       display: block;
       margin-right: 0; } }
-    /* Bỏ word-responsive phần tên và giá sản phẩm sẽ mất và phần form "mua ngay" sẽ về giữa khi màn hình <991px */
+    /* Responsive phần tên và giá sản phẩm sẽ mất và phần form "mua ngay" sẽ về giữa khi màn hình <991px */
   .pd-stickyBuyNow .pd-detail{
     display:none;
   }
@@ -5690,7 +5690,7 @@ ol {
   .rev-f1__group {
     display: block; } }
   
-    /*Bỏ word - responsive cho nút "Mua Ngay"*/
+    /*Responsive cho nút "Mua Ngay"*/
   .pd-detail__form .btn{
     padding: 1rem 1.5rem;
   }
@@ -6144,18 +6144,30 @@ ol {
     font-size: 12px;
     color: #7f7f7f; }
 
+/* Khi chế độ hiển thị Grid đang kích hoạt (is-grid-active), 
+   sản phẩm (.product-m) sẽ có hiệu ứng bóng khi hover */
 .is-grid-active .product-m:hover {
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2); }
-  .is-grid-active .product-m:hover .product-m__add-cart {
-    opacity: 1;
-    visibility: visible; }
-  .is-grid-active .product-m:hover .product-m__quick-look {
-    opacity: 1;
-    visibility: visible; }
-  .is-grid-active .product-m:hover .product-m__hover {
-    top: 99%;
-    opacity: 1;
-    visibility: visible; }
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2); /* Tạo bóng đổ nhẹ, làm nổi bật sản phẩm */
+}
+
+/* Khi hover vào sản phẩm, nút "Thêm vào giỏ hàng" sẽ hiện ra */
+.is-grid-active .product-m:hover .product-m__add-cart {
+  opacity: 1; /* Hiển thị rõ ràng nút, không còn bị mờ */
+  visibility: visible; /* Làm cho nút có thể nhìn thấy được */
+}
+
+/* Khi hover vào sản phẩm, nút "Xem nhanh" cũng hiện ra */
+.is-grid-active .product-m:hover .product-m__quick-look {
+  opacity: 1; /* Hiển thị rõ ràng nút, không bị mờ */
+  visibility: visible; /* Làm cho nút có thể nhìn thấy được */
+}
+
+/* Khi hover vào sản phẩm, lớp phủ thêm thông tin (hover layer) sẽ xuất hiện */
+.is-grid-active .product-m:hover .product-m__hover {
+  top: 99%; /* Di chuyển lớp phủ đến sát phần dưới của sản phẩm */
+  opacity: 1; /* Hiển thị lớp phủ rõ ràng */
+  visibility: visible; /* Làm lớp phủ có thể nhìn thấy được */
+}
 
 .is-list-active {
   display: block; }
@@ -6360,6 +6372,32 @@ ol {
     .tool-style__form-wrap div + div {
       margin-left: 0; } }
 
+/*Chỉnh Sale badge cho sản phẩm 1*/
+.sale-badge {
+  position: absolute; /* Đặt vị trí cố định */
+  top: 0; /* Sát cạnh trên */
+  left: 0; /* Sát cạnh trái */
+  background: linear-gradient(135deg, #ec1b2f, #ffd700); /* Hiệu ứng gradient nâu vàng */
+  color: white; /* Màu chữ trắng */
+  padding: 10px 20px; /* Tăng padding để nổi bật hơn */
+  font-size: 1em; /* Tăng cỡ chữ */
+  font-weight: bold; /* Chữ in đậm */
+  z-index: 10; /* Hiển thị phía trên các thành phần khác */
+  border-radius: 0 8px 8px 0; /* Bo tròn chỉ ở bên phải */
+  box-shadow: 0 4px 10px rgba(255, 69, 0, 0.5); /* Tạo bóng đổ */
+  letter-spacing: 1px; /* Khoảng cách giữa các chữ tăng nhẹ */
+  animation: pulse 1.5s infinite; /* Áp dụng hiệu ứng động */
+}
+
+/* Hiệu ứng động pulse */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1); /* Kích thước ban đầu */
+  }
+  50% {
+    transform: scale(1.1); /* Badge phóng to nhẹ */
+  }
+}
 
 /*--------------------------------------------------------------
 20.0 Vendor Extension Pages
