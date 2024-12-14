@@ -6290,34 +6290,49 @@ ol {
 }
 
 /* Bố cục hiển thị chân trang - số trang sản phẩm */
-/* CSS cho Pagination */
+/* Căn giữa phân trang */
 .pagination-container {
-  display: flex; /* Sử dụng Flexbox để bố cục các phần tử con */
+  display: flex; /* Sử dụng Flexbox */
   justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-  align-items: center; /* Căn giữa nội dung theo chiều dọc */
-  margin-top: 20px; /* Tạo khoảng cách trên so với nội dung khác */
+  align-items: center; /* Căn giữa nội dung theo chiều dọc (nếu cần) */
+  height: 100%; /* Đảm bảo chiều cao bao bọc đủ lớn để thấy rõ căn giữa */
+  margin: 0 auto; /* Căn giữa với các phần tử khác trong trang */
+  padding: 20px 0; /* Tạo khoảng cách giữa phân trang và các phần tử xung quanh */
 }
 
+/* Định dạng danh sách phân trang */
 .shop-p__pagination {
-  list-style: none; /* Loại bỏ ký hiệu dấu đầu dòng mặc định của danh sách */
-  display: flex; /* Hiển thị các mục li dưới dạng hàng ngang */
-  gap: 10px; /* Tạo khoảng cách đều giữa các mục trong danh sách */
-  padding: 0; /* Loại bỏ khoảng cách mặc định bên trong danh sách */
-  margin: 0; /* Loại bỏ khoảng cách mặc định bên ngoài danh sách */
+  list-style: none; /* Loại bỏ ký hiệu mặc định của danh sách */
+  display: flex; /* Sắp xếp các mục nằm ngang */
+  gap: 10px; /* Khoảng cách giữa các mục */
+  padding: 0;
+  margin: 0;
 }
 
+/* Định dạng từng mục trong danh sách */
 .shop-p__pagination li {
-  font-size: 16px; /* Đặt kích thước chữ cho các mục trong phân trang */
+  font-size: 16px;
 }
 
+/* Định dạng liên kết trong danh sách */
 .shop-p__pagination li a {
-  text-decoration: none; /* Loại bỏ gạch chân mặc định của liên kết */
-  color: gray; /* Đặt màu chữ xám cho các liên kết */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  color: gray; /* Màu liên kết mặc định */
+  padding: 5px 10px; /* Tạo khoảng cách bên trong liên kết */
+  border-radius: 4px; /* Bo góc cho liên kết */
+  transition: background-color 0.3s ease; /* Hiệu ứng hover */
 }
 
+/* Định dạng liên kết khi hover */
+.shop-p__pagination li a:hover {
+  background-color: #f0f0f0; /* Màu nền khi hover */
+}
+
+/* Định dạng mục đang hoạt động */
 .shop-p__pagination li.is-active a {
-  font-weight: bold; /* Tăng độ đậm của chữ để làm nổi bật trang hiện tại */
-  color: black; /* Đặt màu chữ đen cho liên kết của trang hiện tại */
+  font-weight: bold; /* Tăng độ đậm chữ */
+  color: black; /* Màu chữ của trang hiện tại */
+  background-color: #e0e0e0; /* Màu nền cho trang hiện tại */
 }
 
 /*--------------------------------------------------------------
