@@ -5195,6 +5195,7 @@ ol {
 /*--------------------------------------------------------------
 18.0 Product-Detail-Pages
 --------------------------------------------------------------*/
+/* Thiết lập định dạng cho phần breadcrumb */
 .pd-breadcrumb__list {
   list-style: none;
   padding: 0;
@@ -5212,12 +5213,14 @@ ol {
       color: #333333;
       font-weight: 700; }
     .pd-breadcrumb__list > li.has-separator:after {
-      content: '-';
+      content: '/';
       margin: 0 6px; }
 
+/* Thiết lập định dạng con trỏ chuột hình bàn tay cho phần .pd */
 .pd {
   cursor: pointer; }
 
+/* Thiết lập vị trí và kiểu dáng cho phần .pd-wrap */
 .pd-wrap {
   position: relative; }
 
@@ -5246,28 +5249,30 @@ ol {
       transition: color 110ms ease-in-out;
       color: #333333; }
 
+/* Các định dạng cho phần chi tiết sản phẩm */
 .pd-detail__label {
   display: block;
   font-size: 14px;
   font-weight: 700;
   color: #333333; }
 
-.pd-detail__inline span {
-  margin-right: 0.375rem; }
-  .pd-detail__inline span:last-child {
-    margin-right: 0; }
-
-.pd-detail-inline-2 {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -ms-flex-align: center;
-      align-items: center; }
-  .pd-detail-inline-2 div {
-    margin-right: 14px; }
-    .pd-detail-inline-2 div:last-child {
+  .pd-detail__inline span {
+    margin-right: 0.375rem; }
+    .pd-detail__inline span:last-child {
       margin-right: 0; }
+  
+  .pd-detail-inline-2 {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -ms-flex-align: center;
+        align-items: center; }
+    .pd-detail-inline-2 div {
+      margin-right: 14px; }
+      .pd-detail-inline-2 div:last-child {
+        margin-right: 0; }
+  
 
 .pd-detail__name {
   display: block;
@@ -5425,6 +5430,7 @@ ol {
   .pd-detail__policy-list > li span {
     color: #7f7f7f; }
 
+/* Danh sách tab sản phẩm */
 .pd-tab__list {
   margin: 0;
   border-bottom: 2px solid #e7e7e7; }
@@ -5449,6 +5455,7 @@ ol {
     .pd-tab__list > li + li {
       margin-left: 28px; }
 
+/* Phần mô tả sản phẩm */
 .pd-tab__desc, .pd-tab__tag {
   max-width: 691px; }
 
@@ -5472,6 +5479,7 @@ ol {
   font-weight: 700;
   line-height: 1.4; }
 
+/* Bảng mô tả sản phẩm */
 .pd-tab__desc .pd-table {
   overflow: auto; }
   .pd-tab__desc .pd-table table {
@@ -5489,12 +5497,14 @@ ol {
     color: #333333;
     font-weight: 600; }
 
+/* Tiêu đề của tag */
 .pd-tab__tag h2 {
   font-size: 16px;
   font-weight: 700;
   color: #333333;
   line-height: 1.18; }
 
+/* Form trong phần tag */
 .pd-tab__tag form {
   width: 100%; }
   .pd-tab__tag form .btn {
@@ -5508,6 +5518,7 @@ ol {
     margin-right: 8px;
     width: 50%; }
 
+/* Phần đánh giá*/
 .pd-tab__rev-f1 {
   width: 100%; }
 
@@ -5526,6 +5537,7 @@ ol {
     line-height: 0.875;
     color: #333333; }
 
+/* Nhóm đánh giá */
 .rev-f1__group {
   display: -ms-flexbox;
   display: flex;
@@ -5541,9 +5553,10 @@ ol {
   .rev-f1__group .select-box {
     border-radius: 0.375rem; }
 
+/* Phần đánh giá chi tiết */   
 .rev-f1__review {
   max-width: 691px; }
-
+/* Phần đánh giá từng người dùng */
 .review-o {
   padding: 1rem 0;
   border-bottom: 1px solid #f0f0f0; }
@@ -5606,6 +5619,26 @@ ol {
       font-size: 11px;
       color: #333333; }
 
+ /*làm biến mất nút radio*/
+ .pd-tab__rev-f2 .star-widget input{
+  display: none;
+}
+/*định dạng ngôi sao và đảo ngược vị trí (theo trục Y) của các ngôi sao*/
+.pd-tab__rev-f2 .star-widget{
+  display: flex;
+  justify-content: end;
+  font-size: 40px;
+  color:#444;
+  transform: rotateY(180deg);
+}
+
+/* ngôi sao được hover, ngôi sao họ hàng của ngôi sao được hover và ngôi sao họ hàng của ngôi sao được chọn sẽ đổi màu vàng*/
+.star-widget label:hover,
+.star-widget label:hover ~ label,
+.star-widget input:checked ~ label{
+  color:#f4af3d;
+}
+
 .rev-f2__group {
   display: -ms-flexbox;
   display: flex;
@@ -5628,6 +5661,15 @@ ol {
     .rev-f2__group div {
       display: block;
       margin-right: 0; } }
+    /* Bỏ word-responsive phần tên và giá sản phẩm sẽ mất và phần form "mua ngay" sẽ về giữa khi màn hình <991px */
+  .pd-stickyBuyNow .pd-detail{
+    display:none;
+  }
+  .pd-stickyBuyNow .pd-detail__form{
+    display:flex;
+    justify-content: center;
+  }
+
 
 @media (max-width: 575px) {
   .pd-detail-inline-2 {
@@ -5637,6 +5679,11 @@ ol {
       margin-right: 0; }
   .rev-f1__group {
     display: block; } }
+  
+    /*Bỏ word - responsive cho nút "Mua Ngay"*/
+  .pd-detail__form .btn{
+    padding: 1rem 1.5rem;
+  }
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
