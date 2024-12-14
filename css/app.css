@@ -891,10 +891,20 @@ body {
     .input-counter__text:focus {
       outline: 0; }
   .input-counter--text-primary-style {
-    color: #333333;
-    transition: all 0.6s linear;
-    border: 2px solid transparent;
-    background-color: #f1f1f1; }
+    color: #853333;
+    border: 2px solid gold; /* Đặt viền màu vàng xung quanh khung sản phẩm */
+    border-radius: 15px; /* Bo tròn các góc của khung sản phẩm */
+    overflow: hidden; /* Đảm bảo không bị tràn ra ngoài */
+    padding: 15px; /* Thêm khoảng cách bên trong khung sản phẩm */
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động cho khung sản phẩm */ }
+    .input-counter--text-primary-style:hover {
+      background-color: gold ;
+      /* Nền nâu khi hover */
+      color: #853333 /* Chữ vàng khi hover */
+      border: 2px solid brown; /* Đặt viền màu vàng xung quanh khung sản phẩm */
+      border-radius: 15px; /* Bo tròn các góc của khung sản phẩm */
+
+    }
     .input-counter--text-primary-style:focus {
       background-color: transparent;
       border-color: #de7a3c; }
@@ -5723,6 +5733,7 @@ ol {
   background-color: #8B4513; /* Màu nền nâu */
   display: inline-block; /* Để viền hiển thị đúng */}
 
+ 
   .pd-o-thumbnail {
     transition: transform 0.3s; /* Hiệu ứng chuyển động cho transform */
 }
@@ -5730,6 +5741,7 @@ ol {
 .pd-o-thumbnail:hover {
     transform: scale(1.1); /* Tăng kích thước khi hover qua */
 }
+
 
 /*--------------------------------------------------------------
 19.0 Shop-Pages
