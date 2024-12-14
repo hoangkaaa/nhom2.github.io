@@ -307,9 +307,7 @@
         else {
             console.error("Testimonial slider không tồn tại trên trang.");
         }
-    };
-    
-        
+    };    
     };
     
     // Remove Class from body element
@@ -365,7 +363,6 @@
    RESHOP.initInputCounter = function () {
     // Khởi tạo bộ đếm
     var $collectionInputCounter = $('.input-counter');
-
     if ($collectionInputCounter.length) {
         // Nút tăng số lượng
         $collectionInputCounter.find('.input-counter__plus').on('click', function () {
@@ -373,25 +370,21 @@
             var count = parseInt($input.val()) + 1 || 1; // Số lượng tối thiểu là 1
             $input.val(count).change();
         });
-
         // Nút giảm số lượng
         $collectionInputCounter.find('.input-counter__minus').on('click', function () {
             var $input = $(this).parent().find('input');
             var count = parseInt($input.val()) - 1 || 1; // Số lượng tối thiểu là 1
             $input.val(Math.max(count, 1)).change();
         });
-
         // Khi số lượng thay đổi
         $collectionInputCounter.find('input').change(function () {
             var $this = $(this);
             var min = $this.data('min') || 1;
             var max = $this.data('max') || 1000;
             var val = parseInt($this.val()) || 1;
-
             // Giới hạn giá trị
             val = Math.max(Math.min(val, max), min);
             $this.val(val);
-
             // Cập nhật giá tổng từng sản phẩm
             var $row = $this.closest('tr');
             if ($row.length) {
@@ -400,11 +393,9 @@
                 var newPrice = unitPrice * val; // Tính tổng giá cho số lượng
                 $totalPriceElement.text(newPrice.toLocaleString('vi-VN') + ' VND'); // Cập nhật hiển thị tổng giá
             }
-
             // Cập nhật tổng giá trị giỏ hàng
             updateCartSummary();
         });
-
         // Xóa sản phẩm
         $('.table-p__delete-link').on('click', function (e) {
             e.preventDefault();
@@ -417,26 +408,21 @@
             }
         });
     }
-
     // Hàm cập nhật tổng giá trị giỏ hàng
     function updateCartSummary() {
         var subtotal = 0;
         var shippingFee = 20000; // Phí vận chuyển cố định
-
         // Cộng giá từng sản phẩm
         $('.table-p__total-price').each(function () {
             var price = parseInt($(this).text().replace(/\D/g, '')) || 0;
             subtotal += price;
         });
-
         // Cập nhật tạm tính
         $('.f-cart__table td:contains("TẠM TÍNH")').next().text(subtotal.toLocaleString('vi-VN') + ' VND');
-
         // Cập nhật tổng cộng
         var total = subtotal + shippingFee;
         $('.f-cart__table td:contains("TỔNG CỘNG")').next().text(total.toLocaleString('vi-VN') + ' VND');
     }
-
     // Cập nhật tổng giá trị khi trang tải
     updateCartSummary();
 };
