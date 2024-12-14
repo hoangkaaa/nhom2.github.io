@@ -603,7 +603,7 @@ body {
   color: #e5bd4f !important; }
 
 .u-c-secondary {
-  color: #b8292f !important; }
+  color: #c4c782 !important; }
 
 .u-c-white {
   color: #ffffff !important; }
@@ -703,6 +703,8 @@ body {
   border-color: #ffffff; /* Đường viền trắng khi hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Bóng đổ mạnh hơn khi hover */
 }
+
+
 
 .btn--e-brand-b-2 {
   color: #ffffff;
@@ -2042,34 +2044,28 @@ input::-ms-clear {
 .header--box-shadow {
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.07); }
 
-/* Style banner giảm giá giáng sinh */
 .top-banner {
-  background-color: #b8292f; /* Đặt màu nền cho banner */
-  color: #ffffff; /* Màu chữ trắng cho nội dung */
-  padding: 10px; /* Khoảng cách bên trong của banner */
-  text-align: center; /* Canh giữa nội dung bên trong theo chiều ngang */
-  overflow: hidden; /* Ẩn các phần tử vượt ra ngoài vùng banner */
+  background-color: #b8292f;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
 }
 
-/* Phần tử chứa văn bản chuyển động trong banner */
 #banner-text {
-  white-space: nowrap; /* Không cho phép văn bản xuống dòng */
-  font-size: 1rem; /* Kích thước chữ mặc định là 1rem */
-  font-weight: normal; /* Đặt độ đậm của chữ là bình thường */
-  animation: marquee 15s linear infinite; /* Thêm hiệu ứng chuyển động marquee:
-      - 15 giây để hoàn thành một chu kỳ
-      - Di chuyển đều (linear)
-      - Lặp lại vô hạn */
-  display: inline-block; /* Giữ kích thước phần tử vừa với nội dung, cần để hoạt động với animation */
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: normal;
+  animation: marquee 15s linear infinite;
+  display: inline-block;
 }
 
-/* Tạo hiệu ứng chuyển động marquee */
 @keyframes marquee {
   from {
-    transform: translateX(100%); /* Bắt đầu từ ngoài màn hình bên phải */
+    transform: translateX(100%);
   }
-  to {
-    transform: translateX(-100%); /* Kết thúc ngoài màn hình bên trái */
+  to{
+    transform: translateX(-100%);
   }
 }
 
@@ -2817,7 +2813,7 @@ input::-ms-clear {
       display: block;
       width: 70px;
       position: absolute;
-      border: solid #ffaa00; }
+      border: solid #97602f; }
     .about .about__p-wrap:before {
       top: -10px;
       left: -8px;
@@ -3031,7 +3027,7 @@ input::-ms-clear {
 }
 
 .arrow-button {
-    background-color: rgba(130, 111, 44, 0.7); /* Màu nền đen mờ */
+    background-color: #97602f; /* Màu nền chủ đề */
     color: white; /* Màu mũi tên */
     border: none;
     border-radius: 50%;
@@ -3048,7 +3044,7 @@ input::-ms-clear {
 
 .arrow-button:hover {
     background-color: rgba(255, 255, 255, 0.9); /* Hiệu ứng khi hover */
-    color: #ba9a64;
+    color: #97602f;
     transform: scale(1.2); /* Zoom nhẹ */
 }
 
@@ -3399,8 +3395,8 @@ input::-ms-clear {
 }
 /* Hiệu ứng hover */
 .route-box__link:hover {
-  background-color: #e1ca7f; /* Đổi màu nền sang cam */
-  color: #ffffff; /* Đổi màu chữ sang trắng */
+  background-color: #e1ca7f; /* Đổi màu nền */
+  color: #97602f; /* Đổi màu chữ */
   box-shadow: 0px 4px 10px rgba(255, 69, 0, 0.3); /* Đổ bóng nổi bật */
   transform: translateY(-3px); /* Hiệu ứng nổi lên */
   border-color:#97602f; /* Viền đồng bộ màu nền */
@@ -3412,7 +3408,7 @@ input::-ms-clear {
 }
 .route-box__link:hover i {
   transform: rotate(-15deg); /* Xoay nhẹ icon */
-  color: #ffffff; /* Đổi màu icon sang trắng */
+  color: #97602f; /* Đổi màu icon */
 }
 .f-cart__pad-box {
   border: 1px solid #eee;
@@ -4378,6 +4374,117 @@ input::-ms-clear {
   .description-title {
     margin: 12px 0; } }
 
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* FAQ Feedback Section */
+.faq__feedback {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.section__heading {
+  color: #800000;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.faq__heading {
+  color: #800000;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.faq__text {
+  color: #555555;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.faq__form .form-group label {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Stylish Input Fields */
+.stylish-input {
+  border: 2px solid #e1ca7f;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333333;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.stylish-input:focus {
+  border-color: #d4b36d;
+  outline: none;
+  box-shadow: 0 0 5px rgba(225, 202, 127, 0.7);
+}
+
+textarea.stylish-input {
+  resize: none;
+}
+
+/* Stylish Button */
+.stylish-button {
+  background-color: #800000;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.stylish-button:hover {
+  background-color: #660000;
+  color: #ffffff;
+}
+
+/* Center Alignment for the Button */
+.faq__form .form-group.text-center {
+  margin-top: 20px;
+}
+
+/* Adjustments for Small Screens */
+@media (max-width: 768px) {
+  .faq__feedback {
+      padding: 20px;
+  }
+
+  .faq__heading {
+      font-size: 20px;
+  }
+
+  .faq__text {
+      font-size: 14px;
+  }
+
+  .stylish-button {
+      font-size: 16px;
+  }
+}
+
+
 /*--------------------------------------------------------------
 17.0 Blog-Pages
 --------------------------------------------------------------*/
@@ -4857,6 +4964,7 @@ input::-ms-clear {
   .b-l__h-2 > a:hover {
     color: #ffaa00; }
 
+
 .b-l__p {
   display: block;
   font-size: 12px;
@@ -5002,6 +5110,87 @@ input::-ms-clear {
 @media (max-width: 767px) {
   .blog-m__element {
     width: 100%; } }
+
+/* Styling for comment list */
+ol {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Comment container */
+.d-meta__p-comment {
+  margin: 10px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #800000; /* Viền màu đỏ đô */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Align author and timestamp */
+.p-comment__wrap2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+/* Author name styling */
+.p-comment__author {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Timestamp styling */
+.p-comment__timestamp a {
+  font-size: 12px;
+  color: #777;
+  text-decoration: none;
+}
+
+/* Comment paragraph */
+.p-comment__paragraph {
+  margin: 10px 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Reply link */
+.p-comment__reply {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.p-comment__reply:hover {
+  color: #0056b3;
+}
+
+/* Nested comments */
+.comment-children {
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #800000; /* Viền màu đỏ đô cho comment con */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .d-meta__p-comment {
+      padding: 10px;
+  }
+
+  .p-comment__paragraph {
+      font-size: 14px;
+  }
+
+  .p-comment__reply {
+      font-size: 13px;
+  }
+}
 
 /*--------------------------------------------------------------
 18.0 Product-Detail-Pages
