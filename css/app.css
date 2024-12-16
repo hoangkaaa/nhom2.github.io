@@ -3210,56 +3210,49 @@ input::-ms-clear {
 11.0 Cart-Wishlist-Pages
 --------------------------------------------------------------*/
 .table-responsive {
-  overflow-x: auto;
+  overflow-x: auto; 
 }
 
 .table-p {
   width: 100%;
   border: 1px solid #97602f;
-  border-collapse: collapse;
+  border-collapse: collapse; 
 }
-
-.table-p tr {
-  position: relative;
-  border-top: 1px solid #97602f;
-}
-
-.table-p td {
-  padding: 20px;
-}
-
-.table-p__box {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.table-p__img-wrap {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #97602f;
-  width: 120px;
-  height: 120px;
-  overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
-  position: relative; /* Đặt vị trí tương đối để kiểm soát hiệu ứng con */
-  transform: perspective(800px); /* Tạo chiều sâu để hiệu ứng nghiêng chân thực */
-}
-
-.table-p__img-wrap img {
-  display: block;
-  min-width: 120px;
-  transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt khi zoom */
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Đảm bảo ảnh luôn vừa khung */
-}
-
-.table-p__img-wrap:hover img {
-  transform: scale(1.2) rotate(10deg); /* Zoom và nghiêng 10 độ */
-  transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho ảnh */
-}
-
+  .table-p tr {
+    position: relative;
+    border-top: 1px solid #97602f; 
+  }
+  .table-p td {
+    padding: 20px; 
+  }
+  .table-p__box {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -ms-flex-align: center;
+        align-items: center; 
+  }
+  .table-p__img-wrap {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #97602f;;
+    width: 120px;
+    height: 120px;
+    overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
+    position: relative; /* Cần thiết để kiểm soát ảnh bên trong */
+  }
+    .table-p__img-wrap img {
+      display: block;
+      min-width: 120px;
+      transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt khi zoom */
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Đảm bảo ảnh luôn vừa khung */
+    }
+    .table-p__img-wrap:hover img {
+      transform: scale(1.2); /* Zoom ảnh khi hover */
+    }
   .table-p__info {
     margin-left: 18px; 
   }
@@ -3357,9 +3350,7 @@ input::-ms-clear {
       height: auto;
       transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt khi hover */ }
      .w-r__img-wrap:hover img {
-      transform: scale(1.2) rotate(10deg); /* Zoom và nghiêng 10 độ */
-      transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho ảnh */
+      transform: scale(1.1); /* Zoom hình khi hover */
   }
   .w-r__info {
     margin-left: 18px; }
@@ -7610,41 +7601,86 @@ ol {
     background-color: #8B4513; /* Màu nền nâu */
     display: inline-block; /* Để viền hiển thị đúng */}
      /* CSS cho giao diện */
-.body {
+
+     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      background-color: #f4f4f4; /* Màu nền nhẹ */
   }
-.star {
-      font-size: 24px;
-      cursor: pointer;
-      color: gray; /* Màu mặc định cho sao */
+  
+  .section__intro {
+      background-color: #fff; /* Nền trắng cho khung */
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
-.star.selected {
-      color: gold; /* Màu vàng cho sao được chọn */
+  
+  h1 {
+      color: #4E3B31; /* Màu nâu đậm cho tiêu đề */
+      margin-bottom: 10px;
   }
-.comment-box {
+  
+  .section__span {
+      display: block;
+      color: #7B3F00; /* Màu nâu nhạt hơn cho văn bản phụ */
+      margin-bottom: 20px;
+  }
+  
+  .comment-box {
       margin-top: 20px;
       border: 1px solid #ccc;
       padding: 15px;
       border-radius: 5px;
-      background-color: #f9f9f9;
+      background-color: #fafafa; /* Nền cho khung nhập bình luận */
   }
-.comment-item {
-      margin-top: 10px;
+  
+  .rating {
+      margin-bottom: 10px;
+  }
+  
+  .star {
+      font-size: 24px;
+      cursor: pointer;
+      color: gray; /* Màu mặc định cho sao */
+  }
+  
+  .star.selected {
+      color: #D4AF37; /* Màu vàng cho sao được chọn */
+  }
+  
+  .comment-input {
+      width: 100%; /* Chiều rộng toàn bộ khung */
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      background-color: #fff;
-  }
-.submit-button {
       margin-top: 10px;
-      padding: 8px 15px;
-      background-color: #007bff;
+      resize: none; /* Ngăn người dùng thay đổi kích thước */
+  }
+  
+  .submit-button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #7B3F00; /* Màu nâu cho nút */
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s; /* Hiệu ứng chuyển màu khi hover */
+      width: 100%; /* Chiều rộng toàn bộ khung */
   }
-.submit-button:hover {
-      background-color: #0056b3;
+  
+  .submit-button:hover {
+      background-color: #5c2e00; /* Màu tối hơn khi hover */
+  }
+  
+  .comments-list {
+      margin-top: 20px;
+  }
+  
+  .comment-item {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
   }

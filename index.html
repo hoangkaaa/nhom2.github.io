@@ -2278,7 +2278,63 @@
             <div class="u-s-p-b-90 u-s-m-b-30">
 
                 <!--====== Section Intro ======-->
-                
+                <div class="section__intro">
+                    <h1 class="section__heading">CẢM NHẬN KHÁCH HÀNG</h1>
+                    <span class="section__span">CẢM ƠN KHÁCH HÀNG NHÀ SIXSENSE</span>
+    
+                <div class="comment-box">
+                     <div class="rating">
+                         <span class="star" data-value="1">&#9733;</span>
+                         <span class="star" data-value="2">&#9733;</span>
+                         <span class="star" data-value="3">&#9733;</span>
+                         <span class="star" data-value="4">&#9733;</span>
+                         <span class="star" data-value="5">&#9733;</span>
+                </div>
+                     <textarea id="comment" rows="4" placeholder="Nhập bình luận của bạn..." class="comment-input"></textarea>
+                     <button class="submit-button" onclick="submitComment()">Gửi Bình Luận</button>
+            </div>
+    
+    <div id="commentsList" class="comments-list"></div>
+</div>
+
+<script>
+let selectedRating = 0;
+
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', function() {
+        selectedRating = this.getAttribute('data-value'); // Lưu giá trị sao đã chọn
+        updateStars();
+    });
+});
+
+function updateStars() {
+    document.querySelectorAll('.star').forEach(star => {
+        star.classList.remove('selected'); // Xóa lớp 'selected' khỏi tất cả sao
+        if (star.getAttribute('data-value') <= selectedRating) {
+            star.classList.add('selected'); // Thêm lớp 'selected' cho sao được chọn
+        }
+    });
+}
+
+function submitComment() {
+    const commentInput = document.getElementById("comment");
+    const commentsList = document.getElementById("commentsList");
+
+    if (commentInput.value.trim() === "" || selectedRating === 0) {
+        alert("Vui lòng nhập bình luận và chọn đánh giá sao!"); // Thông báo nếu không có nội dung
+        return; // Dừng thực hiện hàm nếu có lỗi
+    }
+
+    const newComment = document.createElement("div");
+    newComment.textContent = `Đánh giá: ${selectedRating} sao - Bình luận: ${commentInput.value}`;
+    newComment.classList.add("comment-item");
+    commentsList.appendChild(newComment);
+    
+    commentInput.value = ""; // Xóa nội dung sau khi gửi
+    selectedRating = 0; // Đặt lại đánh giá
+    updateStars(); // Cập nhật lại các sao
+}
+</script>
                 <!--====== End - Section Intro ======-->
 
 
