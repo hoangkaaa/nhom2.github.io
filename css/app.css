@@ -3210,49 +3210,56 @@ input::-ms-clear {
 11.0 Cart-Wishlist-Pages
 --------------------------------------------------------------*/
 .table-responsive {
-  overflow-x: auto; 
+  overflow-x: auto;
 }
 
 .table-p {
   width: 100%;
   border: 1px solid #97602f;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
-  .table-p tr {
-    position: relative;
-    border-top: 1px solid #97602f; 
-  }
-  .table-p td {
-    padding: 20px; 
-  }
-  .table-p__box {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    -ms-flex-align: center;
-        align-items: center; 
-  }
-  .table-p__img-wrap {
-    display: inline-block;
-    vertical-align: middle;
-    background-color: #97602f;;
-    width: 120px;
-    height: 120px;
-    overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
-    position: relative; /* Cần thiết để kiểm soát ảnh bên trong */
-  }
-    .table-p__img-wrap img {
-      display: block;
-      min-width: 120px;
-      transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt khi zoom */
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Đảm bảo ảnh luôn vừa khung */
-    }
-    .table-p__img-wrap:hover img {
-      transform: scale(1.2); /* Zoom ảnh khi hover */
-    }
+
+.table-p tr {
+  position: relative;
+  border-top: 1px solid #97602f;
+}
+
+.table-p td {
+  padding: 20px;
+}
+
+.table-p__box {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.table-p__img-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #97602f;
+  width: 120px;
+  height: 120px;
+  overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
+  position: relative; /* Đặt vị trí tương đối để kiểm soát hiệu ứng con */
+  transform: perspective(800px); /* Tạo chiều sâu để hiệu ứng nghiêng chân thực */
+}
+
+.table-p__img-wrap img {
+  display: block;
+  min-width: 120px;
+  transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt khi zoom */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo ảnh luôn vừa khung */
+}
+
+.table-p__img-wrap:hover img {
+  transform: scale(1.2) rotate(10deg); /* Zoom và nghiêng 10 độ */
+  transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho ảnh */
+}
+
   .table-p__info {
     margin-left: 18px; 
   }
@@ -3350,7 +3357,9 @@ input::-ms-clear {
       height: auto;
       transition: transform 0.3s ease-in-out; /* Hiệu ứng mượt khi hover */ }
      .w-r__img-wrap:hover img {
-      transform: scale(1.1); /* Zoom hình khi hover */
+      transform: scale(1.2) rotate(10deg); /* Zoom và nghiêng 10 độ */
+      transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho ảnh */
   }
   .w-r__info {
     margin-left: 18px; }
