@@ -2031,6 +2031,10 @@ input::-ms-clear {
     transform: translateX(-50%); /* Dịch chuyển nửa chiều rộng để tạo hiệu ứng lặp */
   }
 }
+/* Dừng hiệu ứng khi hover chuột */
+.small-banner-carousel:hover .small-banner-container {
+  animation-play-state: paused; /* Tạm dừng animation khi hover */
+}
 
 /*--------------------------------------------------------------
 6.0 Header
@@ -2053,30 +2057,39 @@ input::-ms-clear {
 .header--box-shadow {
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.07); }
 
-.top-banner {
-  background-color: #b8292f;
-  color: #ffffff;
-  padding: 10px;
-  text-align: center;
-  overflow: hidden;
+  .top-banner {
+    background-color: #b8292f; /* Đặt màu nền của banner là đỏ đậm */
+    color: #ffffff; /* Màu chữ trắng */
+    padding: 10px; /* Thêm khoảng cách bên trong banner (trên, dưới, trái, phải) */
+    text-align: center; /* Canh giữa nội dung của banner */
+    overflow: hidden; /* Ẩn nội dung nếu bị tràn ra ngoài khung banner */
+  }
+  
+  #banner-text {
+    white-space: nowrap; /* Ngăn không cho nội dung bị ngắt dòng */
+    font-size: 1rem; /* Đặt kích thước chữ là 1 rem (16px nếu theo mặc định trình duyệt) */
+    font-weight: normal; /* Đặt độ đậm của chữ là bình thường */
+    animation: marquee 15s linear infinite; /* Gán animation "marquee" để chữ chạy ngang:
+       - Thời gian chạy là 15 giây
+       - Tốc độ chạy đều nhau (linear)
+       - Hiệu ứng lặp vô hạn (infinite) */
+    display: inline-block; /* Đặt banner-text hiển thị như một khối nội tuyến, giúp tạo hiệu ứng chuyển động */
+    animation-play-state: running; /* Mặc định animation đang chạy */
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(100%); /* Bắt đầu từ bên phải ngoài khung nhìn */
+    }
+    to {
+      transform: translateX(-100%); /* Di chuyển sang bên trái ngoài khung nhìn */
+    }
+  }
+  /* Dừng animation khi hover chuột vào banner-text */
+  #banner-text:hover {
+  animation-play-state: paused; /* Tạm dừng animation khi hover */
 }
 
-#banner-text {
-  white-space: nowrap;
-  font-size: 1rem;
-  font-weight: normal;
-  animation: marquee 15s linear infinite;
-  display: inline-block;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(100%);
-  }
-  to{
-    transform: translateX(-100%);
-  }
-}
 
 /* 6.1 Primary Nav */
 .primary-nav-wrapper--border {
