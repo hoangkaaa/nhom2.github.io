@@ -686,11 +686,13 @@ body {
   background-color: transparent;
   padding: 0; }
 
+/*Hiệu ứng nút Thêm vào giỏ hàng*/
   .btn--e-brand {
     color: #ffffff; /* Màu chữ */
     border: 2px solid transparent; /* Đường viền trong suốt */
     background-color: #986837; /* Màu nền */
-    transition: background-color 0.5s ease-in, border-color 0.5s ease-in; /* Hiệu ứng chuyển màu nền và đường viền */
+    /* Hiệu ứng chuyển màu nền và đường viền */
+    transition: background-color 0.5s ease-in, border-color 0.5s ease-in; 
     padding: 12px 20px; /* Khoảng cách bên trong cho nút */
     font-size: 16px; /* Kích thước chữ */
     border-radius: 5px; /* Bo tròn các góc */
@@ -6103,21 +6105,26 @@ ol {
   transition: 0.3s; }
   .is-grid-active .product-m__thumb {
     position: relative; }
+  /* Khi phần tử có lớp "is-grid-active", phần tử "product-m__add-cart" sẽ có các thuộc tính sau */
   .is-grid-active .product-m__add-cart {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s; }
-    .is-grid-active .product-m__add-cart > a {
-      padding: 12px;
-      border-radius: 0.125rem;
-      font-size: 13px;
-      width: 100%;
-      text-align: center;
-      display: block; }
+    position: absolute; /* Vị trí tuyệt đối trong container của phần tử */
+    bottom: 15px; /* Khoảng cách 15px từ dưới của container */
+    left: 15px; /* Khoảng cách 15px từ bên trái của container */
+    right: 15px; /* Khoảng cách 15px từ bên phải của container */
+    opacity: 0; /* Đặt độ mờ (opacity) là 0, tức là phần tử ban đầu không hiển thị */
+    visibility: hidden; /* Ẩn phần tử, nó không chiếm không gian trên trang */
+    transition: 0.3s; /* Thêm hiệu ứng chuyển tiếp trong 0.3 giây khi thay đổi trạng thái */
+  }
+
+/* Thiết lập cho liên kết (a) bên trong phần tử "product-m__add-cart" khi có lớp "is-grid-active" */
+.is-grid-active .product-m__add-cart > a {
+  padding: 12px; /* Khoảng cách xung quanh nội dung của liên kết */
+  border-radius: 0.125rem; /* Bo góc liên kết với bán kính góc là 0.125rem */
+  font-size: 13px; /* Cỡ chữ của liên kết là 13px */
+  width: 100%; /* Chiều rộng của liên kết chiếm toàn bộ chiều rộng của phần tử cha */
+  text-align: center; /* Căn giữa nội dung của liên kết */
+  display: block; /* Đặt liên kết thành phần tử block để chiếm không gian riêng */
+}
   .is-grid-active .product-m__quick-look {
     position: absolute;
     top: 8px;
@@ -6180,18 +6187,38 @@ ol {
     transition: all 300ms ease-in-out;
     opacity: 0;
     visibility: hidden; }
-  .is-grid-active .product-m__wishlist {
-    text-align: right; }
-    .is-grid-active .product-m__wishlist a {
-      font-size: 16px;
-      color: #a0a0a0;
-      transition: color 110ms ease-in-out; }
-      .is-grid-active .product-m__wishlist a:hover {
-        color: #ffaa00; }
-  .is-grid-active .product-m__preview-description {
-    margin-bottom: 8px;
-    font-size: 12px;
-    color: #7f7f7f; }
+
+/* Thêm position cho phần tử cha */
+.product-m {
+  position: relative; /* Để sử dụng vị trí tuyệt đối cho wishlist */
+}
+
+  /* Khi lớp .is-grid-active được áp dụng, căn chỉnh phần tử .product-m__wishlist sang phải */
+.is-grid-active .product-m__wishlist {
+  position: absolute; /* Giúp căn chỉnh chính xác */
+  bottom: 93px; /* Khoảng cách từ đáy */
+  right: 20px;
+  text-align: right; 
+}
+
+/* Khi lớp .is-grid-active được áp dụng, thay đổi kiểu dáng cho các liên kết trong .product-m__wishlist */
+.is-grid-active .product-m__wishlist a {
+  font-size: 16px; /* Kích thước chữ là 16px */
+  color: #a0a0a0; /* Màu chữ là xám nhạt (#a0a0a0) */
+  transition: color 110ms ease-in-out; /* Hiệu ứng chuyển màu trong 110ms với chuyển động mượt mà */
+}
+
+/* Khi người dùng hover vào liên kết, màu sắc của liên kết thay đổi thành #ffaa00 */
+.is-grid-active .product-m__wishlist a:hover {
+  color: #ffaa00; /* Màu sắc của liên kết khi hover là vàng cam */
+}
+
+/* Khi lớp .is-grid-active được áp dụng, thiết lập kiểu dáng cho mô tả sản phẩm trong .product-m__preview-description */
+.is-grid-active .product-m__preview-description {
+  margin-bottom: 8px; /* Khoảng cách dưới là 8px */
+  font-size: 12px; /* Kích thước chữ là 12px */
+  color: #7f7f7f; /* Màu sắc chữ là xám trung bình (#7f7f7f) */
+}
 
 /* Khi chế độ hiển thị Grid đang kích hoạt (is-grid-active), 
    sản phẩm (.product-m) sẽ có hiệu ứng bóng khi hover */
@@ -6239,21 +6266,26 @@ ol {
     max-width: 33.33333%;
     padding-right: 15px;
     padding-left: 15px; }
-  .is-list-active .product-m__add-cart {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s; }
-    .is-list-active .product-m__add-cart > a {
-      padding: 12px;
-      border-radius: 0.125rem;
-      font-size: 13px;
-      width: 100%;
-      text-align: center;
-      display: block; }
+  /* Khi trạng thái là "is-list-active", phần tử "product-m__add-cart" sẽ được áp dụng các thuộc tính sau */
+.is-list-active .product-m__add-cart {
+  position: absolute; /* Vị trí tuyệt đối trong container của phần tử */
+  bottom: 15px; /* Khoảng cách 15px từ dưới của container */
+  left: 15px; /* Khoảng cách 15px từ bên trái của container */
+  right: 15px; /* Khoảng cách 15px từ bên phải của container */
+  opacity: 0; /* Đặt độ mờ (opacity) là 0, tức là phần tử ban đầu không hiển thị */
+  visibility: hidden; /* Ẩn phần tử, nó không chiếm không gian trên trang */
+  transition: 0.3s; /* Thêm hiệu ứng chuyển tiếp trong 0.3 giây khi thay đổi trạng thái */
+}
+
+/* Thiết lập cho liên kết (a) bên trong phần tử "product-m__add-cart" */
+.is-list-active .product-m__add-cart > a {
+  padding: 12px; /* Khoảng cách xung quanh nội dung của liên kết */
+  border-radius: 0.125rem; /* Bo góc liên kết với bán kính góc là 0.125rem */
+  font-size: 13px; /* Cỡ chữ của liên kết là 13px */
+  width: 100%; /* Chiều rộng của liên kết chiếm toàn bộ chiều rộng của phần tử cha */
+  text-align: center; /* Căn giữa nội dung của liên kết */
+  display: block; /* Đặt liên kết thành phần tử block để chiếm không gian riêng */
+}
   .is-list-active .product-m__quick-look {
     position: absolute;
     top: 8px;
@@ -6411,7 +6443,8 @@ ol {
     /* Điều chỉnh vị trí mong muốn thành static và căn chỉnh văn bản sang phải */
   .is-list-active .product-m__wishlist {
     position: static;
-    text-align: right; }
+    text-align: right; 
+  }
 
     /* Hiển thị khối cho phần Lọc sản phẩm */
   .shop-p__tool-style {
