@@ -7600,3 +7600,42 @@ ol {
     padding: 5px 10px; /* Khoảng cách bên trong */
     background-color: #8B4513; /* Màu nền nâu */
     display: inline-block; /* Để viền hiển thị đúng */}
+     /* CSS cho giao diện */
+.body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+  }
+.star {
+      font-size: 24px;
+      cursor: pointer;
+      color: gray; /* Màu mặc định cho sao */
+  }
+.star.selected {
+      color: gold; /* Màu vàng cho sao được chọn */
+  }
+.comment-box {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+  }
+.comment-item {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+  }
+.submit-button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+.submit-button:hover {
+      background-color: #0056b3;
+  }
