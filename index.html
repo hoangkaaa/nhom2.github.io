@@ -2298,16 +2298,16 @@
 </div>
 
 <script>
-let selectedRating = 0;
+let selectedRating = 0;// Khởi tạo biến để lưu giá trị đánh giá sao đã chọn
 
-document.querySelectorAll('.star').forEach(star => {
+document.querySelectorAll('.star').forEach(star => {// Thêm sự kiện click cho từng sao
     star.addEventListener('click', function() {
-        selectedRating = this.getAttribute('data-value'); // Lưu giá trị sao đã chọn
-        updateStars();
+        selectedRating = this.getAttribute('data-value');  // Lưu giá trị sao đã chọn vào biến selectedRating
+        updateStars();// Cập nhật giao diện các sao hiển thị
     });
 });
 
-function updateStars() {
+function updateStars() {// Hàm cập nhật giao diện các sao
     document.querySelectorAll('.star').forEach(star => {
         star.classList.remove('selected'); // Xóa lớp 'selected' khỏi tất cả sao
         if (star.getAttribute('data-value') <= selectedRating) {
@@ -2316,19 +2316,19 @@ function updateStars() {
     });
 }
 
-function submitComment() {
+function submitComment() {// Lấy giá trị từ ô nhập bình luận
     const commentInput = document.getElementById("comment");
-    const commentsList = document.getElementById("commentsList");
-
+    const commentsList = document.getElementById("commentsList");// Lấy danh sách bình luận
+// Kiểm tra xem ô nhập bình luận có trống không hoặc chưa chọn sao
     if (commentInput.value.trim() === "" || selectedRating === 0) {
         alert("Vui lòng nhập bình luận và chọn đánh giá sao!"); // Thông báo nếu không có nội dung
         return; // Dừng thực hiện hàm nếu có lỗi
     }
-
+// Thiết lập nội dung cho bình luận mới
     const newComment = document.createElement("div");
     newComment.textContent = `Đánh giá: ${selectedRating} sao - Bình luận: ${commentInput.value}`;
-    newComment.classList.add("comment-item");
-    commentsList.appendChild(newComment);
+    newComment.classList.add("comment-item");// Thêm lớp cho bình luận mới
+    commentsList.appendChild(newComment);// Thêm bình luận mới vào danh sách bình luận
     
     commentInput.value = ""; // Xóa nội dung sau khi gửi
     selectedRating = 0; // Đặt lại đánh giá
