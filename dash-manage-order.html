@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="images/logo/logo2.png" rel="shortcut icon">
+    <link href="images/logo/logo1.png" rel="shortcut icon">
     <title>Sixsense- tiệm bánh tuyệt vời</title>
 
     <!--====== Google Font ======-->
@@ -353,39 +353,91 @@
                                      <!-- Kết thúc đổ xuống cho Giỏ Hàng Mini -->
                                 </li>
                                     <!--Tạo ra một cửa sổ thông báo nhỏ (tooltip) khi người dùng di chuột qua hoặc nhấp vào mục này.-->
-                    <li class="has-dropdown" data-tooltip="tooltip" > 
-                        <a>
-                           <i class="far fa-user-circle"></i> <!-- Điều chỉnh biểu tượng Người dùng -->
-                        </a>
-                     <!--====== Phần đổ xuống khi hover chuột qua biểu tượng ======-->
-                     <span class="js-menu-toggle"></span>
-                     <ul style="width:120px">
-                       <li> <!-- Liên kết đến Trang Dashboard -->
-                         <a href="dashboard.html">
-                           <i class="fas fa-user-circle u-s-m-r-6"></i>
-                           <span>Tài khoản</span>
-                         </a>
-                       </li>
-                       <li> <!--  Liên kết đến Trang Đăng ký -->
-                         <a href="signup.html">
-                           <i class="fas fa-user-plus u-s-m-r-6"></i> <!-- Biểu tượng " người dùng" -->
-                           <span>Đăng ký</span>  <!-- Văn bản hiển thị cho liên kết -->
-                         </a>
-                       </li>
-                       <li> <!--Liên kết đến Trang Đăng nhập -->
-                         <a href="signin.html">
-                           <i class="fas fa-lock u-s-m-r-6"></i>
-                           <span>Đăng nhập</span>
-                         </a>
-                       </li>
-                       <li>  <!-- Liên kết Đăng xuất -->
-                         <a href="signup.html">
-                           <i class="fas fa-lock-open u-s-m-r-6"></i>
-                           <span>Đăng xuất</span>
-                         </a>
-                       </li>
-                     </ul>
-                     <!--====== Kết thúc phần đổ xuống khi hover chuột qua biểu tượng ======-->                  
+                                    <li class="has-dropdown" data-tooltip="tooltip">
+                                        <a>
+                                          <i class="far fa-user-circle"></i> <!-- Biểu tượng Người dùng -->
+                                        </a>
+                                        <!-- Menu đổ xuống -->
+                                        <span class="js-menu-toggle"></span>
+                                        <ul class="dropdown-menu">
+                                          <li>
+                                            <a href="dashboard.html">
+                                              <i class="fas fa-user-circle u-s-m-r-6"></i>
+                                              <span>Tài khoản</span>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="signup.html">
+                                              <i class="fas fa-user-plus u-s-m-r-6"></i>
+                                              <span>Đăng ký</span>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="signin.html">
+                                              <i class="fas fa-lock u-s-m-r-6"></i>
+                                              <span>Đăng nhập</span>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="logout.html">
+                                              <i class="fas fa-lock-open u-s-m-r-6"></i>
+                                              <span>Đăng xuất</span>
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </li>
+                                      
+                                      <!-- CSS -->
+                                      <style>
+                                        .has-dropdown {
+                                          position: relative;
+                                        }
+                                      
+                                        .dropdown-menu {
+                                          width: 120px;
+                                          display: none;
+                                          position: absolute;
+                                          top: 100%;
+                                          left: 50%; /* Căn giữa so với biểu tượng người dùng */
+                                          transform: translateX(-50%); /* Đẩy menu về giữa */
+                                          background: #97602f;
+                                          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                          border-radius: 4px;
+                                          padding: 10px 0;
+                                          list-style: none;
+                                        }
+                                      
+                                        /* Nội dung menu */
+                                        .dropdown-menu li {
+                                          padding: 0;
+                                        }
+                                      
+                                        .dropdown-menu li a {
+                                          display: flex;
+                                          align-items: center;
+                                          text-decoration: none;
+                                          color: #333;
+                                          font-size: 14px;
+                                          padding: 8px 15px; /* Đảm bảo khoảng cách đều */
+                                          transition: all 0.3s ease;
+                                        }
+                                      
+                                        .dropdown-menu li a i {
+                                          margin-right: 8px; /* Khoảng cách giữa icon và chữ */
+                                          font-size: 16px;
+                                        }
+                                      
+                                        .dropdown-menu li a:hover {
+                                          color: #97602f;
+                                          background-color: #f8f8f8;
+                                        }
+                                      
+                                        /* Hiển thị menu khi hover */
+                                        .has-dropdown:hover .dropdown-menu {
+                                          display: block;
+                                        }
+                                      </style>
+                                                      
                    </li>                   
                  </ul>
                  <!--====== Kết thúc danh sách ======-->
@@ -416,27 +468,78 @@
                       <li>
                           <a href="index.html">TRANG CHỦ</a>  <!-- Dẫn link đến trang chủ -->
                       </li>
-                      <li class="has-dropdown"> <!-- Dẫn link đến cửa hàng (Có menu đổ xuống) -->
-                        <a href="shop-side-version-2.html">CỬA HÀNG<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
+                      <li class="has-dropdown">
+                        <!-- Dẫn link đến cửa hàng -->
+                        <a href="shop-side-version-2.html">
+                          CỬA HÀNG
+                          <i class="fas fa-angle-down i-state-right u-s-m-l-6"></i>
+                        </a>
                         <span class="js-menu-toggle"></span>
-                        <ul style="width:170px">  <!-- Menu đổ xuống -->
+                        <!-- Menu đổ xuống -->
+                        <ul class="dropdown-menu">
                           <li>
-                            <a href="#">Bánh mì</a>
+                            <a href="shop-side-version-2.html">Bánh mì</a>
                           </li>
                           <li>
-                            <a href="#">Bánh kem</a>
+                            <a href="shop-side-version-2.html">Bánh kem</a>
                           </li>
                           <li>
-                            <a href="#">Bánh mì kẹp</a>
+                            <a href="shop-side-version-2.html">Bánh mì kẹp</a>
                           </li>
                           <li>
-                            <a href="#">Bánh ngọt & nướng</a>
+                            <a href="shop-side-version-2.html">Bánh ngọt & nướng</a>
                           </li>
                           <li>
-                            <a href="#">Các loại bánh khác</a>
+                            <a href="shop-side-version-2.html">Các loại bánh khác</a>
                           </li>
                         </ul>
                       </li>
+                      
+                      <!-- CSS -->
+                      <style>
+                        /* Vị trí chính xác của dropdown */
+                        .has-dropdown {
+                          position: relative;
+                        }
+                      
+                        .dropdown-menu {
+                          width: 170px;
+                          display: none;
+                          position: absolute;
+                          top: 100%;
+                          left: 0; /* Căn đều menu với chữ "CỬA HÀNG" */
+                          background: #fff;
+                          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                          border-radius: 4px;
+                          padding: 10px 0;
+                          list-style: none;
+                        }
+                      
+                        /* Căn chỉnh nội dung menu */
+                        .dropdown-menu li {
+                          padding: 0; /* Xóa padding dư thừa của `<li>` */
+                        }
+                      
+                        .dropdown-menu li a {
+                          display: block;
+                          text-decoration: none;
+                          color: #333;
+                          font-size: 14px;
+                          padding: 8px 15px; /* Khoảng cách trong từng mục */
+                          transition: all 0.3s ease;
+                        }
+                      
+                        .dropdown-menu li a:hover {
+                          color: #e63946;
+                          background-color: #f8f8f8;
+                        }
+                      
+                        /* Hiển thị menu khi hover */
+                        .has-dropdown:hover .dropdown-menu {
+                          display: block;
+                        }
+                      </style>
+                      
                       <li>
                           <a href="blog-sidebar-none.html">BÀI VIẾT</a> <!-- Dẫn link đến trang bài viết -->
                       </li>
@@ -460,7 +563,6 @@
         <!--====== Kết thúc thanh điều hướng 2 ======-->
         </header>
         <!--====== Kết thúc - Header chính ======-->
-
 
         <!--====== App Content ======-->
         <div class="app-content">
