@@ -3251,7 +3251,9 @@ input::-ms-clear {
       object-fit: cover; /* Đảm bảo ảnh luôn vừa khung */
     }
     .table-p__img-wrap:hover img {
-      transform: scale(1.2); /* Zoom ảnh khi hover */
+      transform: scale(1.2) rotate(10deg); /* Zoom và nghiêng 10 độ */
+  transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng mượt */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Thêm đổ bóng cho ảnh */
     }
   .table-p__info {
     margin-left: 18px; 
