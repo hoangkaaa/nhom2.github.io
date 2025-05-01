@@ -1,5 +1,5 @@
 <h1>MÔN PHÁT TRIỂN ỨNG DỤNG THƯƠNG MẠI ĐIỆN TỬ </h1>
-<h2>Tên đề tài: Xây dựng trang Web bán hàng Thương Mại Điện Tử - Sunkissed</h2>
+<h2>Tên đề tài: PHÁT TRIỂN WEBSITE CỬA HÀNG CÁC LOẠI BÁNH - SIXSENSE</h2>
 # LÝ DO LỰA CHỌN ĐỀ TÀI
 Trong thời đại số hóa hiện nay, việc xây dựng một website thương mại điện tử không chỉ là một xu hướng mà đã trở thành một yêu cầu thiết yếu cho các doanh nghiệp. Đối với cửa hàng SIXSENSE, chuyên cung cấp bánh ngọt và các loại bánh khác, việc có mặt trên nền tảng trực tuyến không chỉ giúp mở rộng phạm vi tiếp cận mà còn khẳng định vị thế thương hiệu trong lòng khách hàng.
 Người tiêu dùng ngày càng trở nên thông thái và đòi hỏi cao hơn về chất lượng sản phẩm cũng như trải nghiệm mua sắm. Họ không chỉ tìm kiếm những món bánh ngon, mà còn muốn được kết nối với câu chuyện, cảm xúc và sự sáng tạo đứng sau mỗi sản phẩm. Thấu hiểu điều này, SIXSENSE mong muốn không chỉ cung cấp những chiếc bánh ngọt tuyệt hảo mà còn tạo ra một không gian trực tuyến đầy màu sắc, nơi khách hàng có thể khám phá, trải nghiệm và chia sẻ niềm đam mê với ẩm thực.
