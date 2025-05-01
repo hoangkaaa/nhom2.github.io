@@ -42,7 +42,7 @@ Code:
 </ul>
 
 <H2>PUBLIC SIXSENSE</H2>
-  [https://lekhoi77.github.io/sunkissedg5/index.html](https://lekhoi77.github.io/Sunkissed./](https://hoangkaaa.github.io/nhom2.github.io/)]
+  [(https://hoangkaaa.github.io/nhom2.github.io/)]
 
 <H2>LỜI CẢM ƠN</H2>
 Để hoàn thành tốt đề tài này chúng em xin cảm ơn thầy Nguyễn Mạnh Tuấn. Một lần nữa chúng em xin trân trọng cảm ơn thầy Nguyễn Mạnh Tuấn đã tận tình giúp đỡ, hướng dẫn chúng em trong suốt quá trình thực hiện đề tài.
