@@ -28,13 +28,18 @@ Sử dụng ngôn ngữ lập trình bao gồm:
 -	CSS
 -	JAVASCRIPT
 Code:
--	Trang cửa hàng - danh mục: shop-side-version-2.html
--	Trang chi tiết sản phẩm: product-detail.html
--	Trang giỏ hàng: cart.html, empty-cart.html
--	Trang thanh toán: checkout.html
--	Trang tài khoản: dashboard.html; dash-my-profile.html; dash-my-order.html; dash-manage-order.html; dash-edit-profile.html; dash-address-book.html
--	Trang về chúng tôi: about.html
--	Trang blog: blog-none-sidebar.html; blog-detail.html
--	Trang hỗ trợ: faq.html
--	Trang liên hệ: contact.html
--	Trang wishlist: wishlist.html, empty-wishlist.html
+<ul>
+  <li> - Trang cửa hàng - danh mục: shop-side-version-2.html </li>
+  <li> -	Trang chi tiết sản phẩm: product-detail.html</li>
+  <li> -	Trang giỏ hàng: cart.html, empty-cart.html </li>
+  <li> -	Trang thanh toán: checkout.html </li>
+  <li> -	Trang tài khoản: dashboard.html; dash-my-profile.html; dash-my-order.html; dash-manage-order.html; dash-edit-profile.html; dash-address-book.html </li>
+  <li> -	Trang về chúng tôi: about.html </li>
+  <li> -	Trang blog: blog-none-sidebar.html; blog-detail.html</li>
+  <li> -	Trang hỗ trợ: faq.html </li>
+  <li> -	Trang liên hệ: contact.html </li>
+  <li> -	Trang wishlist: wishlist.html, empty-wishlist.html</li>
+</ul>
+
+<H2>PUBLIC SIXSENSE</H2>
+  [https://lekhoi77.github.io/sunkissedg5/index.html](https://lekhoi77.github.io/Sunkissed./](https://hoangkaaa.github.io/nhom2.github.io/)]
